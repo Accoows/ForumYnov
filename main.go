@@ -19,6 +19,10 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
+	// Handler pour les fichiers statiques (ex: CSS)
+	fs := http.FileServer(http.Dir("./static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
 	// Routes
 	http.HandleFunc("/", indexHandler)
 

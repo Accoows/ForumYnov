@@ -12,6 +12,9 @@ WORKDIR /app
 
 COPY --from=builder /app/forumynov .
 COPY --from=builder /app/templates ./templates
+COPY --from=builder /app/static ./static
+COPY --from=builder /app/database ./database
+COPY --from=builder /app/handlers ./handlers
 
 RUN chmod +x /app/forumynov
 
