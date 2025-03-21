@@ -15,6 +15,8 @@ COPY --from=builder /app/templates ./templates
 COPY --from=builder /app/static ./static
 COPY --from=builder /app/database ./database
 COPY --from=builder /app/handlers ./handlers
+COPY --from=builder /app/utils ./utils
+COPY --from=builder /app/models ./models
 
 RUN chmod +x /app/forumynov
 
