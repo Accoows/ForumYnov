@@ -28,7 +28,7 @@ func openBrowser(url string) {
 
 func main() {
 	// Parse the HTML template file
-	tmpl, err := template.ParseFiles(filepath.Join("../Templates/", "mobile.html"))
+	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "mobile.html"))
 	if err != nil {
 		panic(err)
 	}
@@ -42,12 +42,12 @@ func main() {
 	})
 
 	// Gère les requêtes vers le dossier "Scripts", de manière similaire au dossier "Styles".
-	http.Handle("/Scripts/", http.StripPrefix("/Scripts/", http.FileServer(http.Dir("../Scripts"))))
+	http.Handle("/Scripts/", http.StripPrefix("/Scripts/", http.FileServer(http.Dir("./Scripts"))))
 
 	// Serve static files (CSS, images, etc.) from the current directory
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("../static"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
-	http.Handle("/Templates/", http.StripPrefix("/Templates/", http.FileServer(http.Dir("../Templates"))))
+	http.Handle("/Templates/", http.StripPrefix("/Templates/", http.FileServer(http.Dir("./Templates"))))
 
 	// Ouvre automatiquement le navigateur web à l'adresse "http://localhost:8080"
 	fmt.Println("Starting server at port 8080")
