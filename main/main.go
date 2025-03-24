@@ -32,10 +32,21 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	tmplLogin, err := template.ParseFiles(filepath.Join("./Templates/", "login.html"))
+	if err != nil {
+		panic(err)
+	}
 
 	// Handler function to serve the template
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		err := tmpl.Execute(w, nil)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+	})
+	// Handler function to serve the login template
+	http.HandleFunc("/login.html", func(w http.ResponseWriter, r *http.Request) {
+		err := tmplLogin.Execute(w, nil)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
