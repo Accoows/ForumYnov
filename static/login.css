@@ -229,17 +229,17 @@ body {
     display: flex;
     flex-direction: row;
     gap: 8px;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     align-self: stretch;
     flex-shrink: 0;
     position: relative;
 }
 
 .chip {
-    background: rgba(0, 0, 0, 0.05);
+    background: #92A8D1;
     border-radius: 6px;
-    padding: 8px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 0px;
@@ -248,16 +248,18 @@ body {
     flex: 1;
     position: relative;
     overflow: hidden;
+    margin-bottom: 10px;
 }
 
 .text2 {
     color: #000000;
-    text-align: left;
+    text-align: center;
     font-family: "Roboto-Regular", sans-serif;
     font-size: 14px;
     line-height: 20px;
-    font-weight: 400;
+    font-weight: 300;
     position: relative;
+
 }
 
 .button2 {
