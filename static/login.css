@@ -22,7 +22,7 @@ body {
 }
 
 .background {
-    background: #f7cac9;
+    background: #F3D1D1;
     border-radius: 10px;
     padding: 0px 0px 12px 0px;
     display: flex;
@@ -344,8 +344,6 @@ body.dark-mode .chip{
 
 body.dark-mode .title,
 body.dark-mode .title2,
-body.dark-mode .text,
-body.dark-mode .text2,
 body.dark-mode .login {
     color: #ffffff;
 }
