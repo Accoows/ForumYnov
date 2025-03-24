@@ -2,12 +2,15 @@ package main
 
 import (
 	"fmt"
+	"forumynov/database"
 	"forumynov/handlers"
 	"log"
 	"net/http"
 )
 
 func main() {
+	database.InitTempDB()
+	defer database.DB.Close()
 
 	// Handler pour les fichiers statiques (ex: CSS)
 	fs := http.FileServer(http.Dir("./static"))

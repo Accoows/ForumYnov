@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Éditer le post</title>
+</head>
+<body>
+    <h1>Éditer le post</h1>
+
+    <form method="POST" action="/posts/edit?id={{.ID}}">
+        <label for="title">Titre :</label><br>
+        <input type="text" id="title" name="title" value="{{.Title}}"><br><br>
+
+        <label for="content">Contenu :</label><br>
+        <textarea id="content" name="content" rows="6" cols="40">{{.Content}}</textarea><br><br>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+
+    <p><a href="/posts/view?id={{.ID}}">← Annuler</a></p>
+</body>
+</html>

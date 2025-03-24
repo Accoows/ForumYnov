@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un post</title>
+</head>
+<body>
+    <h1>Créer un nouveau post</h1>
+
+    <form method="POST" action="/posts/create">
+        <label for="title">Titre :</label><br>
+        <input type="text" id="title" name="title"><br><br>
+
+        <label for="author">Auteur :</label><br>
+        <input type="text" id="author" name="author"><br><br>
+
+        <label for="content">Contenu :</label><br>
+        <textarea id="content" name="content" rows="6" cols="40"></textarea><br><br>
+
+        <button type="submit">Publier</button>
+    </form>
+
+    <p><a href="/posts">← Retour à la liste des posts</a></p>
+</body>
+</html>

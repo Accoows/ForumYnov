@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+</head>
+<body>
+    <h1>{{.Title}}</h1>
+    <p><strong>Auteur :</strong> {{.Author}} | <strong>Date :</strong> {{.CreatedAt}}</p>
+    <p>{{.Content}}</p>
+
+    {{if .Categories}}
+        <p><strong>Catégories :</strong>
+            {{range .Categories}}
+                <span style="background:#ddd; padding:3px 6px; margin-right:5px;">{{.Name}}</span>
+            {{end}}
+        </p>
+    {{end}}
+
+    <p><a href="/posts">Retour à la liste des posts</a></p>
+    <form action="/posts/delete?id={{.ID}}" method="POST" onsubmit="return confirm('Supprimer ce post ?');">
+        <button type="submit" style="color: red;">Supprimer le post</button>
+    </form>
+</body>
+</html>
