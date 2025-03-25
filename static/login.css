@@ -1,5 +1,13 @@
-body {
-    background-color: #998788;
+html,body {
+    background: url('fond.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-color: #998788; */
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .page,
@@ -8,17 +16,23 @@ body {
 }
 
 .body {
-    background: #998788;
+    /* background: #998788; */
     display: flex;
     flex-direction: column;
     gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    /* align-self: stretch; */
     flex-shrink: 0;
     position: relative;
     height: 100%;
     width: 100%;
+    max-width: 1800px;
+    min-width: 600px;
+    max-height: 800px;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .background {
@@ -236,11 +250,15 @@ body {
     position: relative;
 }
 
+.remember{
+    margin-bottom: 10px;
+}
+
 .chip {
     background: #92A8D1;
     border-radius: 6px;
-    padding: 12px 18.23px 12px 18.22px;
-    height: 64px;
+    padding: 10px 18.23px 10px 18.22px;
+    height: 20px;
     display: flex;
     flex-direction: column;
     gap: 0px;
@@ -300,6 +318,11 @@ body {
     position: relative;
 }
 
+.no-underline:link,
+.no-underline:visited {
+  text-decoration: none;
+}
+
 
 /* Dark Mode Styles */
 body.dark-mode {
@@ -337,10 +360,13 @@ body.dark-mode .button-group button {
 body.dark-mode .input,
 body.dark-mode .input2,
 body.dark-mode .selection,
-body.dark-mode .chip-group,
+body.dark-mode .chip-group{
+    background-color: #333333;
+    border-color: #444444;
+}
+
 body.dark-mode .chip{
     background-color: #2c2c2c;
-    border-color: #444444;
 }
 
 body.dark-mode .text2 {

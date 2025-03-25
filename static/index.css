@@ -1,5 +1,7 @@
 body {
-  background-color: #998788; /* Changed */
+  background: url('fond.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .page,
 .page * {
