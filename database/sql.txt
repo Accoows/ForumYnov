@@ -1,0 +1,70 @@
+Display the code use to create the tables in forum.db
+
+CREATE TABLE IF NOT EXISTS Categories (
+ 	id INT PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE,
+  parent_id INT,
+  FOREIGN KEY (parent_id) REFERENCES Categories(id)
+);
+
+CREATE TABLE IF NOT EXISTS Users (
+	id INT PRIMARY KEY,
+  email TEXT NOT NULL UNIQUE,
+  username TEXT NOT NULL UNIQUE,
+  password_hash TEXT NOT NULL,
+  created_at TEXT NOT NULL
+);
+ 
+CREATE TABLE IF NOT EXISTS Posts (
+ 	id INT PRIMARY KEY,
+  user_id INT NOT NULL,
+  category_id INT NOT NULL,
+  title TEXT NOT NULL,
+  content TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES Users(id),
+  FOREIGN KEY (category_id) REFERENCES Categories(id)
+);
+ 
+CREATE TABLE IF NOT EXISTS Comments (
+ 	id INT PRIMARY KEY,
+  post_id INT NOT NULL,
+  user_id INT NOT NULL,
+  content TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  FOREIGN KEY (post_id) REFERENCES Posts(id),
+  FOREIGN KEY (user_id) REFERENCES Users(id)
+);
+ 
+CREATE TABLE IF NOT EXISTS Likes_Dislikes (
+ 	id INT PRIMARY KEY,
+  user_id INT NOT NULL,
+  post_id INT,
+  comment_id INT,
+  type INT CHECK(type IN (1, -1)),
+  FOREIGN KEY (user_id) REFERENCES Users(id),
+  FOREIGN KEY (post_id) REFERENCES Posts(id),
+  FOREIGN KEY (comment_id) REFERENCES Comments(id)
+);
+
+INSERT OR IGNORE INTO Categories(id, name) 
+VALUES 
+	(1, 'Langue'),
+  (2, 'Culture'),
+  (3, 'Voyages'),
+  (4, 'Anime/Manga');
+  
+ INSERT OR IGNORE INTO Categories(id, name, parent_id)
+ VALUES
+ 	(5, 'Hiragana', 1),
+  (6, 'Katakana', 1),
+  (7, 'Kanji', 1),
+  (8, 'Shôjo', 4),
+  (9, 'Shônen', 4),
+  (10, 'Seinen', 4);
+  
+SELECT * FROM Users;
+SELECT * FROM Posts;
+SELECT * FROM Comments;
+SELECT * FROM Likes_Dislikes;
+SELECT * FROM Categories;
