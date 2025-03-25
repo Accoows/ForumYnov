@@ -14,7 +14,7 @@ import (
 
 func PostsHandler(w http.ResponseWriter, r *http.Request) {
 	// Données mockées (fictives)
-	posts, err := models.GetAllPosts(database.DB)
+	posts, err := models.GetAllPosts(database.SQL)
 	if err != nil {
 		http.Error(w, "Erreur lors de la récupération des posts", http.StatusInternalServerError)
 		return
@@ -65,7 +65,7 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 		// Plus tard ce sera via la session utilisateur
 		userID := author // on suppose que c’est un UUID pour test
 
-		err := models.CreatePost(database.DB, userID, title, content)
+		err := models.CreatePost(database.SQL, userID, title, content)
 		if err != nil {
 			http.Error(w, "Erreur lors de la création du post", http.StatusInternalServerError)
 			return
@@ -96,7 +96,7 @@ func DeletePostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = models.DeletePost(database.DB, id)
+	err = models.DeletePost(database.SQL, id)
 	if err != nil {
 		http.Error(w, "Erreur lors de la suppression", http.StatusInternalServerError)
 		return
@@ -132,7 +132,7 @@ func ViewPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	post, err := models.GetPostByID(database.DB, id)
+	post, err := models.GetPostByID(database.SQL, id)
 	if err != nil {
 		http.Error(w, "Post introuvable", http.StatusNotFound)
 		return

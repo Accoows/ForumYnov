@@ -9,9 +9,9 @@ import (
 
 // Page d'accueil, général
 
-// Gestionnaire pour servir la page index
-func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "mobile.html"))
+// Gestionnaire pour servir la page de login
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "login.html"))
 	if err != nil {
 		log.Println(err)
 		return

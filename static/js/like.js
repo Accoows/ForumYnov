@@ -1,1 +1,0 @@
-// Gestion JS des likes/dislikes

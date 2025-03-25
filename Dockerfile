@@ -15,11 +15,12 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y sqlite3 libsqlite3-0
 
 COPY --from=builder /app/forumynov .
-COPY --from=builder /app/templates ./templates
+COPY --from=builder /app/Templates ./Templates
 COPY --from=builder /app/static ./static
 COPY --from=builder /app/database ./database
 COPY --from=builder /app/handlers ./handlers
 COPY --from=builder /app/models ./models
+COPY --from=builder /app/Scripts ./Scripts
 
 RUN chmod +x /app/forumynov
 

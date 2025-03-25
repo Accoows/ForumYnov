@@ -7,7 +7,7 @@ import (
 
 // Login, register, logout
 
-func LoginHandler(w http.ResponseWriter, r *http.Request) {
+func AuthHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
 		fmt.Fprintln(w, "Page de connexion")
 		return
