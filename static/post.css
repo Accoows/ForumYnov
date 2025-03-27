@@ -1,8 +1,9 @@
-html,body {
+html {
     background: url('fond.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-    /* background-color: #998788; */
+    border-radius: 10px;
+    border-color: #000000;
 }
 
 .post-list,
@@ -31,6 +32,7 @@ html,body {
   flex-shrink: 0;
   height: 1068px;
   position: relative;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
 }
 .background-shadow {
   background: #f2e3d5;
