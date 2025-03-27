@@ -1,28 +1,36 @@
 package handlers
 
 import (
-	"forumynov/models"
+	"forumynov/database"
 	"html/template"
 	"net/http"
+	"strconv"
 )
 
 func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
-		tmpl, _ := template.ParseFiles("Templates/create_post.html")
+		tmpl, err := template.ParseFiles("Templates/create_post.html")
+		if err != nil {
+			http.Error(w, "Erreur chargement formulaire", http.StatusInternalServerError)
+			return
+		}
 		tmpl.Execute(w, nil)
 
 	} else if r.Method == http.MethodPost {
-		r.ParseForm()
+		err := r.ParseForm()
+		if err != nil {
+			http.Error(w, "Erreur parsing du formulaire", http.StatusBadRequest)
+			return
+		}
+
 		title := r.FormValue("title")
 		content := r.FormValue("content")
+		categoryID, _ := strconv.Atoi(r.FormValue("category_id"))
 
-		// On met une catégorie par défaut (ex : ID 1) ou NULL si géré dans SQL
-		categoryID := 1
-
-		// TEMPORAIRE : ID utilisateur en dur
+		// Temporairement fixé à l'utilisateur ID 1
 		userID := 1
 
-		err := models.CreatePost(userID, categoryID, title, content)
+		err = database.CreatePost(userID, categoryID, title, content)
 		if err != nil {
 			http.Error(w, "Erreur lors de la création du post", http.StatusInternalServerError)
 			return
@@ -30,4 +38,22 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 
 		http.Redirect(w, r, "/posts", http.StatusSeeOther)
 	}
+}
+
+func PostsHandler(w http.ResponseWriter, r *http.Request) {
+	posts, err := database.GetCompletePostList()
+	if err != nil {
+		http.Error(w, "Erreur lors du chargement des posts", http.StatusInternalServerError)
+		return
+	}
+
+	tmpl, err := template.ParseFiles("Templates/posts.html")
+	if err != nil {
+		http.Error(w, "Erreur chargement template", http.StatusInternalServerError)
+		return
+	}
+
+	tmpl.Execute(w, struct {
+		Posts []database.Posts
+	}{Posts: posts})
 }

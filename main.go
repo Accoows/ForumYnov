@@ -8,9 +8,8 @@ import (
 )
 
 func main() {
-	database.Database()
-
-	defer database.SQL.Close()
+	database.InitDatabase()
+	defer database.CloseDatabase()
 
 	// Gère les requêtes vers le dossier "Scripts", de manière similaire au dossier "Styles".
 	http.Handle("/Scripts/", http.StripPrefix("/Scripts/", http.FileServer(http.Dir("./Scripts"))))
