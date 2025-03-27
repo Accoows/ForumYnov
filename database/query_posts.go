@@ -75,3 +75,10 @@ func GetPostByID(id int) (Posts, error) {
 	)
 	return post, err
 }
+
+func UpdatePost(id int, title, content string) error {
+	_, err := SQL.Exec(`
+		UPDATE Posts SET title = ?, content = ? WHERE id = ?
+	`, title, content, id)
+	return err
+}
