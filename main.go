@@ -28,7 +28,8 @@ func openBrowser(url string) {
 }
 
 func main() {
-	database.Database()
+	database.InitDatabase()
+	defer database.CloseDatabase()
 
 	// Parse the HTML template file
 	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "mobile.html"))
