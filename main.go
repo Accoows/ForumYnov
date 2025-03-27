@@ -37,10 +37,14 @@ func main() {
 	http.HandleFunc("/posts/edit", handlers.EditPostHandler)
 	http.HandleFunc("/posts/delete", handlers.DeletePostHandler)
 
-	http.HandleFunc("/like", handlers.LikeHandler)
-	http.HandleFunc("/dislike", handlers.DislikeHandler)
+	// CRUD pour les commentaires
+	//http.HandleFunc("/comments", handlers.CommentsHandler)
+	http.HandleFunc("/comments/create", handlers.CreateCommentHandler)
 
-	http.HandleFunc("/filter", handlers.FilterHandler)
+	//http.HandleFunc("/like", handlers.LikeHandler)
+	//http.HandleFunc("/dislike", handlers.DislikeHandler)
+
+	//http.HandleFunc("/filter", handlers.FilterHandler)
 
 	fmt.Println("Starting server at port 8080")
 	fmt.Println(">>>> http://localhost:8080 <<<<")

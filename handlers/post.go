@@ -65,6 +65,21 @@ func ViewPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	comments, err := database.GetCommentsByPostID(postID)
+	if err != nil {
+		http.Error(w, "Erreur récupération commentaires", http.StatusInternalServerError)
+		log.Println("[handlers/post.go][ViewPostHandler] Erreur chargement commentaires :", err)
+		return
+	}
+
+	data := struct {
+		Post     database.Posts
+		Comments []database.Comments
+	}{
+		Post:     post,
+		Comments: comments,
+	}
+
 	tmpl, err := template.ParseFiles(filepath.Join("./Templates", "view_post.html"))
 	if err != nil {
 		log.Println("[handlers/post.go] [ViewPostHandler] Erreur ParseFiles >>>", err)
@@ -72,7 +87,7 @@ func ViewPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl.Execute(w, post)
+	tmpl.Execute(w, data)
 }
 
 // =========================
