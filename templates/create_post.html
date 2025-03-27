@@ -7,16 +7,22 @@
 <body>
     <h1>Créer un nouveau post</h1>
 
-    <h2>Créer un nouveau post</h2>
     <form action="/posts/create" method="POST">
       <label for="title">Titre :</label><br>
       <input type="text" id="title" name="title" required><br><br>
-    
-      <!-- Suppression du champ catégorie -->
-    
+  
+      <!-- Tu peux désactiver ou masquer la catégorie si elle est fixée à 1 -->
+      <label for="category_id">Catégorie :</label><br>
+      <select name="category_id" id="category_id" required>
+        <option value="1">Langue</option>
+        <option value="2">Culture</option>
+        <option value="3">Voyages</option>
+        <option value="4">Anime/Manga</option>
+      </select><br><br>
+  
       <label for="content">Contenu :</label><br>
       <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
-    
+  
       <input type="submit" value="Publier le post">
     </form>
     

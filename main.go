@@ -12,7 +12,7 @@ func main() {
 	defer database.CloseDatabase()
 
 	// Gère les requêtes vers le dossier "Scripts", de manière similaire au dossier "Styles".
-	http.Handle("/Scripts/", http.StripPrefix("/Scripts/", http.FileServer(http.Dir("./Scripts"))))
+	http.Handle("/scripts/", http.StripPrefix("/scripts/", http.FileServer(http.Dir("./scripts"))))
 
 	// Serve static files (CSS, images, etc.) from the current directory
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
@@ -30,11 +30,12 @@ func main() {
 	//http.HandleFunc("/reset-password", handlers.ResetPasswordHandler)
 	//http.HandleFunc("/forgot-username", handlers.ForgotUsernameHandler)
 
-	//http.HandleFunc("/posts", handlers.PostsHandler)
+	// CRUD pour les posts
+	http.HandleFunc("/posts", handlers.PostsHandler)
 	http.HandleFunc("/posts/create", handlers.CreatePostHandler)
-	//http.HandleFunc("/posts/delete", handlers.DeletePostHandler)
+	http.HandleFunc("/posts/view", handlers.ViewPostHandler)
 	//http.HandleFunc("/posts/edit", handlers.EditPostHandler)
-	//http.HandleFunc("/posts/view", handlers.ViewPostHandler)
+	http.HandleFunc("/posts/delete", handlers.DeletePostHandler)
 
 	http.HandleFunc("/like", handlers.LikeHandler)
 	http.HandleFunc("/dislike", handlers.DislikeHandler)

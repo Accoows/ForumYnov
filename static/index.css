@@ -1,7 +1,9 @@
-body {
+html {
   background: url('fond.jpg') no-repeat;
   background-size: cover;
   background-position: center;
+  border-radius: 10px;
+  border-color: #000000;
 }
 .page,
 .page * {
@@ -9,7 +11,7 @@ body {
 }
 .page {
   border-radius: 10px;
-  background: #f3d1d1; /* Changed */
+  background: #eeeaea; /* Changed */
   padding: 0px 0px 12px 0px;
   display: flex;
   flex-direction: column;
@@ -17,11 +19,14 @@ body {
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  background-color: #f3d1d1; /* Changed */
+  background-color: #eeeaea; 
+  width: 90%;
+  margin-left: 5%;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
 }
 .top-bar {
   border-radius: 10px;
-  background: #F2E3D5; /* Changed */
+  background: #F3D1D1; /* Changed */
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -31,7 +36,9 @@ body {
   flex-shrink: 0;
   position: relative;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
-  background-color: #F2E3D5; /* Changed */
+  background-color: #ffffff;
+  border-radius: 10px;
+  border-color: #000000;
 }
 .top {
   align-self: stretch;
@@ -39,6 +46,8 @@ body {
   height: 24px;
   position: relative;
   overflow: visible;
+  border-radius: 10px;
+  border-color: #000000;
 }
 .content {
   padding: 12px 8px 12px 16px;
@@ -50,6 +59,8 @@ body {
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
+  border-radius: 10px;
+  border-color: #000000;
 }
 .title {
   color: #000000;
@@ -63,7 +74,7 @@ body {
 }
 .tab-group {
   border-radius: 20px;
-  padding: 0px 12px 0px 12px;
+  padding: 5px 12px 5px 12px;
   display: flex;
   flex-direction: row;
   gap: 8px;
@@ -73,12 +84,11 @@ body {
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
-  background-color: #F2E3D5; /* Changed */
 }
 .tab {
   border-radius: 20px;
   border-style: solid;
-  box-shadow: 0px 0px 2px 0px #000000;
+  box-shadow: 0px 0px 2px 0px #ffffff;
   border-color: rgba(0, 0, 0);
   border-width: 2px;
   padding: 4px;
@@ -89,7 +99,10 @@ body {
   justify-content: flex-start;
   flex: 1;
   position: relative;
-  border-color: #f3d1d1; /* Changed */
+  border-color: #eeeaea;
+  background-color: #F3D1D1;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 1);
+  
 }
 .frame {
   background: rgba(0, 0, 0, 0.9);
@@ -137,10 +150,10 @@ body {
   overflow: hidden;
 }
 .list {
-  padding: 0px 12px 0px 12px;
+  padding: 5px 12px 5px 12px;
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 5px;
   align-items: center;
   justify-content: center;
   align-self: stretch;
@@ -178,7 +191,7 @@ body {
   align-self: stretch;
 }
 .item {
-  background-color: #F2E3D5;
+  background-color: #F3D1D1;
   border-radius: 10px;
   box-shadow: 0px 0px 1px 0px #000000;  
   padding: 12px 1px 12px 1px;
@@ -277,7 +290,7 @@ body {
   position: relative;
 }
 .article {
-  background-color: #F2E3D5;
+  background-color: #F3D1D1;
   border-radius: 10px;
   box-shadow: 0px 0px 1px 0px #000000; 
   padding: 8px 1px 8px 1px;
@@ -412,7 +425,7 @@ body {
   position: relative;
 }
 .chip {
-  background-color: #F2E3D5;
+  background-color: #F3D1D1;
   border-radius: 6px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.2);
@@ -445,7 +458,7 @@ body {
   overflow: hidden;
 }
 .post {
-  background-color: #F2E3D5;
+  background-color: #F3D1D1;
   border-radius: 6px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.2);
@@ -561,7 +574,7 @@ body {
   height: 4px;
   position: relative;
   aspect-ratio: 1;
-  background-color: #f3d1d1; /* Added */
+  background-color: #eeeaea; /* Added */
 }
 .rectangle-3347 {
   background: rgba(0, 0, 0, 0.2);
@@ -571,7 +584,7 @@ body {
   height: 4px;
   position: relative;
   aspect-ratio: 1;
-  background-color: #f3d1d1; /* Added */
+  background-color: #eeeaea; /* Added */
 }
 .rectangle-3340 {
   background: rgba(0, 0, 0, 0.2);
@@ -581,7 +594,7 @@ body {
   height: 4px;
   position: relative;
   aspect-ratio: 1;
-  background-color: #f3d1d1; /* Added */
+  background-color: #eeeaea; /* Added */
 }
 .text-content {
   padding: 12px;
@@ -641,7 +654,7 @@ body {
   position: relative;
 }
 .search {
-  background-color: #F2E3D5;
+  background-color: #F3D1D1;
   border-radius: 10px;
   box-shadow: 0px 0px 1px 0px #000000; 
   padding: 5px 12px 0px 12px;

@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	db, err := sql.Open("sqlite3", "database/forum.db") // adapte si chemin absolu
+	db, err := sql.Open("sqlite3", "database/forum.db")
 	if err != nil {
 		log.Fatal("Erreur ouverture base :", err)
 	}

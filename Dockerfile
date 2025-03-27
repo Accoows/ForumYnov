@@ -20,7 +20,8 @@ COPY --from=builder /app/static ./static
 COPY --from=builder /app/database ./database
 COPY --from=builder /app/handlers ./handlers
 COPY --from=builder /app/models ./models
-COPY --from=builder /app/Scripts ./Scripts
+COPY --from=builder /app/scripts ./scripts
+COPY --from=builder /app/tools ./tools
 
 RUN chmod +x /app/forumynov
 
