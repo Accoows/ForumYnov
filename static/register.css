@@ -1,0 +1,497 @@
+html,body {
+  background: url('fond.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* background-color: #998788; */
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.background,
+.background * {
+  box-sizing: border-box;
+}
+
+.background {
+    background: #F3D1D1;
+    border-radius: 10px;
+    padding: 0px 0px 12px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: center;
+    /* align-self: stretch; */
+    flex-shrink: 0;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    max-width: 1800px;
+    min-width: 600px;
+    max-height: 800px;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.background-shadow {
+    background: #f2e3d5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 12px 8px 12px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.container2 {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  height: 24px;
+  position: relative;
+}
+.forum-name {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.margin {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.container3 {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.button {
+  background: #efefef;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 2px;
+  padding: 3px 8px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.dark-mode {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12.572656631469727px;
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.button2 {
+  background: #efefef;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 2px;
+  padding: 3px 8px 3px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.home {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12.780468940734863px;
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.margin2 {
+  padding: 0px 0px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.container4 {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.login {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  margin: 10px;
+  font-size: 25px;
+  line-height: 24px;
+  font-weight: 500;
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.margin3 {
+  padding: 0px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  margin-bottom: 10px;
+}
+.background-shadow2 {
+  background: #f2e3d5;
+  border-radius: 10px;
+  padding: 0px 12px 5px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 1);
+  overflow: hidden;
+}
+.container5 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.username {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.border {
+  border-radius: 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-width: 1px;
+  padding: 9px 13px 9px 13px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.input {
+  border-radius: 2.5px;
+  border-style: solid;
+  border-color: #767676;
+  border-width: 1px;
+  padding: 2px 4px 2px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.container6 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.enter-your-username {
+  color: #757575;
+  text-align: left;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.email {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.enter-your-mail {
+  color: #757575;
+  text-align: left;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.margin4 {
+  padding: 0px 10px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.password {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.enter-your-password {
+  color: #757575;
+  text-align: left;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.container7 {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  height: 155px;
+  position: relative;
+}
+.container8 {
+  padding: 0px 12px 0px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 46px;
+  position: relative;
+  overflow: hidden;
+}
+.button3 {
+  background: #000000;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 2px;
+  padding: 12px 122.81px 12px 122.81px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.container9 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.register {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body.dark-mode .background,
+body.dark-mode .container2,
+body.dark-mode .container3,
+body.dark-mode .container4,
+body.dark-mode .container5,
+body.dark-mode .container6,
+body.dark-mode .container7,
+body.dark-mode .container8,
+body.dark-mode .container9,
+body.dark-mode .margin2,
+body.dark-mode .margin3,
+body.dark-mode .margin4 {
+  background: #444444;
+  border-radius: 10px;
+}
+
+body.dark-mode .container,
+body.dark-mode .margin,
+body.dark-mode .username,
+body.dark-mode .email,
+body.dark-mode .password,
+body.dark-mode .forum-name{
+  background: #333333;
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+body.dark-mode .background-shadow,
+body.dark-mode .background-shadow2{
+  background: #333334;
+  border-radius: 10px;
+}
+/* #2c2c2c */
+
+
+body.dark-mode .login,
+body.dark-mode .register,
+body.dark-mode .home,
+body.dark-mode .dark-mode {
+  color: #ffffff;
+}
+
+body.dark-mode .button,
+body.dark-mode .button2,
+body.dark-mode .button3 {
+  background: #333333;
+  border-color: #ffffff;
+  border-width: 0.1px;
+  color: #ffffff;
+}
+
+/* body.dark-mode .input,
+body.dark-mode .border {
+  background-color: #2c2c2c;
+  border-color: #444444;
+} */
+
+/* body.dark-mode .enter-your-username,
+body.dark-mode .enter-your-mail,
+body.dark-mode .enter-your-password {
+  color: #bbbbbb;
+} */
+
+body.dark-mode .link {
+  background: #333333;
+}

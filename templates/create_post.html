@@ -7,18 +7,19 @@
 <body>
     <h1>Créer un nouveau post</h1>
 
-    <form method="POST" action="/posts/create">
-        <label for="title">Titre :</label><br>
-        <input type="text" id="title" name="title"><br><br>
-
-        <label for="author">Auteur :</label><br>
-        <input type="text" id="author" name="author"><br><br>
-
-        <label for="content">Contenu :</label><br>
-        <textarea id="content" name="content" rows="6" cols="40"></textarea><br><br>
-
-        <button type="submit">Publier</button>
+    <h2>Créer un nouveau post</h2>
+    <form action="/posts/create" method="POST">
+      <label for="title">Titre :</label><br>
+      <input type="text" id="title" name="title" required><br><br>
+    
+      <!-- Suppression du champ catégorie -->
+    
+      <label for="content">Contenu :</label><br>
+      <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
+    
+      <input type="submit" value="Publier le post">
     </form>
+    
 
     <p><a href="/posts">Retour à la liste des posts</a></p>
 </body>

@@ -11,7 +11,7 @@ import (
 
 // Gestionnaire pour servir la page index
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "mobile.html"))
+	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "index.html"))
 	if err != nil {
 		log.Println(err)
 		return
