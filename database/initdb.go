@@ -2,7 +2,6 @@ package database
 
 import (
 	"database/sql"
-	"forumynov/models"
 	"log"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -29,10 +28,10 @@ func CloseDatabase() {
 	}
 }
 
-func InsertUsersData(users *models.Users) error {
+func InsertUsersData(users *Users) error {
 
-	row := SQL.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM Users")
-	err = row.Scan(&users.ID)
+	/*row := SQL.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM Users")
+	err = row.Scan(&users.ID)*/
 
 	if err != nil {
 		return err
@@ -47,7 +46,7 @@ func InsertUsersData(users *models.Users) error {
 	return err
 }
 
-func InsertPostsData(posts *models.Posts) error {
+func InsertPostsData(posts *Posts) error {
 
 	row := SQL.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM Posts")
 	err = row.Scan(&posts.ID)
@@ -65,7 +64,7 @@ func InsertPostsData(posts *models.Posts) error {
 	return err
 }
 
-func InsertCommentsData(comments *models.Comments) error {
+func InsertCommentsData(comments *Comments) error {
 
 	row := SQL.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM Comments")
 	err = row.Scan(&comments.ID)
@@ -83,7 +82,7 @@ func InsertCommentsData(comments *models.Comments) error {
 	return err
 }
 
-func InsertLikesDislikesData(likesDislikes *models.LikesDislikes) error {
+func InsertLikesDislikesData(likesDislikes *LikesDislikes) error {
 
 	row := SQL.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM Likes_Dislikes")
 	err = row.Scan(&likesDislikes.ID)
@@ -101,15 +100,15 @@ func InsertLikesDislikesData(likesDislikes *models.LikesDislikes) error {
 	return err
 }
 
-func GetCategoriesData() ([]models.Categories, error) {
+func GetCategoriesData() ([]Categories, error) {
 	rows, err := SQL.Query("SELECT id, name, parent_id FROM Categories")
 	if err != nil {
 		return nil, err
 	}
 
-	var categories []models.Categories
+	var categories []Categories
 	for rows.Next() {
-		var categorie models.Categories
+		var categorie Categories
 		err := rows.Scan(&categorie.ID, &categorie.Name, &categorie.Parent_id)
 		if err != nil {
 			return nil, err
@@ -120,15 +119,15 @@ func GetCategoriesData() ([]models.Categories, error) {
 	return categories, nil
 }
 
-func GetUsersData() ([]models.Users, error) {
+func GetUsersData() ([]Users, error) {
 	rows, err := SQL.Query("SELECT id, email, username, password_hash, created_at FROM Users")
 	if err != nil {
 		return nil, err
 	}
 
-	var users []models.Users
+	var users []Users
 	for rows.Next() {
-		var user models.Users
+		var user Users
 		err := rows.Scan(&user.ID, &user.Email, &user.Username, &user.Password_hash, &user.Created_at)
 		if err != nil {
 			return nil, err
@@ -139,15 +138,15 @@ func GetUsersData() ([]models.Users, error) {
 	return users, nil
 }
 
-func GetPostsData() ([]models.Posts, error) {
+func GetPostsData() ([]Posts, error) {
 	rows, err := SQL.Query("SELECT id, user_id, category_id, title, content, created_at FROM Posts")
 	if err != nil {
 		return nil, err
 	}
 
-	var posts []models.Posts
+	var posts []Posts
 	for rows.Next() {
-		var post models.Posts
+		var post Posts
 		err := rows.Scan(&post.ID, &post.User_id, &post.Category_id, &post.Title, &post.Content, &post.Created_at)
 		if err != nil {
 			return nil, err
@@ -158,15 +157,15 @@ func GetPostsData() ([]models.Posts, error) {
 	return posts, nil
 }
 
-func GetCommentsData() ([]models.Comments, error) {
+func GetCommentsData() ([]Comments, error) {
 	rows, err := SQL.Query("SELECT id, post_id, user_id, content, created_at FROM Comments")
 	if err != nil {
 		return nil, err
 	}
 
-	var comments []models.Comments
+	var comments []Comments
 	for rows.Next() {
-		var comment models.Comments
+		var comment Comments
 		err := rows.Scan(&comment.ID, &comment.Post_id, &comment.User_id, &comment.Content, &comment.Created_at)
 		if err != nil {
 			return nil, err
@@ -177,15 +176,15 @@ func GetCommentsData() ([]models.Comments, error) {
 	return comments, nil
 }
 
-func GetLikesDislikesData() ([]models.LikesDislikes, error) {
+func GetLikesDislikesData() ([]LikesDislikes, error) {
 	rows, err := SQL.Query("SELECT id, user_id, post_id, comment_id, type FROM Likes_Dislikes")
 	if err != nil {
 		return nil, err
 	}
 
-	var likesDislikes []models.LikesDislikes
+	var likesDislikes []LikesDislikes
 	for rows.Next() {
-		var likeDislike models.LikesDislikes
+		var likeDislike LikesDislikes
 		err := rows.Scan(&likeDislike.ID, &likeDislike.User_id, &likeDislike.Post_id, &likeDislike.Comment_id, &likeDislike.TypeValue)
 		if err != nil {
 			return nil, err

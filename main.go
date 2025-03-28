@@ -40,6 +40,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	http.HandleFunc("/register", database.RegisterUsers)
+	tmplregister, err := template.ParseFiles(filepath.Join("./Templates/", "register.html"))
+	if err != nil {
+		panic(err)
+	}
 
 	// Handler function to serve the template
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -51,6 +56,13 @@ func main() {
 	// Handler function to serve the login template
 	http.HandleFunc("/login.html", func(w http.ResponseWriter, r *http.Request) {
 		err := tmplLogin.Execute(w, nil)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+	})
+	//handler function to serve the register template
+	http.HandleFunc("/register.html", func(w http.ResponseWriter, r *http.Request) {
+		err := tmplregister.Execute(w, nil)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}

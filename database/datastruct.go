@@ -1,4 +1,4 @@
-package models
+package database
 
 type Categories struct {
 	ID        int
@@ -7,7 +7,7 @@ type Categories struct {
 }
 
 type Users struct {
-	ID            int
+	ID            string
 	Email         string
 	Username      string
 	Password_hash string

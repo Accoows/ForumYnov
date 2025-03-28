@@ -1,0 +1,53 @@
+<!-- register.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ForumYnov Register</title>
+    <link rel="stylesheet" type="text/css" href="static/register.css">
+</head>
+
+<body>
+    <div class="html">
+        <div class="background">
+          <div class="background-shadow">
+            <div class="container">
+              <div class="container2">
+                <div class="forum-name">Forum Name</div>
+              </div>
+              <div class="margin">
+                    <button id="dark-mode-toggle">Dark Mode</button>
+                    <a href="index.html"><button id="home-button">Home</button></a>
+              </div>
+            </div>
+          </div>
+          <div class="margin2">
+            <div class="container4">
+              <div class="login">Register</div>
+            </div>
+          </div>
+        <form action="/register" method="POST">
+            <div class="margin3">
+            <input type="email" class="input" name="email" placeholder="Enter your email">
+            </div>
+            <div class="margin3">
+                <input type="text" class="input" name="username" placeholder="Enter your username">
+            </div> 
+            <div class="margin4">
+                <input type="password" class="input" name="password" placeholder="Enter your password">
+
+            </div>
+            <div class="container7">
+                <div class="container8"></div>
+                <button class="button3" type="submit">
+                    <div class="register">Register</div>
+                </button>
+            </div>
+        </form>
+          
+        </div>
+      </div>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
