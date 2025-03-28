@@ -249,6 +249,7 @@ html {
     position: relative;
     overflow: hidden;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .text2 {
@@ -287,6 +288,7 @@ html {
     align-self: stretch;
     flex-shrink: 0;
     position: relative;
+    cursor: pointer;
 }
 
 .title2 {

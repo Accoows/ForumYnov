@@ -1,15 +1,19 @@
-html {
+html,body {
   background: url('fond.jpg') no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 10px;
   border-color: #000000;
-  height: 100%;
+  min-height: 100vh;
+  width: 100%;
   margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
+
 .post-list,
 .post-list * {
   box-sizing: border-box;
@@ -25,11 +29,9 @@ html {
   justify-content: flex-start;
   height: 100%;
   position: relative;
+  margin: 20px;
 }
 .background {
-    background: rgb(238, 234, 234,50%);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
   padding: 0px 0px 12px 0px;
   display: flex;
   flex-direction: column;
@@ -40,9 +42,10 @@ html {
   flex-shrink: 0;
   height: 100%;
   position: relative;
+  margin: 20px;
 }
 .background-shadow {
-  background: #f2e3d5;
+  background: #ffffff;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -101,187 +104,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
-.dark-mode {
-  color: #000000;
-  text-align: center;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 12.572656631469727px;
-  font-weight: 400;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.background2 {
-  background: #f2e3d5;
-  border-radius: 20px;
-  padding: 0px 12px 0px 12px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  width: 752px;
-  position: relative;
-  overflow: hidden;
-}
-.overlay-border-shadow {
-  background: rgba(255, 255, 255, 0);
-  border-radius: 20px;
-  border-style: solid;
-  border-color: #f7cac9;
-  border-width: 2px;
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  align-items: center;
-  justify-content: flex-start;
-  flex: 1;
-  position: relative;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 1);
-}
-.background3 {
-  background: #92a8d1;
-  border-radius: 24px;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  position: relative;
-}
-.container3 {
-  padding: 0px 18.52px 1px 18.51px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  left: 50%;
-  translate: -50% -50%;
-  top: 50%;
-  overflow: hidden;
-}
-.div {
-  color: #000000;
-  text-align: center;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 30px;
-  line-height: 48px;
-  font-weight: 400;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.container4 {
-  padding: 6.5px 90.43px 7.5px 90.42px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 225.33px;
-  height: 28px;
-  position: relative;
-  overflow: hidden;
-}
-.education {
-  color: #000000;
-  text-align: center;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 10px;
-  line-height: 14px;
-  font-weight: 400;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.container5 {
-  padding: 0px 18.51px 1px 18.52px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  left: 50%;
-  translate: -50% -50%;
-  top: 50%;
-  overflow: hidden;
-}
-.container6 {
-  padding: 6.5px 100.44px 7.5px 100.42px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 225.33px;
-  height: 28px;
-  position: relative;
-  overflow: hidden;
-}
-.ideas {
-  color: #000000;
-  text-align: center;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 10px;
-  line-height: 14px;
-  font-weight: 400;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.container7 {
-  padding: 6.5px 98.96px 7.5px 98.95px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 225.33px;
-  height: 28px;
-  position: relative;
-  overflow: hidden;
-}
-.travel {
-  color: #000000;
-  text-align: center;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 10px;
-  line-height: 14px;
-  font-weight: 400;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.background-shadow2 {
-  background: #f2e3d5;
-  border-radius: 10px;
-  padding: 0px 12px 0px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  width: 752px;
-  position: relative;
-  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 1);
-  overflow: hidden;
-}
+
 .border {
   border-radius: 6px;
   border-style: solid;
@@ -297,71 +120,31 @@ html {
   width: 728px;
   position: relative;
 }
-.enter-keyword-to-search {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.background4 {
-  background: #000000;
-  border-radius: 4px;
-  flex-shrink: 0;
-  width: 16px;
-  height: 8px;
-  position: relative;
-}
-.container8 {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  width: 728px;
-  position: relative;
-}
-.search-for-specific-discussions {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 400;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
+
+
 .container9 {
-  padding: 0px 12px 0px 12px;
+  padding: 10px 12px 10px 12px;
   display: flex;
   flex-direction: column;
   gap: 0px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-shrink: 0;
   width: 752px;
   position: relative;
 }
-.container10 {
-  padding: 16px 1px 2px 0px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  width: 728px;
-  position: relative;
+.border{
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    color: #000000;
+    padding: 20px 45px 20px 20px;
 }
+
 .container11 {
   display: flex;
   flex-direction: column;
@@ -398,6 +181,7 @@ html {
   width: 728px;
   position: relative;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 1);
+  margin: 5px;
 }
 .background5 {
   background: #92a8d1;
@@ -434,33 +218,7 @@ html {
   align-items: center;
   justify-content: center;
 }
-.culture {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.foods {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.destinations {
+.culture, .foods, .destinations, .hiragana, .katakana, .kanji, .sh-jo, .sh-nen, .seinen {
   color: #000000;
   text-align: left;
   font-family: "Roboto-Regular", sans-serif;
@@ -486,116 +244,21 @@ html {
   align-items: center;
   justify-content: flex-start;
 }
-.hiragana {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.katakana {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.kanji {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.container13 {
-  padding: 16px 1px 2px 0px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-.container14 {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
+
 .manga {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Medium", sans-serif;
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 500;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+    color: #000000;
+    text-align: left;
+    font-family: "Roboto-Medium", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
-.sh-jo {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.sh-nen {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.seinen {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
+
 .container15 {
   padding: 0px 12px 0px 12px;
   display: flex;
@@ -608,13 +271,13 @@ html {
   position: relative;
   overflow: hidden;
 }
-.background-border {
+.background-border, .background-border2 {
   background: #92a8d1;
   border-radius: 8px;
   border-style: solid;
   border-color: #000000;
   border-width: 1px;
-  padding: 11px 303.09px 11px 303.08px;
+  padding: 11px 300px 11px 300px;
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -635,22 +298,6 @@ html {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-}
-.background-border2 {
-  background: #92a8d1;
-  border-radius: 8px;
-  border-style: solid;
-  border-color: #000000;
-  border-width: 1px;
-  padding: 11px 319.09px 11px 319.08px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
 }
 .saved-posts {
   color: #000000;
@@ -688,4 +335,113 @@ html {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.tab-group {
+    border-radius: 20px;
+    padding: 5px 12px 5px 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .tab {
+    border-radius: 20px;
+    border-style: solid;
+    box-shadow: 0px 0px 2px 0px #ffffff;
+    border-color: rgba(0, 0, 0);
+    border-width: 2px;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+    border-color: #eeeaea;
+    background-color: #F3D1D1;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 1);
+    
+  }
+  .frame {
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 24px;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    position: relative;
+    aspect-ratio: 1;
+    background-color: #92A8D1; /* Added */
+  }
+  .icon {
+    color: #000000;
+    text-align: center;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 30px;
+    line-height: 48px;
+    font-weight: 400;
+    position: absolute;
+    left: 50%;
+    translate: -50% -50%;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .title2 {
+    color: #000000;
+    text-align: center;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+.category-item {
+    color: #000000;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-item {
+    color: #000000;
+    text-align: left;
+    font-family: "Roboto-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-item.new-post {
+    color: #ffffff;
 }

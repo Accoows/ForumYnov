@@ -28,23 +28,23 @@ func openBrowser(url string) {
 
 func main() {
 	// Parse the HTML template file
-	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "index.html"))
+	tmpl, err := template.ParseFiles(filepath.Join("./templates/", "index.html"))
 	if err != nil {
 		panic(err)
 	}
-	tmplLogin, err := template.ParseFiles(filepath.Join("./Templates/", "login.html"))
+	tmplLogin, err := template.ParseFiles(filepath.Join("./templates/", "login.html"))
 	if err != nil {
 		panic(err)
 	}
-	tmplregister, err := template.ParseFiles(filepath.Join("./Templates/", "register.html"))
+	tmplregister, err := template.ParseFiles(filepath.Join("./templates/", "register.html"))
 	if err != nil {
 		panic(err)
 	}
-	tmplpost, err := template.ParseFiles(filepath.Join("./Templates/", "post.html"))
+	tmplpost, err := template.ParseFiles(filepath.Join("./templates/", "post.html"))
 	if err != nil {
 		panic(err)
 	}
-	tmplpostlist, err := template.ParseFiles(filepath.Join("./Templates/", "post-list.html"))
+	tmplpostlist, err := template.ParseFiles(filepath.Join("./templates/", "post-list.html"))
 	if err != nil {
 		panic(err)
 	}
