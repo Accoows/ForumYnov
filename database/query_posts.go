@@ -2,7 +2,7 @@ package database
 
 import "time"
 
-func CreatePost(userID, categoryID int, title, content string) error {
+func CreatePost(userID string, categoryID int, title, content string) error {
 	post := &Posts{
 		User_id:     userID,
 		Category_id: categoryID,

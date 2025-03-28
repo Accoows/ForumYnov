@@ -30,9 +30,6 @@ func CloseDatabase() {
 
 func InsertUsersData(users *Users) error {
 
-	row := SQL.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM Users")
-	err = row.Scan(&users.ID)
-
 	if err != nil {
 		return err
 	}

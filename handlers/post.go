@@ -34,7 +34,7 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 		// Temporairement fixé à l'utilisateur ID 1
 		// Correspondra à l'UUID de l'utilisateur
 		// Il faudra associer l'UUID au username pour le récupérer et l'afficher dans le post
-		userID := 1
+		userID := "1"
 
 		err = database.CreatePost(userID, categoryID, title, content)
 		if err != nil {

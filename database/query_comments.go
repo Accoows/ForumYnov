@@ -2,7 +2,7 @@ package database
 
 import "time"
 
-func CreateComment(userID, postID int, content string) error {
+func CreateComment(userID string, postID int, content string) error {
 	comment := &Comments{
 		User_id:    userID,
 		Post_id:    postID,

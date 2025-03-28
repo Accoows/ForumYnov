@@ -22,12 +22,12 @@ func CreateCommentHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	postID, err := strconv.Atoi(r.FormValue("post_id"))
-	userID, err2 := strconv.Atoi(r.FormValue("user_id"))
+	userID := r.FormValue("user_id")
 	content := r.FormValue("content")
 
-	if err != nil || err2 != nil || content == "" {
+	if err != nil || content == "" {
 		http.Error(w, "Données invalides", http.StatusBadRequest)
-		log.Println("[handlers/comment.go] [CreateCommentHandler] Données invalides >>>", err, err2)
+		log.Println("[handlers/comment.go] [CreateCommentHandler] Données invalides >>>", err)
 		return
 	}
 
