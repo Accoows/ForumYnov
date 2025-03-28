@@ -40,15 +40,6 @@ html {
   border-radius: 10px;
   border-color: #000000;
 }
-.top {
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 24px;
-  position: relative;
-  overflow: visible;
-  border-radius: 10px;
-  border-color: #000000;
-}
 .content {
   padding: 12px 8px 12px 16px;
   display: flex;
@@ -251,33 +242,6 @@ html {
   position: relative;
   align-self: stretch;
 }
-.vector-200 {
-  flex-shrink: 0;
-  height: 0px;
-  position: absolute;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  overflow: visible;
-}
-.vector-2002 {
-  flex-shrink: 0;
-  height: 0px;
-  position: absolute;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  overflow: visible;
-}
-.vector-2003 {
-  flex-shrink: 0;
-  height: 0px;
-  position: absolute;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  overflow: visible;
-}
 .list2 {
   padding: 0px 12px 0px 12px;
   display: flex;
@@ -383,24 +347,6 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-}
-.vector-2004 {
-  flex-shrink: 0;
-  height: 0px;
-  position: absolute;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  overflow: visible;
-}
-.vector-2005 {
-  flex-shrink: 0;
-  height: 0px;
-  position: absolute;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  overflow: visible;
 }
 .list3 {
   padding: 0px 12px 0px 12px;
@@ -653,78 +599,6 @@ html {
   font-weight: 400;
   position: relative;
 }
-.search {
-  background-color: #F3D1D1;
-  border-radius: 10px;
-  box-shadow: 0px 0px 1px 0px #000000; 
-  padding: 5px 12px 0px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.textfield {
-  border-radius: 6px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.4);
-  border-width: 1px;
-  padding: 4px 4px 4px 12px;
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-  align-items: center;
-  justify-content: flex-end;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-.text2 {
-  color: rgba(0, 0, 0);
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  position: relative;
-  flex: 1;
-}
-.primary {
-  background: #000000;
-  border-radius: 4px;
-  padding: 4px 8px 4px 8px;
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  position: relative;
-}
-.ic-search {
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  position: relative;
-  overflow: visible;
-  aspect-ratio: 1;
-}
-.info {
-  color: rgba(0, 0, 0);
-  text-align: left;
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-}
 .button {
   padding: 0px 12px 0px 12px;
   display: flex;
@@ -737,11 +611,21 @@ html {
   position: relative;
   overflow: hidden;
 }
+.border {
+  background-color: #ffffff;
+  width: 90%;
+  height: 100%;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  color: #000000;
+  padding: 20px 45px 20px 20px;
+  margin: 20px 20px;
+}
 .seconday {
   background: #92A8D1;
   border-radius: 8px;
-  border-style: solid;
-  border-color: #000000;
   border-width: 1px;
   padding: 10px 12px 10px 12px;
   display: flex;
@@ -755,28 +639,6 @@ html {
 }
 .title10 {
   color: #000000;
-  text-align: left;
-  font-family: "Roboto-Medium", sans-serif;
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 500;
-  position: relative;
-}
-.primary2 {
-  background: #000000;
-  border-radius: 8px;
-  padding: 10px 12px 10px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-.title11 {
-  color: #ffffff;
   text-align: left;
   font-family: "Roboto-Medium", sans-serif;
   font-size: 16px;
@@ -808,13 +670,6 @@ html {
   flex-shrink: 0;
   position: relative;
 }
-.frame-427318817 {
-  flex-shrink: 0;
-  width: 58.26px;
-  height: 9.81px;
-  position: relative;
-  overflow: visible;
-}
 .title12 {
   color: #000000;
   text-align: left;
@@ -838,13 +693,6 @@ html {
   flex-shrink: 0;
   position: relative;
 }
-.frame-4273188172 {
-  flex-shrink: 0;
-  width: 58.26px;
-  height: 9.81px;
-  position: relative;
-  overflow: visible;
-}
 
 #dark-mode-toggle {
   background-color: #ffffff;
@@ -854,6 +702,8 @@ html {
   border-radius: 5px;
   cursor: pointer;
 }
+
+/* Version Dark Mode */
 
 /* Version Dark Mode */
 body.dark-mode {

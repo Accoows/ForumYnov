@@ -48,6 +48,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	tmplpostdetail, err := template.ParseFiles(filepath.Join("./templates/", "post-detail.html"))
+	if err != nil {
+		panic(err)
+	}
 
 	// Handler function to serve the template
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -83,6 +87,14 @@ func main() {
 	//handler function to serve the post-list template
 	http.HandleFunc("/post-list.html", func(w http.ResponseWriter, r *http.Request) {
 		err := tmplpostlist.Execute(w, nil)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+	})
+
+	//handler function to serve the post-list template
+	http.HandleFunc("/post-detail.html", func(w http.ResponseWriter, r *http.Request) {
+		err := tmplpostdetail.Execute(w, nil)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
