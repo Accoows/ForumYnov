@@ -199,21 +199,22 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .button3 {
-  background: #000000;
-  border-radius: 8px;
-  border-style: solid;
-  border-color: #000000;
-  border-width: 2px;
-  padding: 12px 122.81px 12px 122.81px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  position: relative;
+    background: #000000;
+    border-radius: 8px;
+    padding: 10px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  cursor: pointer;
 }
+
 .register {
   color: #ffffff;
   text-align: left;
@@ -226,6 +227,12 @@ html {
   align-items: center;
   justify-content: flex-start;
 }
+
+.no-underline:link,
+.no-underline:visited {
+  text-decoration: none;
+}
+
 /* Dark Mode Styles */
 body.dark-mode,
 body.dark-mode html {
