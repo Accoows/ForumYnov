@@ -40,6 +40,7 @@ func main() {
 	// CRUD pour les commentaires
 	//http.HandleFunc("/comments", handlers.CommentsHandler)
 	http.HandleFunc("/comments/create", handlers.CreateCommentHandler)
+	http.HandleFunc("/comments/delete", handlers.DeleteCommentHandler)
 
 	//http.HandleFunc("/like", handlers.LikeHandler)
 	//http.HandleFunc("/dislike", handlers.DislikeHandler)

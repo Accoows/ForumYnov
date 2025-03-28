@@ -12,6 +12,11 @@ func CreateComment(userID, postID int, content string) error {
 	return InsertCommentsData(comment)
 }
 
+func DeleteCommentByID(id int) error {
+	_, err := SQL.Exec("DELETE FROM Comments WHERE id = ?", id)
+	return err
+}
+
 func GetCommentsByPostID(postID int) ([]Comments, error) {
 	rows, err := SQL.Query(`
 		SELECT Comments.id, Comments.post_id, Comments.user_id, Comments.content, Comments.created_at,
