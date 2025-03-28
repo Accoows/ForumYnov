@@ -16,7 +16,7 @@ type Users struct {
 
 type Posts struct {
 	ID          int
-	User_id     int
+	User_id     string
 	Category_id int
 	Title       string
 	Content     string
@@ -26,14 +26,14 @@ type Posts struct {
 type Comments struct {
 	ID         int
 	Post_id    int
-	User_id    int
+	User_id    string
 	Content    string
 	Created_at string
 }
 
 type LikesDislikes struct {
 	ID         int
-	User_id    int
+	User_id    string
 	Post_id    int
 	Comment_id int
 	TypeValue  int
