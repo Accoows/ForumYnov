@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"forumynov/database"
+	"forumynov/handlers"
 	"net/http"
 	"os/exec"
 	"path/filepath"
@@ -36,11 +37,12 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	http.HandleFunc("/login", handlers.LoginUsers)
 	tmplLogin, err := template.ParseFiles(filepath.Join("./Templates/", "login.html"))
 	if err != nil {
 		panic(err)
 	}
-	http.HandleFunc("/register", database.RegisterUsers)
+	http.HandleFunc("/register", handlers.RegisterUsers)
 	tmplregister, err := template.ParseFiles(filepath.Join("./Templates/", "register.html"))
 	if err != nil {
 		panic(err)

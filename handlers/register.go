@@ -1,7 +1,8 @@
-package database
+package handlers
 
 import (
 	"fmt"
+	"forumynov/database"
 	"forumynov/models"
 	"log"
 	"net/http"
@@ -22,7 +23,7 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	newUser := Users{
+	newUser := database.Users{
 		Email:      r.FormValue("email"),
 		Username:   r.FormValue("username"),
 		Created_at: time.Now().Format("2006-01-02 15:04:05"),
@@ -34,18 +35,7 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	email := []rune(newUser.Email)
-	emailLenght := len(email)
-	emailRight := false
-	for i := 0; i < emailLenght; i++ {
-		if email[i] == '@' {
-			for j := i; j < emailLenght; j++ {
-				if email[j] == '.' {
-					emailRight = true
-				}
-			}
-		}
-	}
+	emailRight := VerifyEmailConformity(&newUser)
 	if emailRight == false {
 		http.Error(w, "Email does not comply", http.StatusBadRequest)
 		return
@@ -60,6 +50,7 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Email or username already used", http.StatusConflict)
 		return
 	}
+
 	password_hash, err := models.HashPassword(password)
 	if err != nil {
 		http.Error(w, "Error while hashing password", http.StatusInternalServerError)
@@ -70,7 +61,7 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 	newID := uuid.NewV4()
 	newUser.ID = newID.String()
 
-	err = InsertUsersData(&newUser)
+	err = database.InsertUsersData(&newUser)
 	if err != nil {
 		http.Error(w, "Error during user registration", http.StatusInternalServerError)
 		return
@@ -82,16 +73,32 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Password:", newUser.Password_hash)
 
 	// Répondre au client
-	w.Write([]byte("Inscription réussie !"))
+	w.Write([]byte("Succesfull inscription !"))
 }
 
 func VerifyEmailAndUsernameUnicity(email string, username string) (bool, error) {
 	var exists bool
 	query := "SELECT EXISTS (SELECT 1 FROM Users WHERE email = ? OR username = ?)"
-	err := SQL.QueryRow(query, email, username).Scan(&exists)
+	err := database.SQL.QueryRow(query, email, username).Scan(&exists)
 	if err != nil {
 		log.Println("Erreur SQL dans VerifyEmailAndUsernameUnicity:", err)
 		return false, err
 	}
 	return exists, nil
+}
+
+func VerifyEmailConformity(users *database.Users) bool {
+	email := []rune(users.Email)
+	emailLenght := len(email)
+	emailRight := false
+	for i := 0; i < emailLenght; i++ {
+		if email[i] == '@' {
+			for j := i; j < emailLenght; j++ {
+				if email[j] == '.' {
+					emailRight = true
+				}
+			}
+		}
+	}
+	return emailRight
 }

@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS Users (
  
 CREATE TABLE IF NOT EXISTS Posts (
  	id INT PRIMARY KEY,
-  user_id INT NOT NULL,
+  user_id TEXT NOT NULL,
   category_id INT NOT NULL,
   title TEXT NOT NULL,
   content TEXT NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Posts (
 CREATE TABLE IF NOT EXISTS Comments (
  	id INT PRIMARY KEY,
   post_id INT NOT NULL,
-  user_id INT NOT NULL,
+  user_id TEXT NOT NULL,
   content TEXT NOT NULL,
   created_at TEXT NOT NULL,
   FOREIGN KEY (post_id) REFERENCES Posts(id),
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS Comments (
  
 CREATE TABLE IF NOT EXISTS Likes_Dislikes (
  	id INT PRIMARY KEY,
-  user_id INT NOT NULL,
+  user_id TEXT NOT NULL,
   post_id INT,
   comment_id INT,
   type INT CHECK(type IN (1, -1)),
