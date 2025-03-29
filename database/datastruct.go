@@ -15,23 +15,20 @@ type Users struct {
 }
 
 type Posts struct {
-	ID             int
-	User_id        string
-	Category_id    int
-	CategoryName   string
-	Title          string
-	Content        string
-	Created_at     string
-	AuthorUsername string
+	ID          int
+	User_id     string
+	Category_id int
+	Title       string
+	Content     string
+	Created_at  string
 }
 
 type Comments struct {
-	ID             int
-	Post_id        int
-	User_id        string
-	Content        string
-	Created_at     string
-	AuthorUsername string
+	ID         int
+	Post_id    int
+	User_id    string
+	Content    string
+	Created_at string
 }
 
 type LikesDislikes struct {
