@@ -38,7 +38,7 @@ func main() {
 	http.HandleFunc("/posts/delete", handlers.DeletePostHandler)
 
 	// CRUD pour les commentaires
-	//http.HandleFunc("/comments", handlers.CommentsHandler)
+	// L'affichage des commentaires est géré dans la page de post (ViewPostHandler)
 	http.HandleFunc("/comments/create", handlers.CreateCommentHandler)
 	http.HandleFunc("/comments/delete", handlers.DeleteCommentHandler)
 
