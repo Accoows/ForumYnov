@@ -21,8 +21,11 @@ func DeletePostByID(id int) error {
 
 func GetCompletePostList() ([]Posts, error) {
 	rows, err := SQL.Query(`
-		SELECT Posts.id, Posts.user_id, Posts.category_id, Posts.title, Posts.content, Posts.created_at
+		SELECT Posts.id, Posts.user_id, Posts.category_id, Posts.title, Posts.content, Posts.created_at,
+		       Users.username, Categories.name
 		FROM Posts
+		JOIN Users ON Posts.user_id = Users.id
+		JOIN Categories ON Posts.category_id = Categories.id
 		ORDER BY Posts.created_at DESC
 	`)
 	if err != nil {
@@ -40,6 +43,8 @@ func GetCompletePostList() ([]Posts, error) {
 			&post.Title,
 			&post.Content,
 			&post.Created_at,
+			&post.AuthorUsername,
+			&post.CategoryName,
 		)
 		if err != nil {
 			return nil, err
@@ -52,8 +57,11 @@ func GetCompletePostList() ([]Posts, error) {
 func GetPostByID(id int) (Posts, error) {
 	var post Posts
 	err := SQL.QueryRow(`
-		SELECT Posts.id, Posts.user_id, Posts.category_id, Posts.title, Posts.content, Posts.created_at
+		SELECT Posts.id, Posts.user_id, Posts.category_id, Posts.title, Posts.content, Posts.created_at,
+		       Users.username, Categories.name
 		FROM Posts
+		JOIN Users ON Posts.user_id = Users.id
+		JOIN Categories ON Posts.category_id = Categories.id
 		WHERE Posts.id = ?
 	`, id).Scan(
 		&post.ID,
@@ -62,6 +70,8 @@ func GetPostByID(id int) (Posts, error) {
 		&post.Title,
 		&post.Content,
 		&post.Created_at,
+		&post.AuthorUsername,
+		&post.CategoryName,
 	)
 	return post, err
 }

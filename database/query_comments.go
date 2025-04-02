@@ -40,6 +40,7 @@ func GetCommentsByPostID(postID int) ([]Comments, error) {
 			&comment.User_id,
 			&comment.Content,
 			&comment.Created_at,
+			&comment.AuthorUsername,
 		)
 		if err != nil {
 			return nil, err

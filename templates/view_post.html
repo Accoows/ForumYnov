@@ -24,7 +24,7 @@
                     <div class="img"></div>
                     <div class="div2">
                         <div class="div3">
-                            <!-- <div class="Pseudo">{{.Post.AuthorUsername}}</div> -->
+                            <div class="Pseudo">{{.Post.AuthorUsername}}</div>
                             <div class="timestamp">{{.Post.Created_at}}</div>
                         </div>
                         <div class="title-content">{{.Post.Title}}</div>
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <!--<p style="margin-left: 100px;"><strong>Catégorie :</strong> {{.Post.CategoryName}}</p>-->
+            <p style="margin-left: 100px;"><strong>Catégorie :</strong> {{.Post.CategoryName}}</p>
             <p style="margin-left: 100px;"><a href="/posts">Retour aux posts</a></p>
             <form action="/posts/delete" method="POST" style="margin-top: 20px;">
                 <input type="hidden" name="id" value="{{.Post.ID}}">
@@ -45,7 +45,7 @@
 
             {{range .Comments}}
             <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
-                <strong>EN ATTENTE AUTHEUR</strong> – <em>{{.Created_at}}</em><br>
+                <strong>{{.AuthorUsername}}</strong> – <em>{{.Created_at}}</em><br>
                 <p>{{.Content}}</p>
                 <!-- A MODIFIER POUR METTRE EN PLACE LA VERIFICATION UTILISATEUR UUID -->
                 {{if eq .User_id 1}}
