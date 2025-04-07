@@ -234,3 +234,17 @@ left: 0px;
 top: 0px;
 overflow: hidden;
 }
+
+.like-btn.active,
+.dislike-btn.active {
+    font-weight: bold;
+    color: white;
+}
+
+.like-btn.active {
+    background-color: #2196f3;
+}
+
+.dislike-btn.active {
+    background-color: #f44336;
+}
