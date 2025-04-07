@@ -45,6 +45,15 @@ func GetCommentsByPostID(postID int) ([]Comments, error) {
 		if err != nil {
 			return nil, err
 		}
+
+		comment.LikeCount, comment.DislikeCount, _ = CountLikesForComment(SQL, comment.ID)
+
+		// TODO : Remplacer "1" par l'ID de l'utilisateur connecté (via session/cookie)
+		// likeInfo, _ := GetExistingLikeDislike("1", 0, comment.ID)
+		// if likeInfo != nil {
+		//     comment.UserLikeType = likeInfo.TypeValue
+		// }
+
 		comments = append(comments, comment)
 	}
 	return comments, nil

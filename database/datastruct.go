@@ -36,6 +36,8 @@ type Comments struct {
 	Content        string
 	Created_at     string
 	AuthorUsername string
+	LikeCount      int
+	DislikeCount   int
 }
 
 type LikesDislikes struct {

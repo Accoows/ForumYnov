@@ -33,8 +33,7 @@
                             <input type="hidden" name="post_id" value="{{.Post.ID}}">
                             <button type="submit" name="action" value="like">👍 {{.Post.LikeCount}}</button>
                             <button type="submit" name="action" value="dislike">👎 {{.Post.DislikeCount}}</button>
-                        </form>
-                        
+                        </form>                        
                     </div>
                 </div>
             </div>
@@ -53,6 +52,13 @@
             <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
                 <strong>{{.AuthorUsername}}</strong> – <em>{{.Created_at}}</em><br>
                 <p>{{.Content}}</p>
+                <form method="POST" action="/like" style="margin-top: 5px;">
+                    <input type="hidden" name="comment_id" value="{{.ID}}">
+                    <input type="hidden" name="parent_post_id" value="{{$.Post.ID}}">
+                    <button type="submit" name="action" value="like">👍 {{.LikeCount}}</button>
+                    <button type="submit" name="action" value="dislike">👎 {{.DislikeCount}}</button>
+                </form>                
+                
                 <!-- A MODIFIER POUR METTRE EN PLACE LA VERIFICATION UTILISATEUR UUID AVEC COOKIE -->
                 {{if eq .User_id "1"}}
                 <form action="/comments/delete" method="POST" style="margin-top: 10px;">
