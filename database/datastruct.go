@@ -1,5 +1,7 @@
 package database
 
+import "database/sql"
+
 type Categories struct {
 	ID        int
 	Name      string
@@ -23,6 +25,8 @@ type Posts struct {
 	Content        string
 	Created_at     string
 	AuthorUsername string
+	LikeCount      int
+	DislikeCount   int
 }
 
 type Comments struct {
@@ -37,7 +41,7 @@ type Comments struct {
 type LikesDislikes struct {
 	ID         int
 	User_id    string
-	Post_id    int
-	Comment_id int
+	Post_id    sql.NullInt64
+	Comment_id sql.NullInt64
 	TypeValue  int
 }

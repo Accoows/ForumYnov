@@ -73,6 +73,9 @@ func GetPostByID(id int) (Posts, error) {
 		&post.AuthorUsername,
 		&post.CategoryName,
 	)
+
+	post.LikeCount, post.DislikeCount, _ = CountLikesForPost(SQL, post.ID)
+
 	return post, err
 }
 

@@ -22,7 +22,8 @@ func CreateCommentHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	postID, err := strconv.Atoi(r.FormValue("post_id"))
-	userID := r.FormValue("user_id")
+	//userID := r.FormValue("user_id") EN ATTENTE DE CHANGER PAR SESSION AVEC COOKIES
+	userID := "1"
 	content := r.FormValue("content")
 
 	if err != nil || content == "" {

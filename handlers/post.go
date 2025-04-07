@@ -188,3 +188,23 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/posts/view?id="+strconv.Itoa(postID), http.StatusSeeOther)
 	}
 }
+
+// =========================
+
+func PostDetailHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "post-detail.html"))
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	tmpl.Execute(w, nil)
+}
+
+func PostListHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "post-list.html"))
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	tmpl.Execute(w, nil)
+}
