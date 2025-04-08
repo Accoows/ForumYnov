@@ -18,7 +18,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		tmpl, err := template.ParseFiles("Templates/register.html")
 		if err != nil {
 			log.Println("[handlers/register.go] Erreur chargement template :", err)
-			http.Error(w, "Erreur de chargement du template", http.StatusInternalServerError)
+			ErrorHandler(w, http.StatusInternalServerError)
 			return
 		}
 		tmpl.Execute(w, nil)
@@ -31,18 +31,18 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
+	ErrorHandler(w, http.StatusMethodNotAllowed)
 }
 
 func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "Unauthorized method", http.StatusMethodNotAllowed)
+		ErrorHandler(w, http.StatusMethodNotAllowed)
 		return
 	}
 
 	err := r.ParseForm()
 	if err != nil {
-		http.Error(w, "Error during form processing", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
@@ -54,29 +54,29 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 	password := r.FormValue("password")
 
 	if newUser.Email == "" || newUser.Username == "" || password == "" {
-		http.Error(w, "All fields are mandatory", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
 	emailRight := VerifyEmailConformity(&newUser)
 	if !emailRight {
-		http.Error(w, "Email does not comply", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
 	exists, err := VerifyEmailAndUsernameUnicity(newUser.Email, newUser.Username)
 	if err != nil {
-		http.Error(w, "Error during user verification", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 	if exists {
-		http.Error(w, "Email or username already used", http.StatusConflict)
+		ErrorHandler(w, http.StatusConflict)
 		return
 	}
 
 	password_hash, err := models.HashPassword(password)
 	if err != nil {
-		http.Error(w, "Error while hashing password", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 	newUser.Password_hash = password_hash
@@ -87,6 +87,7 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 	err = database.InsertUsersData(&newUser)
 	if err != nil {
 		http.Error(w, "Error during user registration", http.StatusInternalServerError)
+		//ErrorHandler(w, http.StatusInternalServerError) SUREMENT UNE POPUP D'ERREUR
 		return
 	}
 

@@ -47,3 +47,8 @@ type LikesDislikes struct {
 	Comment_id sql.NullInt64
 	TypeValue  int
 }
+
+type ErrorPageData struct {
+	Code    int
+	Message string
+}

@@ -11,13 +11,13 @@ import (
 // LikeHandler gère les likes/dislikes d'un post ou d'un commentaire
 func LikeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
+		ErrorHandler(w, http.StatusMethodNotAllowed)
 		return
 	}
 
 	userID := "1" // Remplacer par la logique de récupération de l'utilisateur connecté avec les cookies/sessions
 	if userID == "" {
-		http.Error(w, "Vous devez être connecté pour liker", http.StatusUnauthorized)
+		http.Error(w, "Vous devez être connecté pour liker", http.StatusUnauthorized) // à vérifier
 		return
 	}
 
@@ -36,7 +36,7 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 	case "dislike":
 		typeValue = -1
 	default:
-		http.Error(w, "Action invalide", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
@@ -51,7 +51,7 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 	err := InsertOrUpdateLikeDislike(like) // Mise à jour des likes/dislikes
 	if err != nil {
 		log.Println("[HandleLike] Erreur InsertOrUpdateLikeDislike:", err)
-		http.Error(w, "Erreur lors de l'enregistrement du like", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 

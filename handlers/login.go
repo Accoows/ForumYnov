@@ -33,13 +33,13 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 
 func LoginUsers(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "Unauthorized method", http.StatusMethodNotAllowed)
+		ErrorHandler(w, http.StatusMethodNotAllowed)
 		return
 	}
 
 	err := r.ParseForm()
 	if err != nil {
-		http.Error(w, "Error during form processing", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
@@ -49,18 +49,18 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if newUser.Email == "" || newUser.Password_hash == "" {
-		http.Error(w, "All fields are mandatory", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
 	emailRight := VerifyEmailConformity(&newUser)
 	if !emailRight {
-		http.Error(w, "Email does not comply", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 	hashedPassword, err := GetHashedPassword(newUser.Email)
 	if err != nil {
-		http.Error(w, "Incorrect email", http.StatusNotFound)
+		ErrorHandler(w, http.StatusNotFound)
 		return
 	}
 
@@ -68,7 +68,7 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("Successful connection !"))
 	} else {
-		http.Error(w, "Incorrect password", http.StatusUnauthorized)
+		ErrorHandler(w, http.StatusUnauthorized)
 		return
 	}
 

@@ -9,15 +9,16 @@ import (
 
 func CreateCommentHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
 		log.Println("[handlers/comment.go] [CreateCommentHandler] Méthode non autorisée >>>", r.Method)
+		ErrorHandler(w, http.StatusMethodNotAllowed)
 		return
 	}
 
 	err := r.ParseForm()
 	if err != nil {
-		http.Error(w, "Erreur de parsing", http.StatusBadRequest)
 		log.Println("[handlers/comment.go] [CreateCommentHandler] ParseForm échoué >>>", err)
+		ErrorHandler(w, http.StatusBadRequest)
+
 		return
 	}
 
@@ -27,15 +28,15 @@ func CreateCommentHandler(w http.ResponseWriter, r *http.Request) {
 	content := r.FormValue("content")
 
 	if err != nil || content == "" {
-		http.Error(w, "Données invalides", http.StatusBadRequest)
 		log.Println("[handlers/comment.go] [CreateCommentHandler] Données invalides >>>", err)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
 	err = database.CreateComment(userID, postID, content)
 	if err != nil {
-		http.Error(w, "Erreur en base de données", http.StatusInternalServerError)
 		log.Println("[handlers/comment.go] [CreateCommentHandler] Erreur CreateComment >>", err)
+		ErrorHandler(w, http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -52,7 +53,7 @@ func DeleteCommentHandler(w http.ResponseWriter, r *http.Request) {
 	idStr := r.FormValue("comment_id")
 	commentID, err := strconv.Atoi(idStr)
 	if err != nil {
-		http.Error(w, "ID invalide", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		log.Println("[handlers/post.go] [DeleteCommentHandler] ID invalide >>>", err)
 		return
 	}
@@ -61,8 +62,8 @@ func DeleteCommentHandler(w http.ResponseWriter, r *http.Request) {
 
 	err = database.DeleteCommentByID(commentID)
 	if err != nil {
-		http.Error(w, "Erreur lors de la suppression", http.StatusInternalServerError)
 		log.Println("[handlers/post.go] [DeleteCommentHandler] Erreur suppression commentaires >>>", err)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 

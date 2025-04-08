@@ -11,10 +11,21 @@ import (
 
 // Gestionnaire pour servir la page index
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "index.html"))
-	if err != nil {
-		log.Println(err)
+	if r.URL.Path != "/" {
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
-	tmpl.Execute(w, nil)
+
+	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "index.html"))
+	if err != nil {
+		log.Println("[handlers/index.go] [IndexHandler] Erreur de chargement du template :", err)
+		ErrorHandler(w, http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Println("[handlers/index.go] [IndexHandler] Erreur d'exécution du template :", err)
+		ErrorHandler(w, http.StatusInternalServerError)
+	}
 }

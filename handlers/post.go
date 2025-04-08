@@ -14,7 +14,7 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 		tmpl, err := template.ParseFiles(filepath.Join("./Templates", "create_post.html"))
 		if err != nil {
 			log.Println("[handlers/post.go] [CreatePostHandler] Erreur ParseFiles >>>", err)
-			http.Error(w, "Erreur chargement formulaire", http.StatusInternalServerError)
+			ErrorHandler(w, http.StatusInternalServerError)
 			return
 		}
 		tmpl.Execute(w, nil)
@@ -23,7 +23,7 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 		err := r.ParseForm()
 		if err != nil {
 			log.Println("[handlers/post.go] [CreatePostHandler] Erreur ParseForm >>>", err)
-			http.Error(w, "Erreur parsing du formulaire", http.StatusBadRequest)
+			ErrorHandler(w, http.StatusBadRequest)
 			return
 		}
 
@@ -39,7 +39,7 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 		err = database.CreatePost(userID, categoryID, title, content)
 		if err != nil {
 			log.Println("[handlers/post.go] [CreatePostHandler] Erreur CreatePost >>>", err)
-			http.Error(w, "Erreur lors de la création du post", http.StatusInternalServerError)
+			ErrorHandler(w, http.StatusInternalServerError)
 			return
 		}
 
@@ -54,21 +54,21 @@ func ViewPostHandler(w http.ResponseWriter, r *http.Request) {
 	postID, err := strconv.Atoi(idStr)
 	if err != nil {
 		log.Println("[handlers/post.go] [ViewPostHandler] Erreur QueryID >>>", err)
-		http.Error(w, "ID invalide", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
 	post, err := database.GetPostByID(postID)
 	if err != nil {
 		log.Println("[handlers/post.go] [ViewPostHandler] Erreur GetPostByID >>>", err)
-		http.Error(w, "Post introuvable", http.StatusNotFound)
+		ErrorHandler(w, http.StatusNotFound)
 		return
 	}
 
 	comments, err := database.GetCommentsByPostID(postID)
 	if err != nil {
-		http.Error(w, "Erreur récupération commentaires", http.StatusInternalServerError)
 		log.Println("[handlers/post.go][ViewPostHandler] Erreur chargement commentaires :", err)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 
@@ -83,7 +83,7 @@ func ViewPostHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles(filepath.Join("./Templates", "view_post.html"))
 	if err != nil {
 		log.Println("[handlers/post.go] [ViewPostHandler] Erreur ParseFiles >>>", err)
-		http.Error(w, "Erreur chargement template", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 
@@ -94,23 +94,23 @@ func ViewPostHandler(w http.ResponseWriter, r *http.Request) {
 
 func DeletePostHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
 		log.Println("[handlers/post.go] [DeletePostHandler] Méthode non autorisée >>>", r.Method)
+		ErrorHandler(w, http.StatusMethodNotAllowed)
 		return
 	}
 
 	idStr := r.FormValue("id")
 	postID, err := strconv.Atoi(idStr)
 	if err != nil {
-		http.Error(w, "ID invalide", http.StatusBadRequest)
 		log.Println("[handlers/post.go] [DeletePostHandler] ID invalide >>>", err)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
 	err = database.DeletePostByID(postID)
 	if err != nil {
-		http.Error(w, "Erreur lors de la suppression", http.StatusInternalServerError)
 		log.Println("[handlers/post.go] [DeletePostHandler] Erreur suppression post >>>", err)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 
@@ -123,14 +123,14 @@ func PostsHandler(w http.ResponseWriter, r *http.Request) {
 	posts, err := database.GetCompletePostList()
 	if err != nil {
 		log.Println("[handlers/post.go] [PostsHandler] Erreur GetCompletePostList >>>", err)
-		http.Error(w, "Erreur lors du chargement des posts", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 
 	tmpl, err := template.ParseFiles(filepath.Join("./Templates", "post.html"))
 	if err != nil {
 		log.Println("[handlers/post.go] [PostsHandler] Erreur ParseFiles >>>", err)
-		http.Error(w, "Erreur chargement template", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 
@@ -145,23 +145,23 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 	idStr := r.URL.Query().Get("id")
 	postID, err := strconv.Atoi(idStr)
 	if err != nil {
-		http.Error(w, "ID invalide", http.StatusBadRequest)
 		log.Println("[handlers/post.go] [EditPostHandler] ID invalide >>>", err)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
 	if r.Method == http.MethodGet {
 		post, err := database.GetPostByID(postID)
 		if err != nil {
-			http.Error(w, "Post introuvable", http.StatusNotFound)
 			log.Println("[handlers/post.go] [EditPostHandler] Post introuvable >>>", err)
+			ErrorHandler(w, http.StatusNotFound)
 			return
 		}
 
 		tmpl, err := template.ParseFiles(filepath.Join("./Templates", "edit_post.html"))
 		if err != nil {
-			http.Error(w, "Erreur template", http.StatusInternalServerError)
 			log.Println("[handlers/post.go] [EditPostHandler] Erreur ParseFile >>>", err)
+			ErrorHandler(w, http.StatusInternalServerError)
 			return
 		}
 
@@ -170,8 +170,8 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 	} else if r.Method == http.MethodPost {
 		err := r.ParseForm()
 		if err != nil {
-			http.Error(w, "Erreur parsing", http.StatusBadRequest)
 			log.Println("[handlers/post.go][EditPostHandler] Erreur ParseForm >>>", err)
+			ErrorHandler(w, http.StatusBadRequest)
 			return
 		}
 
@@ -180,8 +180,8 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 
 		err = database.UpdatePost(postID, title, content)
 		if err != nil {
-			http.Error(w, "Erreur update", http.StatusInternalServerError)
 			log.Println("[handlers/post.go][EditPostHandler] Erreur update BDD :", err)
+			ErrorHandler(w, http.StatusInternalServerError)
 			return
 		}
 
