@@ -1,3 +1,16 @@
+html {
+    background: url('fond.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-color: #000000;
+    height: 100%;
+    margin: 0;
+    padding: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container,
 .container * {
   box-sizing: border-box;
