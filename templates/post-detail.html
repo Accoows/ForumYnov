@@ -4,7 +4,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ForumYnov</title>
+    <title>{{.CategoryName}} - ForumYnov</title>
     <link rel="stylesheet" type="text/css" href="static/post-detail.css">
 </head>
 
@@ -16,33 +16,50 @@
                     <div class="container2">
                         <div class="forum-name">Forum Name</div>
                     </div>
-                        <button id="dark-mode-toggle">Dark Mode</button>
-                        <a href="/"><button id="home-button">Home</button></a>
+                    <button id="dark-mode-toggle">Dark Mode</button>
+                    <a href="/"><button id="home-button">Home</button></a>
                 </div>
             </div>
-            <h1>Afficher nom catégorie Maybe ?</h1>
-                <input type="text" class="border" placeholder="Enter keyword to search"></input>
-                <h2>Afficher les post de la catégorie içi</h2>
-                <h3>si plus d'un certain nombre de post afficher bouton suivant/retour pour afficher les suivants</h3>
-        <div class="container15">
-            <button class="background-border">
-                <div class="container14">
-                    <div class="menu-item">My Subscriptions</div>
-                </div>
-            </button>
-            <button class="background-border">
-                <div class="container14">
-                    <div class="menu-item">Saved Posts</div>
-                </div>
-            </button>
-            <button class="background6">
-                <div class="container14">
-                    <div class="menu-item new-post">New Post</div>
-                </div>
-            </button>
+
+            <h1>{{.CategoryName}}</h1>
+
+            <input type="text" class="border" placeholder="Enter keyword to search"></input>
+
+            <div class="posts-container">
+                {{range .Posts}}
+                    <div class="post-card">
+                        <h2>{{.Title}}</h2>
+                        <p>{{format .Content}}</p>
+                        <p class="meta">Posté par <strong>{{.AuthorUsername}}</strong> - {{.Created_at}}</p>
+                        <a href="/posts/view?id={{.ID}}">Voir le post</a>
+                    </div>
+                {{else}}
+                    <p>Aucun post dans cette catégorie pour l’instant.</p>
+                {{end}}
+            </div>
+            
+            <h3>si plus d'un certain nombre de post afficher bouton suivant/retour pour afficher les suivants</h3>
+
+            <div class="container15">
+                <button class="background-border">
+                    <div class="container14">
+                        <div class="menu-item">My Subscriptions</div>
+                    </div>
+                </button>
+                <button class="background-border">
+                    <div class="container14">
+                        <div class="menu-item">Saved Posts</div>
+                    </div>
+                </button>
+                <a href="/posts/create?category_id={{.CategoryID}}">
+                    <button class="background6">
+                        <div class="container14">
+                            <div class="menu-item new-post">Créer un post</div>
+                        </div>
+                    </button>
+            </div>
         </div>
-    </div>
-    <script src="scripts/script.js"></script>
+        <script src="scripts/script.js"></script>
 </body>
 
 </html>

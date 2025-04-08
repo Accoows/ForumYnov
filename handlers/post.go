@@ -7,17 +7,48 @@ import (
 	"net/http"
 	"path/filepath"
 	"strconv"
+	"strings"
 )
 
 func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
+
+		// Lire le paramètre "category_id" s'il existe
+		categoryIDStr := r.URL.Query().Get("category_id")
+		categoryID := 0
+		var categoryName string
+
+		if categoryIDStr != "" {
+			id, err := strconv.Atoi(categoryIDStr)
+			if err == nil {
+				categoryID = id
+				category, err := database.GetCategoryByID(id)
+				if err == nil {
+					categoryName = category.Name
+				}
+			}
+		}
+
+		allCategories, err := database.GetAllCategories()
+		if err != nil {
+			log.Println("[handlers/post.go] [CreatePostHandler] Erreur GetAllCategories >>>", err)
+			ErrorHandler(w, http.StatusInternalServerError)
+			return
+		}
+
+		data := database.CreatePostPageData{
+			CategoryID:    categoryID,
+			CategoryName:  categoryName,
+			AllCategories: allCategories,
+		}
+
 		tmpl, err := template.ParseFiles(filepath.Join("./Templates", "create_post.html"))
 		if err != nil {
 			log.Println("[handlers/post.go] [CreatePostHandler] Erreur ParseFiles >>>", err)
 			ErrorHandler(w, http.StatusInternalServerError)
 			return
 		}
-		tmpl.Execute(w, nil)
+		tmpl.Execute(w, data)
 
 	} else if r.Method == http.MethodPost {
 		err := r.ParseForm()
@@ -80,7 +111,14 @@ func ViewPostHandler(w http.ResponseWriter, r *http.Request) {
 		Comments: comments,
 	}
 
-	tmpl, err := template.ParseFiles(filepath.Join("./Templates", "view_post.html"))
+	tmpl := template.New("view_post.html").Funcs(template.FuncMap{
+		"format": func(s string) template.HTML {
+			escaped := template.HTMLEscapeString(s)
+			withBreaks := strings.ReplaceAll(escaped, "\n", "<br>")
+			return template.HTML(withBreaks)
+		},
+	})
+	tmpl, err = tmpl.ParseFiles(filepath.Join("./Templates/", "view_post.html"))
 	if err != nil {
 		log.Println("[handlers/post.go] [ViewPostHandler] Erreur ParseFiles >>>", err)
 		ErrorHandler(w, http.StatusInternalServerError)
@@ -190,15 +228,6 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // =========================
-
-func PostDetailHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "post-detail.html"))
-	if err != nil {
-		log.Println(err)
-		return
-	}
-	tmpl.Execute(w, nil)
-}
 
 func PostListHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "post-list.html"))

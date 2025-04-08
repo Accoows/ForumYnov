@@ -36,7 +36,8 @@ func main() {
 	http.HandleFunc("/posts/view", handlers.ViewPostHandler)
 	http.HandleFunc("/posts/edit", handlers.EditPostHandler)
 	http.HandleFunc("/posts/delete", handlers.DeletePostHandler)
-	http.HandleFunc("/post-detail", handlers.PostDetailHandler)
+	//http.HandleFunc("/post-detail", handlers.PostDetailHandler)
+	http.HandleFunc("/category", handlers.CategoryPostsHandler)
 	http.HandleFunc("/post-list", handlers.PostListHandler)
 
 	// CRUD pour les commentaires
@@ -45,7 +46,6 @@ func main() {
 	http.HandleFunc("/comments/delete", handlers.DeleteCommentHandler)
 
 	http.HandleFunc("/like", handlers.LikeHandler)
-	//http.HandleFunc("/dislike", handlers.DislikeHandler)
 
 	//http.HandleFunc("/filter", handlers.FilterHandler)
 

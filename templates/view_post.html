@@ -28,7 +28,7 @@
                             <div class="timestamp">{{.Post.Created_at}}</div>
                         </div>
                         <div class="title-content">{{.Post.Title}}</div>
-                        <div class="text-content">{{.Post.Content}}</div>
+                        <div class="text-content">{{format .Post.Content}}</div>
                         <form method="POST" action="/like" style="margin-top: 10px; margin-left: 10px;">
                             <input type="hidden" name="post_id" value="{{.Post.ID}}">
                             <button type="submit" name="action" value="like">👍 {{.Post.LikeCount}}</button>
@@ -51,7 +51,7 @@
             {{range .Comments}}
             <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
                 <strong>{{.AuthorUsername}}</strong> – <em>{{.Created_at}}</em><br>
-                <p>{{.Content}}</p>
+                <p>{{format .Content}}</p>
                 <form method="POST" action="/like" style="margin-top: 5px;">
                     <input type="hidden" name="comment_id" value="{{.ID}}">
                     <input type="hidden" name="parent_post_id" value="{{$.Post.ID}}">

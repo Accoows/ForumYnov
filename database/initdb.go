@@ -106,7 +106,7 @@ func GetCategoriesData() ([]Categories, error) {
 	var categories []Categories
 	for rows.Next() {
 		var categorie Categories
-		err := rows.Scan(&categorie.ID, &categorie.Name, &categorie.Parent_id)
+		err := rows.Scan(&categorie.ID, &categorie.Name, &categorie.ParentID)
 		if err != nil {
 			return nil, err
 		}

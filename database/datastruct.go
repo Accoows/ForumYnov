@@ -3,9 +3,15 @@ package database
 import "database/sql"
 
 type Categories struct {
-	ID        int
-	Name      string
-	Parent_id int
+	ID       int
+	Name     string
+	ParentID sql.NullInt64
+}
+
+type CategoryPageData struct {
+	CategoryName string
+	CategoryID   int
+	Posts        []Posts
 }
 
 type Users struct {
@@ -46,6 +52,12 @@ type LikesDislikes struct {
 	Post_id    sql.NullInt64
 	Comment_id sql.NullInt64
 	TypeValue  int
+}
+
+type CreatePostPageData struct {
+	CategoryID    int
+	CategoryName  string
+	AllCategories []Categories
 }
 
 type ErrorPageData struct {
