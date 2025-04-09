@@ -1,5 +1,7 @@
 package database
 
+import "time"
+
 type Categories struct {
 	ID        int
 	Name      string
@@ -12,6 +14,12 @@ type Users struct {
 	Username      string
 	Password_hash string
 	Created_at    string
+}
+
+type Sessions struct {
+	Cookie_name string
+	User_id     string
+	Expires_at  time.Time
 }
 
 type Posts struct {

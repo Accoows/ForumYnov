@@ -3,6 +3,7 @@ package database
 import (
 	"database/sql"
 	"log"
+	"time"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -30,16 +31,19 @@ func CloseDatabase() {
 
 func InsertUsersData(users *Users) error {
 
-	/*row := SQL.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM Users")
-	err = row.Scan(&users.ID)*/
-
-	if err != nil {
-		return err
-	}
-
 	insertUsersInSql := `INSERT OR IGNORE INTO Users(id, email, username, password_hash, created_at) VALUES (?, ?, ?, ?, ?)`
 
 	_, err = SQL.Exec(insertUsersInSql, users.ID, users.Email, users.Username, users.Password_hash, users.Created_at)
+
+	ErrorTest(err)
+
+	return err
+}
+
+func InsertSessionsData(sessions *Sessions) error {
+	insertSessionsSql := `INSERT OR IGNORE INTO Sessions(cookie_name, user_id, expires_at) VALUES (?, ?, ?)`
+
+	_, err = SQL.Exec(insertSessionsSql, sessions.Cookie_name, sessions.User_id, sessions.Expires_at)
 
 	ErrorTest(err)
 
@@ -138,6 +142,25 @@ func GetUsersData() ([]Users, error) {
 	return users, nil
 }
 
+func GetSessionsData() ([]Sessions, error) {
+	rows, err := SQL.Query("SELECT cookie_name, user_id, expires_at FROM Sessions")
+	if err != nil {
+		return nil, err
+	}
+
+	var sessions []Sessions
+	for rows.Next() {
+		var session Sessions
+		err := rows.Scan(&session.Cookie_name, &session.User_id, &session.Expires_at)
+		if err != nil {
+			return nil, err
+		}
+		sessions = append(sessions, session)
+	}
+
+	return sessions, nil
+}
+
 func GetPostsData() ([]Posts, error) {
 	rows, err := SQL.Query("SELECT id, user_id, category_id, title, content, created_at FROM Posts")
 	if err != nil {
@@ -193,4 +216,20 @@ func GetLikesDislikesData() ([]LikesDislikes, error) {
 	}
 
 	return likesDislikes, nil
+}
+
+func DeleteSession(cookieName string) error {
+	_, err := SQL.Exec("DELETE FROM Sessions WHERE cookie_name = ?", cookieName)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func DeleteExpiredSessions() {
+	query := "DELETE FROM Sessions WHERE expires_at < ?"
+	_, err := SQL.Exec(query, time.Now())
+	if err != nil {
+		log.Printf("Error deleting expired sessions: %v\n", err)
+	}
 }

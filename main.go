@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"text/template"
+	"time"
 )
 
 func openBrowser(url string) {
@@ -32,58 +33,62 @@ func main() {
 	database.InitDatabase()
 	defer database.CloseDatabase()
 
-	// Parse the HTML template file
-	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "mobile.html"))
-	if err != nil {
-		panic(err)
-	}
+	go func() {
+		for {
+			database.DeleteExpiredSessions()
+			time.Sleep(5 * time.Minute)
+		}
+	}()
+
+	// Parse templates
+	tmpl := template.Must(template.ParseFiles(filepath.Join("./templates/", "index.html")))
+	tmplLogin := template.Must(template.ParseFiles(filepath.Join("./templates/", "login.html")))
+	tmplregister := template.Must(template.ParseFiles(filepath.Join("./templates/", "register.html")))
+	tmplpost := template.Must(template.ParseFiles(filepath.Join("./templates/", "post.html")))
+	tmplpostlist := template.Must(template.ParseFiles(filepath.Join("./templates/", "post-list.html")))
+	tmplpostdetail := template.Must(template.ParseFiles(filepath.Join("./templates/", "post-detail.html")))
+
 	http.HandleFunc("/login", handlers.LoginUsers)
-	tmplLogin, err := template.ParseFiles(filepath.Join("./Templates/", "login.html"))
-	if err != nil {
-		panic(err)
-	}
+	http.HandleFunc("/profile", handlers.ProfilePage)
+	http.HandleFunc("/logout", handlers.LogoutUsers)
 	http.HandleFunc("/register", handlers.RegisterUsers)
-	tmplregister, err := template.ParseFiles(filepath.Join("./Templates/", "register.html"))
-	if err != nil {
-		panic(err)
-	}
 
-	// Handler function to serve the template
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		err := tmpl.Execute(w, nil)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	})
-	// Handler function to serve the login template
+	// Template handlers
 	http.HandleFunc("/login.html", func(w http.ResponseWriter, r *http.Request) {
-		err := tmplLogin.Execute(w, nil)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
+		_ = tmplLogin.Execute(w, nil)
 	})
-	//handler function to serve the register template
+	http.HandleFunc("/profile.html", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/profile", http.StatusFound)
+	})
 	http.HandleFunc("/register.html", func(w http.ResponseWriter, r *http.Request) {
-		err := tmplregister.Execute(w, nil)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
+		_ = tmplregister.Execute(w, nil)
+	})
+	http.HandleFunc("/post.html", func(w http.ResponseWriter, r *http.Request) {
+		_ = tmplpost.Execute(w, nil)
+	})
+	http.HandleFunc("/post-list.html", func(w http.ResponseWriter, r *http.Request) {
+		_ = tmplpostlist.Execute(w, nil)
+	})
+	http.HandleFunc("/post-detail.html", func(w http.ResponseWriter, r *http.Request) {
+		_ = tmplpostdetail.Execute(w, nil)
 	})
 
-	// Gère les requêtes vers le dossier "Scripts", de manière similaire au dossier "Styles".
+	// Static files
 	http.Handle("/scripts/", http.StripPrefix("/scripts/", http.FileServer(http.Dir("./scripts"))))
-
-	// Serve static files (CSS, images, etc.) from the current directory
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
+	http.Handle("/Templates/", http.StripPrefix("/Templates/", http.FileServer(http.Dir("./Templates"))))
 
-	http.Handle("/templates/", http.StripPrefix("/templates/", http.FileServer(http.Dir("./templates"))))
+	// Root handler - must be last to avoid conflicts
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		// Check if this is an API request
+		if r.URL.Path == "/" {
+			_ = tmpl.Execute(w, nil)
+			return
+		}
+		http.NotFound(w, r)
+	})
 
-	// Ouvre automatiquement le navigateur web à l'adresse "http://localhost:8080"
-	fmt.Println("Starting server at port 8080")
-
-	const url = "http://localhost:8080"
-	// Démarre le serveur HTTP sur le port 8080
-	go openBrowser("http://localhost:8080")
+	fmt.Println("Starting server at 127.0.0.1:8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		fmt.Printf("Server failed to start: %v\n", err)
 	}
