@@ -55,9 +55,9 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 	newID := uuid.NewV4()
 
 	newSessions := database.Sessions{
-		Cookie_name: newID.String(),
-		User_id:     userUUID,
-		Expires_at:  time.Now().Add(24 * time.Hour),
+		ID:         newID.String(),
+		User_id:    userUUID,
+		Expires_at: time.Now().Add(24 * time.Hour),
 	}
 
 	err = database.InsertSessionsData(&newSessions)
@@ -68,7 +68,7 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 
 	userIdCookie := &http.Cookie{
 		Name:       "user_cookie",
-		Value:      newSessions.Cookie_name,
+		Value:      newSessions.ID,
 		Path:       "/",
 		Domain:     "",
 		Expires:    newSessions.Expires_at,

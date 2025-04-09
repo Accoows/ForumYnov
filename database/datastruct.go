@@ -17,9 +17,9 @@ type Users struct {
 }
 
 type Sessions struct {
-	Cookie_name string
-	User_id     string
-	Expires_at  time.Time
+	ID         string
+	User_id    string
+	Expires_at time.Time
 }
 
 type Posts struct {

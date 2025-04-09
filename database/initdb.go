@@ -41,9 +41,9 @@ func InsertUsersData(users *Users) error {
 }
 
 func InsertSessionsData(sessions *Sessions) error {
-	insertSessionsSql := `INSERT OR IGNORE INTO Sessions(cookie_name, user_id, expires_at) VALUES (?, ?, ?)`
+	insertSessionsSql := `INSERT OR IGNORE INTO Sessions(id, user_id, expires_at) VALUES (?, ?, ?)`
 
-	_, err = SQL.Exec(insertSessionsSql, sessions.Cookie_name, sessions.User_id, sessions.Expires_at)
+	_, err = SQL.Exec(insertSessionsSql, sessions.ID, sessions.User_id, sessions.Expires_at)
 
 	ErrorTest(err)
 
@@ -143,7 +143,7 @@ func GetUsersData() ([]Users, error) {
 }
 
 func GetSessionsData() ([]Sessions, error) {
-	rows, err := SQL.Query("SELECT cookie_name, user_id, expires_at FROM Sessions")
+	rows, err := SQL.Query("SELECT id, user_id, expires_at FROM Sessions")
 	if err != nil {
 		return nil, err
 	}
@@ -151,7 +151,7 @@ func GetSessionsData() ([]Sessions, error) {
 	var sessions []Sessions
 	for rows.Next() {
 		var session Sessions
-		err := rows.Scan(&session.Cookie_name, &session.User_id, &session.Expires_at)
+		err := rows.Scan(&session.ID, &session.User_id, &session.Expires_at)
 		if err != nil {
 			return nil, err
 		}
@@ -219,7 +219,7 @@ func GetLikesDislikesData() ([]LikesDislikes, error) {
 }
 
 func DeleteSession(cookieName string) error {
-	_, err := SQL.Exec("DELETE FROM Sessions WHERE cookie_name = ?", cookieName)
+	_, err := SQL.Exec("DELETE FROM Sessions WHERE id = ?", cookieName)
 	if err != nil {
 		return err
 	}

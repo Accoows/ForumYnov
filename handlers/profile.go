@@ -14,7 +14,7 @@ func ProfilePage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var userID string
-	err = database.SQL.QueryRow("SELECT user_id FROM Sessions WHERE cookie_name = ?", cookie.Value).Scan(&userID)
+	err = database.SQL.QueryRow("SELECT user_id FROM Sessions WHERE id = ?", cookie.Value).Scan(&userID)
 	if err != nil {
 		http.Error(w, "Invalid session", http.StatusUnauthorized)
 		return
