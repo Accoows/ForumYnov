@@ -1,59 +1,86 @@
 Display the code use to create the tables in forum.db
 
+/*
+	Create a table for categories, including hierarchical relationships via 'parent_id'.
+  Each categories can have a parent category, allowing subcategories.
+*/
 CREATE TABLE IF NOT EXISTS Categories (
- 	id INT PRIMARY KEY,
-  name TEXT NOT NULL UNIQUE,
-  parent_id INT,
-  FOREIGN KEY (parent_id) REFERENCES Categories(id)
+    id INT PRIMARY KEY,-- unique identifier for the table
+    name TEXT NOT NULL UNIQUE, -- name of the category, it must be unique to prevent duplicates
+    parent_id INT, -- optional: it's the ID of the parent category, it enables hierarchical relationships
+  -- the use of a foreign key allow to establish a relationship with the parent category
+    FOREIGN KEY (parent_id) REFERENCES Categories(id) 
 );
 
+/* 
+	Create a table for users. 
+	It's a secure storage of user data, including hashed passwords for security. 
+*/
 CREATE TABLE IF NOT EXISTS Users (
-	id TEXT PRIMARY KEY,
-  email TEXT NOT NULL UNIQUE,
-  username TEXT NOT NULL UNIQUE,
-  password_hash TEXT NOT NULL,
-  created_at TEXT NOT NULL
+    id TEXT PRIMARY KEY,
+  -- data that needs unicity
+    email TEXT NOT NULL UNIQUE,
+    username TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL, -- hashed password for security; it ensures sensitive data is not stored directly
+    created_at TEXT NOT NULL -- timestamp of when the user registered on the platform
 );
 
+/*
+	Create a table to manage user sessions.
+  Each session is linked to a specific user and contains an expiration time to ensure the security.
+*/
 CREATE TABLE IF NOT EXISTS Sessions (
-  id TEXT PRIMARY KEY,
-  user_id TEXT NOT NULL,
-  expires_at DATETIME NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES Users(id)
- );
- 
-CREATE TABLE IF NOT EXISTS Posts (
- 	id INT PRIMARY KEY,
-  user_id TEXT NOT NULL,
-  category_id INT NOT NULL,
-  title TEXT NOT NULL,
-  content TEXT NOT NULL,
-  created_at TEXT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES Users(id),
-  FOREIGN KEY (category_id) REFERENCES Categories(id)
-);
- 
-CREATE TABLE IF NOT EXISTS Comments (
- 	id INT PRIMARY KEY,
-  post_id INT NOT NULL,
-  user_id TEXT NOT NULL,
-  content TEXT NOT NULL,
-  created_at TEXT NOT NULL,
-  FOREIGN KEY (post_id) REFERENCES Posts(id),
-  FOREIGN KEY (user_id) REFERENCES Users(id)
-);
- 
-CREATE TABLE IF NOT EXISTS Likes_Dislikes (
- 	id INT PRIMARY KEY,
-  user_id TEXT NOT NULL,
-  post_id INT,
-  comment_id INT,
-  type INT CHECK(type IN (1, -1)),
-  FOREIGN KEY (user_id) REFERENCES Users(id),
-  FOREIGN KEY (post_id) REFERENCES Posts(id),
-  FOREIGN KEY (comment_id) REFERENCES Comments(id)
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL, -- ID of the user associated with the session
+    expires_at DATETIME NOT NULL, -- time limit for the session to ensure secure access
+    FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
+/*
+	Create a table to store posts created by users.
+  Each post is linked to a user and a category to organize the content.
+*/
+CREATE TABLE IF NOT EXISTS Posts (
+    id INT PRIMARY KEY,
+    user_id TEXT NOT NULL, -- ID of the user who created the post
+    category_id INT NOT NULL, -- ID of the category the post belongs to
+    title TEXT NOT NULL, -- brief summary or heading of the post
+    content TEXT NOT NULL, -- main body of text or detailed information in the post
+    created_at TEXT NOT NULL, -- time when the post was created to maintain chronological order
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (category_id) REFERENCES Categories(id)
+);
+
+/*
+	Create a table to store comments on posts.
+  Each comment is linked to a user and a post, allowing interactions and discussion.
+*/
+CREATE TABLE IF NOT EXISTS Comments (
+    id INT PRIMARY KEY,
+    post_id INT NOT NULL, -- ID of the post the comment is associated with
+    user_id TEXT NOT NULL, -- ID of the user who created the comment
+    content TEXT NOT NULL, -- text-based commentary or feedback on a post
+    created_at TEXT NOT NULL, -- timestamp of when the comment was created
+    FOREIGN KEY (post_id) REFERENCES Posts(id),
+    FOREIGN KEY (user_id) REFERENCES Users(id)
+);
+
+/*
+	Create a table to store likes and dislikes.
+  This table tracks users interactions with posts and comments, such as likes and dislikes.
+*/
+CREATE TABLE IF NOT EXISTS Likes_Dislikes (
+    id INT PRIMARY KEY,
+    user_id TEXT NOT NULL, -- ID of the user who performed the like or dislike
+    post_id INT, -- Optional: ID of the post the like/dislike is associated with
+    comment_id INT, -- Optional: ID of the comment the like/dislike is associated with
+    type INT CHECK(type IN (1, -1)), -- Specifies the type of interaction: 1 for like, -1 for dislike
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (post_id) REFERENCES Posts(id),
+    FOREIGN KEY (comment_id) REFERENCES Comments(id)
+);
+
+-- Insert categories into the Categories table, including subcategories
 INSERT OR IGNORE INTO Categories(id, name) 
 VALUES 
   (1, 'Voyages'),
@@ -62,16 +89,20 @@ VALUES
   
  INSERT OR IGNORE INTO Categories(id, name, parent_id)
  VALUES
+ -- Subcategories under 'Voyages'
  	(4, 'Culture', 1),
   (5, 'Foods', 1),
   (6, 'Destinations', 1),
+  -- Subcategories under 'Langue'
  	(7, 'Hiragana', 2),
   (8, 'Katakana', 2),
   (9, 'Kanji', 2),
+  -- Subcategories under 'Anime/Manga'
   (10, 'Shôjo', 3),
   (11, 'Shônen', 3),
   (10, 'Seinen', 3);
-  
+
+-- Select all entries from various tables for verification and testing
 SELECT * FROM Users;
 SELECT * FROM Posts;
 SELECT * FROM Comments;

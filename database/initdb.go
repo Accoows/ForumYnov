@@ -8,36 +8,45 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+/*
+ErrorTest is a helper function to check for errors and log them.
+It's used to handle errors that may occur during database operations
+*/
 func ErrorTest(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-var SQL *sql.DB
-var err error
+var SQL *sql.DB // SQL is a global variable that holds the database connection
+var err error   // err is a global variable that holds the error returned by database operations
 
+// InitDatabase initializes the database connection
 func InitDatabase() {
-	SQL, err = sql.Open("sqlite3", "database/forum.db")
+	SQL, err = sql.Open("sqlite3", "database/forum.db") // Open() is used to open the database file
 
 	ErrorTest(err)
 }
 
+// CloseDatabase closes the database connection
 func CloseDatabase() {
 	if SQL != nil {
-		SQL.Close()
+		SQL.Close() // Close() is used to close the database connection
 	}
 }
 
-func InsertUsersData(users *Users) error {
+/* Inserts functions allows to inserts data into the sql tables */
 
+func InsertUsersData(users *Users) error {
+	// INSERT OR IGNORE is used to insert the data in the tables avoiding inserting duplicate entries
 	insertUsersInSql := `INSERT OR IGNORE INTO Users(id, email, username, password_hash, created_at) VALUES (?, ?, ?, ?, ?)`
 
+	// sql.Exec() is used to execute the SQL statement
 	_, err = SQL.Exec(insertUsersInSql, users.ID, users.Email, users.Username, users.Password_hash, users.Created_at)
 
 	ErrorTest(err)
 
-	return err
+	return err // err is returned to the caller to check if the operation was successful
 }
 
 func InsertSessionsData(sessions *Sessions) error {
@@ -51,9 +60,13 @@ func InsertSessionsData(sessions *Sessions) error {
 }
 
 func InsertPostsData(posts *Posts) error {
-
+	/*
+		sql.QueryRow() is used to execute a query that returns a single row.
+		COALESCE() is used to return the first non-null value in the list, so if there are no rows in the table, it will return 0 + 1 = 1
+	*/
 	row := SQL.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM Posts")
-	err = row.Scan(&posts.ID)
+
+	err = row.Scan(&posts.ID) // Scan() is used to read the result of the query into the variable given as an argument
 
 	if err != nil {
 		return err
@@ -104,23 +117,25 @@ func InsertLikesDislikesData(likesDislikes *LikesDislikes) error {
 	return err
 }
 
+/* Get functions allows to get data from the sql tables */
+
 func GetCategoriesData() ([]Categories, error) {
-	rows, err := SQL.Query("SELECT id, name, parent_id FROM Categories")
+	rows, err := SQL.Query("SELECT id, name, parent_id FROM Categories") // SELECT is used to select data from the table
 	if err != nil {
 		return nil, err
 	}
 
-	var categories []Categories
-	for rows.Next() {
-		var categorie Categories
+	var categories []Categories // Categories is a slice of Categories struct
+	for rows.Next() {           // rows.Next() is used to iterate over the rows returned by the query
+		var categorie Categories // categorie is a variable of type Categories struct
 		err := rows.Scan(&categorie.ID, &categorie.Name, &categorie.Parent_id)
 		if err != nil {
 			return nil, err
 		}
-		categories = append(categories, categorie)
+		categories = append(categories, categorie) // append() is used to add the categorie to the slice
 	}
 
-	return categories, nil
+	return categories, nil // the data is returned to the caller
 }
 
 func GetUsersData() ([]Users, error) {
@@ -218,17 +233,19 @@ func GetLikesDislikesData() ([]LikesDislikes, error) {
 	return likesDislikes, nil
 }
 
+// Delete functions allows to delete data from the sql tables
 func DeleteSession(cookieName string) error {
-	_, err := SQL.Exec("DELETE FROM Sessions WHERE id = ?", cookieName)
+	_, err := SQL.Exec("DELETE FROM Sessions WHERE id = ?", cookieName) // DELETE is used to delete data from the table
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
+// DeleteExpiredSessions deletes expired sessions from the Sessions table
 func DeleteExpiredSessions() {
 	query := "DELETE FROM Sessions WHERE expires_at < ?"
-	_, err := SQL.Exec(query, time.Now())
+	_, err := SQL.Exec(query, time.Now()) // Deletes sessions where the expiration date is less than the current time
 	if err != nil {
 		log.Printf("Error deleting expired sessions: %v\n", err)
 	}

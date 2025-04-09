@@ -30,13 +30,13 @@ func openBrowser(url string) {
 }
 
 func main() {
-	database.InitDatabase()
-	defer database.CloseDatabase()
+	database.InitDatabase()        // Initialize the database connection
+	defer database.CloseDatabase() // Close the database connection when the program exits
 
-	go func() {
+	go func() { // Periodically delete expired sessions
 		for {
-			database.DeleteExpiredSessions()
-			time.Sleep(5 * time.Minute)
+			database.DeleteExpiredSessions() // delete expired sessions from the database
+			time.Sleep(5 * time.Minute)      // wait for 5 minutes before checking again
 		}
 	}()
 

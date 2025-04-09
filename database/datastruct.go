@@ -2,6 +2,10 @@ package database
 
 import "time"
 
+/*
+*** Data structures for the database tables ***
+ */
+
 type Categories struct {
 	ID        int
 	Name      string
