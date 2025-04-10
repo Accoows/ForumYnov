@@ -48,6 +48,19 @@ type Posts struct {
 	DislikeCount   int
 }
 
+type CreatePostPageData struct {
+	CategoryID    int
+	CategoryName  string
+	AllCategories []Categories
+}
+
+type ViewPostPageData struct {
+	Post          Posts
+	Comments      []Comments
+	IsAuthor      bool
+	ConnectedUser string
+}
+
 type Comments struct {
 	ID             int
 	Post_id        int
@@ -65,12 +78,6 @@ type LikesDislikes struct {
 	Post_id    sql.NullInt64
 	Comment_id sql.NullInt64
 	TypeValue  int
-}
-
-type CreatePostPageData struct {
-	CategoryID    int
-	CategoryName  string
-	AllCategories []Categories
 }
 
 type ErrorPageData struct {

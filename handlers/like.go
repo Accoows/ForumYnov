@@ -15,8 +15,8 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	userID := "1" // Remplacer par la logique de récupération de l'utilisateur connecté avec les cookies/sessions
-	if userID == "" {
+	userID, err := getConnectedUserID(r)
+	if err != nil {
 		http.Error(w, "Vous devez être connecté pour liker", http.StatusUnauthorized) // à vérifier
 		return
 	}
@@ -48,7 +48,7 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 		TypeValue:  typeValue,
 	}
 
-	err := InsertOrUpdateLikeDislike(like) // Mise à jour des likes/dislikes
+	err = InsertOrUpdateLikeDislike(like) // Mise à jour des likes/dislikes
 	if err != nil {
 		log.Println("[HandleLike] Erreur InsertOrUpdateLikeDislike:", err)
 		ErrorHandler(w, http.StatusInternalServerError)

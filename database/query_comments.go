@@ -17,6 +17,22 @@ func DeleteCommentByID(id int) error {
 	return err
 }
 
+func GetCommentByID(id int) (Comments, error) {
+	var comment Comments
+	err := SQL.QueryRow(`
+		SELECT id, post_id, user_id, content, created_at
+		FROM Comments
+		WHERE id = ?
+	`, id).Scan(
+		&comment.ID,
+		&comment.Post_id,
+		&comment.User_id,
+		&comment.Content,
+		&comment.Created_at,
+	)
+	return comment, err
+}
+
 func GetCommentsByPostID(postID int) ([]Comments, error) {
 	rows, err := SQL.Query(`
 		SELECT Comments.id, Comments.post_id, Comments.user_id, Comments.content, Comments.created_at,

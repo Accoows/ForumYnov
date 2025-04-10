@@ -22,9 +22,14 @@ func CreateCommentHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	userID, err := getConnectedUserID(r)
+	if err != nil {
+		log.Println("[handlers/comment.go] [CreateCommentHandler] Utilisateur non connecté >>>", err)
+		http.Error(w, "Connexion requise pour commenter", http.StatusUnauthorized)
+		return
+	}
+
 	postID, err := strconv.Atoi(r.FormValue("post_id"))
-	//userID := r.FormValue("user_id") EN ATTENTE DE CHANGER PAR SESSION AVEC COOKIES
-	userID := "1"
 	content := r.FormValue("content")
 
 	if err != nil || content == "" {
@@ -50,11 +55,31 @@ func DeleteCommentHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	userID, err := getConnectedUserID(r)
+	if err != nil {
+		log.Println("[handlers/comment.go] [DeleteCommentHandler] Utilisateur non connecté >>>", err)
+		http.Error(w, "Connexion requise", http.StatusUnauthorized)
+		return
+	}
+
 	idStr := r.FormValue("comment_id")
 	commentID, err := strconv.Atoi(idStr)
 	if err != nil {
 		ErrorHandler(w, http.StatusBadRequest)
 		log.Println("[handlers/post.go] [DeleteCommentHandler] ID invalide >>>", err)
+		return
+	}
+
+	comment, err := database.GetCommentByID(commentID)
+	if err != nil {
+		log.Println("[handlers/comment.go] [DeleteCommentHandler] Erreur récupération commentaire >>>", err)
+		ErrorHandler(w, http.StatusInternalServerError)
+		return
+	}
+
+	if comment.User_id != userID {
+		log.Println("[handlers/comment.go] [DeleteCommentHandler] Suppression refusée pour utilisateur :", userID)
+		http.Error(w, "Suppression non autorisée", http.StatusUnauthorized)
 		return
 	}
 

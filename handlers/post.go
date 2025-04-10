@@ -11,6 +11,10 @@ import (
 	"strings"
 )
 
+func getConnectedUserID(r *http.Request) (string, error) {
+	return models.GetUserIDFromRequest(r)
+}
+
 func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 	userID, err := models.GetUserIDFromRequest(r)
 	if err != nil || userID == "" {
@@ -69,11 +73,6 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 		content := r.FormValue("content")
 		categoryID, _ := strconv.Atoi(r.FormValue("category_id"))
 
-		// Temporairement fixé à l'utilisateur ID 1
-		// Correspondra à l'UUID de l'utilisateur
-		// Il faudra associer l'UUID au username pour le récupérer et l'afficher dans le post
-		userID := "1"
-
 		err = database.CreatePost(userID, categoryID, title, content)
 		if err != nil {
 			log.Println("[handlers/post.go] [CreatePostHandler] Erreur CreatePost >>>", err)
@@ -110,12 +109,14 @@ func ViewPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := struct {
-		Post     database.Posts
-		Comments []database.Comments
-	}{
-		Post:     post,
-		Comments: comments,
+	userID, _ := getConnectedUserID(r)
+	isAuthor := userID == post.User_id
+
+	data := database.ViewPostPageData{
+		Post:          post,
+		Comments:      comments,
+		IsAuthor:      isAuthor,
+		ConnectedUser: userID,
 	}
 
 	tmpl := template.New("view_post.html").Funcs(template.FuncMap{
@@ -149,6 +150,20 @@ func DeletePostHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println("[handlers/post.go] [DeletePostHandler] ID invalide >>>", err)
 		ErrorHandler(w, http.StatusBadRequest)
+		return
+	}
+
+	post, err := database.GetPostByID(postID)
+	if err != nil {
+		log.Println("[handlers/post.go] [DeletePostHandler] Post introuvable >>>", err)
+		ErrorHandler(w, http.StatusNotFound)
+		return
+	}
+
+	userID, err := getConnectedUserID(r)
+	if err != nil || userID != post.User_id {
+		log.Println("[handlers/post.go] [DeletePostHandler] Accès interdit pour l'utilisateur :", userID)
+		http.Error(w, "Suppression non autorisée", http.StatusUnauthorized)
 		return
 	}
 
@@ -195,14 +210,21 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if r.Method == http.MethodGet {
-		post, err := database.GetPostByID(postID)
-		if err != nil {
-			log.Println("[handlers/post.go] [EditPostHandler] Post introuvable >>>", err)
-			ErrorHandler(w, http.StatusNotFound)
-			return
-		}
+	post, err := database.GetPostByID(postID)
+	if err != nil {
+		log.Println("[handlers/post.go] [EditPostHandler] Post introuvable >>>", err)
+		ErrorHandler(w, http.StatusNotFound)
+		return
+	}
 
+	userID, err := getConnectedUserID(r)
+	if err != nil || userID != post.User_id {
+		log.Println("[handlers/post.go] [EditPostHandler] Accès interdit pour l'utilisateur :", userID)
+		http.Error(w, "Modification non autorisée", http.StatusUnauthorized)
+		return
+	}
+
+	if r.Method == http.MethodGet {
 		tmpl, err := template.ParseFiles(filepath.Join("./templates", "edit_post.html"))
 		if err != nil {
 			log.Println("[handlers/post.go] [EditPostHandler] Erreur ParseFile >>>", err)
