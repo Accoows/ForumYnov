@@ -57,7 +57,7 @@ func main() {
 	http.HandleFunc("/login.html", func(w http.ResponseWriter, r *http.Request) {
 		_ = tmplLogin.Execute(w, nil)
 	})
-	http.HandleFunc("/profile.html", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/edit-profile.html", func(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/profile", http.StatusFound)
 	})
 	http.HandleFunc("/register.html", func(w http.ResponseWriter, r *http.Request) {
