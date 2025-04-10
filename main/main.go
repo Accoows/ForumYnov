@@ -56,6 +56,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	tmplerror, err := template.ParseFiles(filepath.Join("./templates/", "error.html"))
+	if err != nil {
+		panic(err)
+	}
 
 	// Handler function to serve the template
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -107,6 +111,14 @@ func main() {
 	//handler function to serve the edit-profile template
 	http.HandleFunc("/edit-profile.html", func(w http.ResponseWriter, r *http.Request) {
 		err := tmpleditprofile.Execute(w, nil)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+	})
+
+	//handler function to serve the error template
+	http.HandleFunc("/error.html", func(w http.ResponseWriter, r *http.Request) {
+		err := tmplerror.Execute(w, nil)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}

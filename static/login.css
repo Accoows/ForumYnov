@@ -4,13 +4,15 @@ html {
     background-position: center;
     border-radius: 10px;
     border-color: #000000;
-    height: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+body {
+    height: 100%;
+}
 .body {
     background: rgb(238, 234, 234,50%);
     backdrop-filter: blur(10px);
