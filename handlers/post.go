@@ -69,6 +69,11 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 		content := r.FormValue("content")
 		categoryID, _ := strconv.Atoi(r.FormValue("category_id"))
 
+		// Temporairement fixé à l'utilisateur ID 1
+		// Correspondra à l'UUID de l'utilisateur
+		// Il faudra associer l'UUID au username pour le récupérer et l'afficher dans le post
+		userID := "1"
+
 		err = database.CreatePost(userID, categoryID, title, content)
 		if err != nil {
 			log.Println("[handlers/post.go] [CreatePostHandler] Erreur CreatePost >>>", err)

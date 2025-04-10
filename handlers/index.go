@@ -16,7 +16,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "index.html"))
+	tmpl, err := template.ParseFiles(filepath.Join("./templates/", "index.html"))
 	if err != nil {
 		log.Println("[handlers/index.go] [IndexHandler] Erreur de chargement du template :", err)
 		ErrorHandler(w, http.StatusInternalServerError)
