@@ -1,6 +1,13 @@
 package database
 
-import "database/sql"
+import (
+	"database/sql"
+	"time"
+)
+
+/*
+*** Data structures for the database tables ***
+ */
 
 type Categories struct {
 	ID       int
@@ -20,6 +27,12 @@ type Users struct {
 	Username      string
 	Password_hash string
 	Created_at    string
+}
+
+type Sessions struct {
+	ID         string
+	User_id    string
+	Expires_at time.Time
 }
 
 type Posts struct {

@@ -46,7 +46,7 @@ func CategoryPostsHandler(w http.ResponseWriter, r *http.Request) {
 			return template.HTML(withBreaks)
 		},
 	})
-	tmpl, err = tmpl.ParseFiles(filepath.Join("./Templates/", "post-detail.html"))
+	tmpl, err = tmpl.ParseFiles(filepath.Join("./templates/", "post-detail.html"))
 	if err != nil {
 		ErrorHandler(w, http.StatusInternalServerError)
 		log.Println("[handlers/post.go][CategoryPostsHandler] Erreur ParseFiles >>>", err)

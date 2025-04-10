@@ -1,149 +1,239 @@
 html,body {
-    background: url('fond.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    border-color: #000000;
-    min-height: 100vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-  }
-  
-  html {
-    font-size: 16px; /* Base font size */
-  }
-  
-  .post-list,
-  .post-list * {
-    box-sizing: border-box;
-  }
-  .post-list {
-    background: rgb(238, 234, 234,50%);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    height: 100%;
-    position: relative;
-    margin: 20px;
-  }
-  .background {
-    padding: 0px 0px 12px 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    justify-content: flex-start;
-    align-self: stretch;
-    flex-shrink: 0;
-    height: 100%;
-    position: relative;
-    margin: 20px;
-  }
-  .background-shadow {
-    background: #ffffff;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    width: 752px;
-    position: relative;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
-  }
-  .container {
-    padding: 12px 8px 12px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    align-self: stretch;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .container2 {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex: 1;
-    position: relative;
-  }
-  .forum-name {
-    color: #000000;
-    text-align: left;
-    font-family: "Roboto-Medium", sans-serif;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 500;
-    position: relative;
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .button {
-    background: #ffffff;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: #000000;
-    border-width: 1px;
-    padding: 11px 21px 11px 21px;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: center;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    position: relative;
-  }
-  
-  .border {
-    background-color: #ffffff;
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 40px;
-    color: #000000;
-    padding: 20px 45px 20px 20px;
-  }
-  
-  
-  .container9 {
-    padding: 10px 12px 10px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    width: 752px;
-    position: relative;
-  }
-  
-  .container11 {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    align-self: stretch;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .voyages {
+  background: url('fond.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  border-color: #000000;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Base font size */
+}
+
+.post-list,
+.post-list * {
+  box-sizing: border-box;
+}
+.post-list {
+  background: rgb(238, 234, 234,50%);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  position: relative;
+  margin: 20px;
+}
+.background {
+  padding: 0px 0px 12px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+  margin: 20px;
+}
+.background-shadow {
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 752px;
+  position: relative;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+}
+.container {
+  padding: 12px 8px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.container2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.forum-name {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.button {
+  background: #ffffff;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  padding: 11px 21px 11px 21px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.border {
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  color: #000000;
+  padding: 20px 45px 20px 20px;
+}
+
+
+.container9 {
+  padding: 10px 12px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 752px;
+  position: relative;
+}
+
+.container11 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.voyages {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.background-shadow3 {
+  background: #f2e3d5;
+  border-radius: 10px;
+  padding: 12px 1px 12px 1px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 728px;
+  position: relative;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 1);
+  margin: 5px;
+}
+.background5 {
+  background: #92a8d1;
+  border-radius: 16px;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+.container12 {
+  padding: 0px 12.35px 0px 12.34px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+  overflow: hidden;
+}
+.div2 {
+  color: #000000;
+  text-align: center;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.culture, .foods, .destinations, .sh-jo, .sh-nen, .seinen {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.language {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.manga {
     color: #000000;
     text-align: left;
     font-family: "Roboto-Medium", sans-serif;
@@ -155,58 +245,140 @@ html,body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-  }
-  .background-shadow3 {
-    background: #f2e3d5;
-    border-radius: 10px;
-    padding: 12px 1px 12px 1px;
+}
+
+.container15 {
+  padding: 0px 12px 0px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 752px;
+  position: relative;
+  overflow: hidden;
+}
+.background-border {
+  background: #92a8d1;
+  border-radius: 8px;
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.background6 {
+  background: #000000;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.new-post {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tab-group {
+    border-radius: 20px;
+    padding: 5px 12px 5px 12px;
     display: flex;
     flex-direction: row;
     gap: 8px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    align-self: stretch;
     flex-shrink: 0;
-    width: 728px;
     position: relative;
-    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 1);
-    margin: 5px;
+    overflow: hidden;
   }
-  .background5 {
-    background: #92a8d1;
-    border-radius: 16px;
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    position: relative;
-  }
-  .container12 {
-    padding: 0px 12.35px 0px 12.34px;
+  .tab {
+    background-color: #F3D1D1;
+    border-radius: 20px;
+    padding: 4px;
     display: flex;
-    flex-direction: row;
-    gap: 0px;
+    flex-direction: column;
+    gap: 4px;
     align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+    box-shadow: 0px 0px 2px 0px #ffffff;
+    border-color: rgba(0, 0, 0);
+    border-width: 2px; 
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 1);
+    cursor: pointer;
+  }
+  .frame {
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 24px;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    position: relative;
+    aspect-ratio: 1;
+    background-color: #92A8D1; /* Added */
+  }
+  .icon {
+    color: #000000;
+    text-align: center;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 30px;
+    line-height: 48px;
+    font-weight: 400;
     position: absolute;
     left: 50%;
     translate: -50% -50%;
     top: 50%;
-    overflow: hidden;
-  }
-  .div2 {
-    color: #000000;
-    text-align: center;
-    font-family: "Roboto-Regular", sans-serif;
-    font-size: 20px;
-    line-height: 32px;
-    font-weight: 400;
-    position: relative;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
-  .culture, .foods, .destinations, .sh-jo, .sh-nen, .seinen {
+  .icon {
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+  }
+  .title2 {
+    color: #000000;
+    text-align: center;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+.category-item {
     color: #000000;
     text-align: left;
     font-family: "Roboto-Regular", sans-serif;
@@ -218,74 +390,10 @@ html,body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-  }
-  .language {
+}
+
+.menu-item {
     color: #000000;
-    text-align: left;
-    font-family: "Roboto-Medium", sans-serif;
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 500;
-    position: relative;
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  .manga {
-      color: #000000;
-      text-align: left;
-      font-family: "Roboto-Medium", sans-serif;
-      font-size: 18px;
-      line-height: 24px;
-      font-weight: 500;
-      position: relative;
-      align-self: stretch;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-  }
-  
-  .container15 {
-    padding: 0px 12px 0px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: center;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    width: 752px;
-    position: relative;
-    overflow: hidden;
-  }
-  .background-border {
-    background: #92a8d1;
-    border-radius: 8px;
-    border-width: 1px;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: center;
-    justify-content: center;
-    align-self: stretch;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .background6 {
-    background: #000000;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: center;
-    justify-content: center;
-    align-self: stretch;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .new-post {
-    color: #ffffff;
     text-align: left;
     font-family: "Roboto-Medium", sans-serif;
     font-size: 16px;
@@ -295,216 +403,108 @@ html,body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+}
+
+.menu-item.new-post {
+    color: #ffffff;
+}
+
+button {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.menu-item, .new-post {
+  font-size: 14px;
+  padding: 10px;
+}
+
+/* General mobile styles */
+@media (max-width: 768px) {
+  html, body {
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
   }
-  
+
+  html {
+    font-size: 12px; /* Reduce base font size for smaller screens */
+  }
+
+  .post-list {
+    width: 95%; /* Reduce width to fit better on smaller screens */
+    margin: 0 auto; /* Center the content */
+    padding: 5px; /* Reduce padding */
+  }
+
+  .background-shadow {
+    width: 100%;
+    box-shadow: none;
+    padding: 10px; /* Reduce padding */
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px; /* Reduce padding */
+  }
+
   .tab-group {
-      border-radius: 20px;
-      padding: 5px 12px 5px 12px;
-      display: flex;
-      flex-direction: row;
-      gap: 8px;
-      align-items: center;
-      justify-content: flex-start;
-      align-self: stretch;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .tab {
-      background-color: #F3D1D1;
-      border-radius: 20px;
-      padding: 4px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      align-items: center;
-      justify-content: flex-start;
-      flex: 1;
-      position: relative;
-      box-shadow: 0px 0px 2px 0px #ffffff;
-      border-color: rgba(0, 0, 0);
-      border-width: 2px; 
-      box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 1);
-      cursor: pointer;
-    }
-    .frame {
-      background: rgba(0, 0, 0, 0.9);
-      border-radius: 24px;
-      flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      position: relative;
-      aspect-ratio: 1;
-      background-color: #92A8D1; /* Added */
-    }
-    .icon {
-      color: #000000;
-      text-align: center;
-      font-family: "Roboto-Regular", sans-serif;
-      font-size: 30px;
-      line-height: 48px;
-      font-weight: 400;
-      position: absolute;
-      left: 50%;
-      translate: -50% -50%;
-      top: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-    .icon {
-      width: 32px;
-      height: 32px;
-      font-size: 24px;
-    }
-    .title2 {
-      color: #000000;
-      text-align: center;
-      font-family: "Roboto-Regular", sans-serif;
-      font-size: 10px;
-      line-height: 14px;
-      font-weight: 400;
-      position: relative;
-      align-self: stretch;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-  
-  .category-item {
-      color: #000000;
-      text-align: left;
-      font-family: "Roboto-Regular", sans-serif;
-      font-size: 14px;
-      line-height: 20px;
-      font-weight: 400;
-      position: relative;
-      align-self: stretch;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px; /* Reduce gap between tabs */
   }
-  
-  .menu-item {
-      color: #000000;
-      text-align: left;
-      font-family: "Roboto-Medium", sans-serif;
-      font-size: 16px;
-      line-height: 22px;
-      font-weight: 500;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
+
+  .tab {
+    width: 100%;
+    padding: 8px; /* Reduce padding */
   }
-  
-  .menu-item.new-post {
-      color: #ffffff;
+
+  .container9 {
+    width: 100%;
+    padding: 8px; /* Reduce padding */
   }
-  
-  button {
-    font-size: 16px;
-    padding: 10px 20px;
+
+  .background-shadow3 {
+    width: 100%;
+    padding: 8px; /* Reduce padding */
   }
-  
+
+  .background-border, .background6 {
+    padding: 8px 10px; /* Reduce padding */
+    width: 90%; /* Make buttons responsive */
+    max-width: 300px; /* Optional: Limit the maximum width */
+    margin: 0 auto; /* Center the buttons */
+  }
+
   .menu-item, .new-post {
-    font-size: 14px;
-    padding: 10px;
+    font-size: 12px; /* Reduce font size */
+    text-align: center; /* Center-align text */
   }
-  
-  /* General mobile styles */
-  @media (max-width: 768px) {
-    html, body {
-      flex-direction: column;
-      padding: 0;
-      margin: 0;
-    }
-  
-    html {
-      font-size: 12px; /* Reduce base font size for smaller screens */
-    }
-  
-    .post-list {
-      width: 95%; /* Reduce width to fit better on smaller screens */
-      margin: 0 auto; /* Center the content */
-      padding: 5px; /* Reduce padding */
-    }
-  
-    .background-shadow {
-      width: 100%;
-      box-shadow: none;
-      padding: 10px; /* Reduce padding */
-    }
-  
-    .container {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 10px; /* Reduce padding */
-    }
-  
-    .tab-group {
-      flex-direction: column;
-      gap: 8px; /* Reduce gap between tabs */
-    }
-  
-    .tab {
-      width: 100%;
-      padding: 8px; /* Reduce padding */
-    }
-  
-    .container9 {
-      width: 100%;
-      padding: 8px; /* Reduce padding */
-    }
-  
-    .background-shadow3 {
-      width: 100%;
-      padding: 8px; /* Reduce padding */
-    }
-  
-    .background-border, .background6 {
-      padding: 8px 10px; /* Reduce padding */
-      width: 90%; /* Make buttons responsive */
-      max-width: 300px; /* Optional: Limit the maximum width */
-      margin: 0 auto; /* Center the buttons */
-    }
-  
-    .menu-item, .new-post {
-      font-size: 12px; /* Reduce font size */
-      text-align: center; /* Center-align text */
-    }
-  
-    .icon {
-      width: 20px; /* Reduce icon size */
-      height: 20px;
-      font-size: 16px;
-    }
-  
-    .title2 {
-      font-size: 8px; /* Reduce font size for tab titles */
-      line-height: 12px;
-    }
-  
-    .voyages, .language, .manga {
-      font-size: 14px; /* Reduce section titles font size */
-      line-height: 18px;
-    }
-  
-    .culture, .foods, .destinations, .sh-jo, .sh-nen, .seinen, .category-item {
-      font-size: 12px; /* Reduce font size for category items */
-      line-height: 16px;
-    }
-  
-    button {
-      font-size: 14px; /* Reduce button font size */
-      padding: 8px 16px; /* Reduce button padding */
-    }
+
+  .icon {
+    width: 20px; /* Reduce icon size */
+    height: 20px;
+    font-size: 16px;
   }
+
+  .title2 {
+    font-size: 8px; /* Reduce font size for tab titles */
+    line-height: 12px;
+  }
+
+  .voyages, .language, .manga {
+    font-size: 14px; /* Reduce section titles font size */
+    line-height: 18px;
+  }
+
+  .culture, .foods, .destinations, .sh-jo, .sh-nen, .seinen, .category-item {
+    font-size: 12px; /* Reduce font size for category items */
+    line-height: 16px;
+  }
+
+  button {
+    font-size: 14px; /* Reduce button font size */
+    padding: 8px 16px; /* Reduce button padding */
+  }
+}

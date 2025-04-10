@@ -5,11 +5,19 @@ import (
 	"forumynov/database"
 	"forumynov/handlers"
 	"net/http"
+	"time"
 )
 
 func main() {
 	database.InitDatabase()
 	defer database.CloseDatabase()
+
+	go func() { // Periodically delete expired sessions
+		for {
+			database.DeleteExpiredSessions() // delete expired sessions from the database
+			time.Sleep(5 * time.Minute)      // wait for 5 minutes before checking again
+		}
+	}()
 
 	// Gère les requêtes vers le dossier "Scripts", de manière similaire au dossier "Styles".
 	http.Handle("/scripts/", http.StripPrefix("/scripts/", http.FileServer(http.Dir("./scripts"))))
@@ -17,7 +25,7 @@ func main() {
 	// Serve static files (CSS, images, etc.) from the current directory
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
-	http.Handle("/Templates/", http.StripPrefix("/Templates/", http.FileServer(http.Dir("./Templates"))))
+	http.Handle("/templates/", http.StripPrefix("/templates/", http.FileServer(http.Dir("./templates"))))
 
 	// ========================
 
@@ -26,7 +34,8 @@ func main() {
 	http.HandleFunc("/", handlers.IndexHandler)
 	http.HandleFunc("/login", handlers.LoginHandler)
 	http.HandleFunc("/register", handlers.RegisterHandler)
-	//http.HandleFunc("/logout", handlers.LogoutHandler)
+	http.HandleFunc("/logout", handlers.LogoutUsers)
+	http.HandleFunc("/profile", handlers.ProfilePage)
 	//http.HandleFunc("/reset-password", handlers.ResetPasswordHandler)
 	//http.HandleFunc("/forgot-username", handlers.ForgotUsernameHandler)
 

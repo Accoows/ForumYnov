@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"forumynov/database"
+	"forumynov/models"
 	"html/template"
 	"log"
 	"net/http"
@@ -11,6 +12,12 @@ import (
 )
 
 func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
+	userID, err := models.GetUserIDFromRequest(r)
+	if err != nil || userID == "" {
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return
+	}
+
 	if r.Method == http.MethodGet {
 
 		// Lire le paramètre "category_id" s'il existe
@@ -42,7 +49,7 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 			AllCategories: allCategories,
 		}
 
-		tmpl, err := template.ParseFiles(filepath.Join("./Templates", "create_post.html"))
+		tmpl, err := template.ParseFiles(filepath.Join("./templates", "create_post.html"))
 		if err != nil {
 			log.Println("[handlers/post.go] [CreatePostHandler] Erreur ParseFiles >>>", err)
 			ErrorHandler(w, http.StatusInternalServerError)
@@ -61,11 +68,6 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 		title := r.FormValue("title")
 		content := r.FormValue("content")
 		categoryID, _ := strconv.Atoi(r.FormValue("category_id"))
-
-		// Temporairement fixé à l'utilisateur ID 1
-		// Correspondra à l'UUID de l'utilisateur
-		// Il faudra associer l'UUID au username pour le récupérer et l'afficher dans le post
-		userID := "1"
 
 		err = database.CreatePost(userID, categoryID, title, content)
 		if err != nil {
@@ -118,7 +120,7 @@ func ViewPostHandler(w http.ResponseWriter, r *http.Request) {
 			return template.HTML(withBreaks)
 		},
 	})
-	tmpl, err = tmpl.ParseFiles(filepath.Join("./Templates/", "view_post.html"))
+	tmpl, err = tmpl.ParseFiles(filepath.Join("./templates/", "view_post.html"))
 	if err != nil {
 		log.Println("[handlers/post.go] [ViewPostHandler] Erreur ParseFiles >>>", err)
 		ErrorHandler(w, http.StatusInternalServerError)
@@ -165,7 +167,7 @@ func PostsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl, err := template.ParseFiles(filepath.Join("./Templates", "post.html"))
+	tmpl, err := template.ParseFiles(filepath.Join("./templates", "post.html"))
 	if err != nil {
 		log.Println("[handlers/post.go] [PostsHandler] Erreur ParseFiles >>>", err)
 		ErrorHandler(w, http.StatusInternalServerError)
@@ -196,7 +198,7 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		tmpl, err := template.ParseFiles(filepath.Join("./Templates", "edit_post.html"))
+		tmpl, err := template.ParseFiles(filepath.Join("./templates", "edit_post.html"))
 		if err != nil {
 			log.Println("[handlers/post.go] [EditPostHandler] Erreur ParseFile >>>", err)
 			ErrorHandler(w, http.StatusInternalServerError)
@@ -230,7 +232,7 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 // =========================
 
 func PostListHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles(filepath.Join("./Templates/", "post-list.html"))
+	tmpl, err := template.ParseFiles(filepath.Join("./templates/", "post-list.html"))
 	if err != nil {
 		log.Println(err)
 		return

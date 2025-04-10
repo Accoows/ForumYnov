@@ -16,7 +16,7 @@ func ErrorHandler(w http.ResponseWriter, statusCode int) {
 
 	w.WriteHeader(statusCode)
 
-	tmpl, err := template.ParseFiles("./Templates/error.html")
+	tmpl, err := template.ParseFiles("./templates/error.html")
 	if err != nil {
 		log.Println("[handlers/error.go] [ErrorHandler] Erreur ParseFiles >>>", err)
 		http.Error(w, msg, statusCode)

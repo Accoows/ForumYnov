@@ -8,14 +8,13 @@
 - En attente du système de compte avec authentification et de la base de données
 - Après le Sys Auth il faudra récupérer le nom d'utilisateur et l'ID de l'utilisateur pour l'afficher dans le post
 - Ajouter un système de pagination pour les posts (10 posts par page)
-- Ajouter le système de catégories (1 catégorie par post)
-- Ajouter un système de like/dislike pour les posts
 
 -->
 
 <head>
-    <title>ForumYnov</title>
-    <link rel="stylesheet" type="text/css" href="static/post.css">
+    <meta charset="UTF-8">
+    <title>{{.Post.Title}} - ForumYnov</title>
+    <link rel="stylesheet" href="/static/post.css">
 </head>
 
 <body>
@@ -24,8 +23,8 @@
             <div class="background-shadow">
                 <div class="container">
                     <div class="container2">
-                        <a href="/"><img class="vector" src="vector0.svg" /></a>
-                        <div class="forum-name">Forum Name</div>
+                        <a href="/"><img class="vector" src="/static/vector0.svg" /></a>
+                        <div class="forum-name">ForumYnov</div>
                     </div>
                     <div class="button">
                         <button id="dark-mode-toggle">Dark Mode</button>
