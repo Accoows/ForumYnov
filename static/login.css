@@ -100,6 +100,7 @@ html {
     justify-content: center;
     margin-left: 10px;
     font-weight: bold;
+    margin: 20px;
 }
 
 .input {
@@ -316,8 +317,6 @@ body.dark-mode .button-group button {
     border: 1px solid #ffffff;
 }
 
-body.dark-mode .input,
-body.dark-mode .input2,
 body.dark-mode .selection,
 body.dark-mode .chip-group {
     background-color: #333333;
@@ -344,4 +343,100 @@ body.dark-mode .description,
 body.dark-mode .description2,
 body.dark-mode .info {
     color: #bbbbbb;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    html, body {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    html {
+        font-size: 15px;
+    }
+
+    .body {
+        width: 95%;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    .background {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .background-shadow {
+        width: 100%;
+        box-shadow: none;
+        align-self: center;
+        padding: 10px;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .login {
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    .input, .input2 {
+        margin: 5px 10px; 
+    }
+
+    .textfield {
+        padding: 8px 10px; 
+    }
+
+    .selection {
+        align-self: center;
+        padding: 8px;
+        width: 100%;
+    }
+
+    .chip-group {
+        flex-direction: column;
+        gap: 8px; 
+    }
+
+    .chip {
+        padding: 10px;
+        margin-bottom: 5px; 
+    }
+
+    .register-btn {
+        font-size: 12px;
+        padding: 8px 10px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .primary {
+        padding: 8px 10px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .title2 {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 }

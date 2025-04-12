@@ -83,10 +83,7 @@ html {
 }
 .tab {
   border-radius: 20px;
-  border-style: solid;
   box-shadow: 0px 0px 2px 0px #ffffff;
-  border-color: rgba(0, 0, 0);
-  border-width: 2px;
   padding: 4px;
   display: flex;
   flex-direction: column;
@@ -378,8 +375,6 @@ html {
 .chip {
   background-color: #F3D1D1;
   border-radius: 6px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.2);
   border-width: 1px;
   padding: 12px;
   display: flex;
@@ -709,8 +704,6 @@ html {
 }
 
 /* Version Dark Mode */
-
-/* Version Dark Mode */
 body.dark-mode {
   color: #ffffff;
 }
@@ -802,4 +795,91 @@ body.dark-mode #dark-mode-toggle {
 
 body.dark-mode .page {
   background-color: #121212;
+}
+
+/* Styles spécifiques aux petits écrans */
+@media (max-width: 768px) {
+  html, body {
+    height: 100%;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    background: url('fond.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    font-size: 12px;
+  }
+
+  .page {
+    min-height: 100vh;
+    width: 95%; 
+    margin: 0 auto; 
+    padding: 5px; 
+  }
+
+  .top-bar {
+    align-self: center;
+    width: 100%;
+    padding: 10px; 
+    box-shadow: none; 
+  }
+
+  .top-bar .content {
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .tab-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tab {
+    width: 100%;
+    padding: 8px; 
+  }
+
+  .list, .list2, .list3 {
+    width: 100%;
+    padding: 8px; 
+  }
+
+  .article, .item, .chip, .post, .card {
+    width: 100%;
+    padding: 8px; 
+  }
+
+  .title, .title2, .title3, .title4, .title5, .title6, .title7 {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .icon, .icon2 {
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+  }
+
+  .subtitle, .text, .label-text {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .border {
+    width: 90%;
+    max-width: 300px;
+    padding: 10px; 
+    margin: 0 auto;
+  }
 }

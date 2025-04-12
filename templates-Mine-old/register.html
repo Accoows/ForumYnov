@@ -5,7 +5,6 @@
 <head>
     <title>ForumYnov Register</title>
     <link rel="stylesheet" type="text/css" href="static/register.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -18,7 +17,7 @@
               </div>
               <div class="margin">
                     <button id="dark-mode-toggle">Dark Mode</button>
-                    <a href="/"><button id="home-button">Home</button></a>
+                    <a href="/index"><button id="home-button">Home</button></a>
               </div>
             </div>
           </div>
@@ -27,25 +26,22 @@
               <div class="login">Register</div>
             </div>
           </div>
-        <form action="/register" method="POST" class="form">
           <div class="margin3">
-            <input type="email" class="input" name="email" placeholder="Enter your email" required>
+            <input type="text" class="input" placeholder="Enter your username">
           </div>
           <div class="margin3">
-                <input type="text" class="input" name="username" placeholder="Enter your username" required>
+            <input type="email" class="input" placeholder="Enter your email">
           </div>
           <div class="margin4">
-                <input type="password" class="input" name="password" placeholder="Enter your password" required>
+            <input type="password" class="input" placeholder="Enter your password">
 
           </div>
           <div class="container7">
             <div class="container8"></div>
-                <button class="button3" type="submit">
+            <button class="button3">
                 <div class="register">Register</div>
             </button>
           </div>
-        </form>
-          
         </div>
       </div>
     <script src="scripts/script.js"></script>
