@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"forumynov/database"
+	"forumynov/models"
 	"html/template"
 	"net/http"
 )
@@ -10,7 +11,8 @@ import (
 func ProfilePage(w http.ResponseWriter, r *http.Request) {
 	cookie, err := r.Cookie("user_cookie") // get the cookie from the request using the cookie name
 	if err != nil {
-		http.Error(w, "Unauthorized : cookie not found", http.StatusUnauthorized)
+		models.SetNotification(w, "You are logged out", "error")
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 

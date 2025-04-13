@@ -66,7 +66,6 @@
                     <button type="submit" name="action" value="dislike">👎 {{.DislikeCount}}</button>
                 </form>
 
-                <!-- A MODIFIER POUR METTRE EN PLACE LA VERIFICATION UTILISATEUR UUID AVEC COOKIE -->
                 {{if eq $.ConnectedUser .User_id}}
                 <form action="/comments/delete" method="POST" style="margin-top: 10px;">
                     <input type="hidden" name="comment_id" value="{{.ID}}">
