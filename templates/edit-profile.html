@@ -4,7 +4,8 @@
 
 <head>
   <title>ForumYnov Login</title>
-  <link rel="stylesheet" type="text/css" href="static/edit-profile.css">
+  <link rel="stylesheet" type="text/css" href="/static/edit-profile.css">
+  <link rel="stylesheet" type="text/css" href="/static/notifications.css">
 </head>
 
 <body>
@@ -21,7 +22,7 @@
                 <div class="button">
                   <div class="dark-mode">Dark Mode</div>
                 </div>
-                <a href="index.html"><button id="home-button">Home</button></a>
+                <a href="/"><button id="home-button">Home</button></a>
                 <form action="/logout" method="POST">
                     <button type="submit" class="disconect" name="logout" value="true">Disconect</button>
                 </form>
@@ -73,7 +74,12 @@
       </div>
     </div>
   </div>
+  <div id="notification-toast" class="hidden notif-toast">
+    <span id="notification-message"></span>
+    <button id="close-notification-toast" class="close-btn">&times;</button>
+  </div>
 <script src="scripts/script.js"></script>
+<script src="scripts/notifications.js"></script>
 </body>
 
 </html>

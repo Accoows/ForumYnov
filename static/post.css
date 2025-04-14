@@ -5,7 +5,11 @@ html {
   border-radius: 10px;
   border-color: #000000;
 }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .post-list,
 .post-list * {
   box-sizing: border-box;
@@ -20,9 +24,15 @@ html {
   height: auto;
   position: relative;
 }
+<<<<<<< HEAD
 
 .background {
   background: rgb(238, 234, 234, 50%);
+=======
+  
+.background {
+  background: rgb(238, 234, 234,50%);
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
   backdrop-filter: blur(10px);
   border-radius: 10px;
   padding: 0px 0px 12px 0px;
@@ -37,7 +47,11 @@ html {
   margin-right: 5%;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
 }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .background-shadow {
   background: #f2e3d5;
   border-radius: 10px;
@@ -63,7 +77,10 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .container2 {
   display: flex;
   flex-direction: column;
@@ -73,7 +90,10 @@ html {
   flex: 1;
   position: relative;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .vector {
   flex-shrink: 0;
   width: 30px;
@@ -81,7 +101,10 @@ html {
   position: relative;
   overflow: visible;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .forum-name {
   color: #000000;
   text-align: left;
@@ -98,12 +121,19 @@ html {
   align-items: center;
   justify-content: flex-start;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .article {
   background: #92A8D1;
   border-style: solid;
   border-radius: 50px;
+<<<<<<< HEAD
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
+=======
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);   
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
   border-color: #000000;
   border-width: 0px 0px 1px 0px;
   margin-left: 100px;
@@ -113,7 +143,10 @@ html {
   height: 249px;
   position: relative;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .div {
   background: rgba(0, 0, 0, 0);
   width: 100%;
@@ -121,7 +154,10 @@ html {
   position: absolute;
   top: 16px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .img {
   display: flex;
   flex-direction: row;
@@ -134,7 +170,10 @@ html {
   left: 0px;
   top: 0px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .div2 {
   background: rgba(0, 0, 0, 0);
   width: 100%;
@@ -143,7 +182,10 @@ html {
   position: absolute;
   top: 0px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .div3 {
   background: rgba(0, 0, 0, 0);
   width: 100%;
@@ -152,7 +194,10 @@ html {
   left: 0px;
   top: 0px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .Pseudo {
   color: #000000;
   text-align: left;
@@ -166,7 +211,10 @@ html {
   width: 119px;
   height: 20px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .timestamp {
   color: #737373;
   text-align: left;
@@ -180,7 +228,10 @@ html {
   width: 46px;
   height: 17px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .title-content {
   color: #000000;
   text-align: left;
@@ -194,7 +245,10 @@ html {
   width: 637px;
   height: 21px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .text-content {
   color: #404040;
   text-align: left;
@@ -208,7 +262,10 @@ html {
   width: 90%;
   height: 20px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .div4 {
   background: #ffffff;
   border-style: solid;
@@ -223,7 +280,10 @@ html {
 
   bottom: 33px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .div5 {
   background: rgba(0, 0, 0, 0);
   width: 100%;
@@ -231,8 +291,12 @@ html {
   position: absolute;
   left: 16px;
   top: 16px;
+<<<<<<< HEAD
 }
 
+=======
+  }
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .div6 {
   background: rgba(0, 0, 0, 0);
   width: 100%;
@@ -241,7 +305,10 @@ html {
   left: 52px;
   top: 0px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 .textarea {
   background: #ffffff;
   border-radius: 8px;
@@ -254,6 +321,7 @@ html {
   left: 0px;
   top: 0px;
   overflow: hidden;
+<<<<<<< HEAD
 }
 
 /* Mobile styles */
@@ -327,4 +395,6 @@ html {
     position: relative;
     padding: 10px;
   }
+=======
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
 }

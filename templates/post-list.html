@@ -5,7 +5,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ForumYnov</title>
-    <link rel="stylesheet" type="text/css" href="static/post-list.css">
+    <link rel="stylesheet" type="text/css" href="/static/post-list.css">
 </head>
 
 <body>
@@ -17,25 +17,26 @@
                         <div class="forum-name">Forum Name</div>
                     </div>
                         <button id="dark-mode-toggle">Dark Mode</button>
-                        <a href="/index"><button id="home-button">Home</button></a>
+                        <a href="/"><button id="home-button">Home</button></a>
                 </div>
             </div>
+            <h1>Afficher les 3 catégories avec le plus d'intéraction/réponses pour les 3 catégorie en dessous</h1>
             <div class="tab-group">
                 <button class="tab">
                     <div class="frame">
-                        <div class="icon">🎓</div>
+                        <div class="icon">📘</div> <!-- Education -->
                     </div>
                     <div class="title2">Education</div>
                 </button>
                 <button class="tab">
                     <div class="frame">
-                        <div class="icon">💡</div>
+                        <div class="icon">💡</div> <!-- Ideas -->
                     </div>
                     <div class="title2">Ideas</div>
                 </button>
                 <button class="tab">
                     <div class="frame">
-                        <div class="icon">🌍</div>
+                        <div class="icon">✈️</div> <!-- Travel -->
                     </div>
                     <div class="title2">Travel</div>
                 </button>
@@ -43,10 +44,10 @@
                 <input type="text" class="border" placeholder="Enter keyword to search"></input>
             <div class="container9">
                 <div class="voyages">Voyages</div>
-                <button class="background-shadow3">
+                <button class="background-shadow3" onclick="location.href='/category?id=4'">
                     <div class="background5">
                         <div class="container12">
-                            <div class="div2">📚</div>
+                            <div class="div2">🎌</div> <!-- Culture -->
                         </div>
                     </div>
                     <div class="container2">
@@ -55,10 +56,10 @@
                         </div>
                     </div>
                 </button>
-                <button class="background-shadow3">
+                <button class="background-shadow3" onclick="location.href='/category?id=5'">
                     <div class="background5">
                         <div class="container12">
-                            <div class="div2">📷</div>
+                            <div class="div2">🍣</div> <!-- Foods -->
                         </div>
                     </div>
                     <div class="container2">
@@ -67,10 +68,10 @@
                         </div>
                     </div>
                 </button>
-                <button class="background-shadow3">
+                <button class="background-shadow3" onclick="location.href='/category?id=6'">
                     <div class="background5">
                         <div class="container12">
-                            <div class="div2">💻</div>
+                            <div class="div2">🗻</div> <!-- Destinations -->
                         </div>
                     </div>
                     <div class="container2">
@@ -82,10 +83,10 @@
             </div>
             <div class="container9">
                 <div class="language">Language</div>
-                <button class="background-shadow3">
+                <button class="background-shadow3" onclick="location.href='/category?id=7'">
                     <div class="background5">
                         <div class="container12">
-                            <div class="div2">📚</div>
+                            <div class="div2">🔤</div> <!-- Hiragana -->
                         </div>
                     </div>
                     <div class="container2">
@@ -94,10 +95,10 @@
                         </div>
                     </div>
                 </button>
-                <button class="background-shadow3">
+                <button class="background-shadow3" onclick="location.href='/category?id=8'">
                     <div class="background5">
                         <div class="container12">
-                            <div class="div2">📷</div>
+                            <div class="div2">🈂️</div> <!-- Katakana -->
                         </div>
                     </div>
                     <div class="container2">
@@ -106,10 +107,10 @@
                         </div>
                     </div>
                 </button>
-                <button class="background-shadow3">
+                <button class="background-shadow3" onclick="location.href='/category?id=9'">
                     <div class="background5">
                         <div class="container12">
-                            <div class="div2">💻</div>
+                            <div class="div2">🈴</div> <!-- Kanji -->
                         </div>
                     </div>
                     <div class="container2">
@@ -121,22 +122,22 @@
             </div>
             <div class="container9">
                 <div class="manga">Manga</div>
-                <button class="background-shadow3">
+                <button class="background-shadow3" onclick="location.href='/category?id=10'">
                     <div class="background5">
                         <div class="container12">
-                            <div class="div2">📚</div>
+                            <div class="div2">📖</div> <!-- Shôjo -->
                         </div>
                     </div>
                     <div class="container2">
                         <div class="container11">
                             <div class="sh-jo">Shôjo</div>
                         </div>
-                    </div>
+                    </div> 
                 </button>
-                <button class="background-shadow3">
+                <button class="background-shadow3" onclick="location.href='/category?id=11'">
                     <div class="background5">
                         <div class="container12">
-                            <div class="div2">📷</div>
+                            <div class="div2">⚔️</div> <!-- Shônen -->
                         </div>
                     </div>
                     <div class="container2">
@@ -145,10 +146,10 @@
                         </div>
                     </div>
                 </button>
-                <button class="background-shadow3">
+                <button class="background-shadow3" onclick="location.href='/category?id=12'">
                     <div class="background5">
                         <div class="container12">
-                            <div class="div2">💻</div>
+                            <div class="div2">👓</div> <!-- Seinen -->
                         </div>
                     </div>
                     <div class="container2">
@@ -172,7 +173,12 @@
             </div>
         </div>
     </div>
+    <div id="notification-toast" class="hidden notif-toast">
+        <span id="notification-message"></span>
+        <button id="close-notification-toast" class="close-btn">&times;</button>
+    </div>
     <script src="scripts/script.js"></script>
+    <script src="scripts/notifications.js"></script>
 </body>
 
 </html>
