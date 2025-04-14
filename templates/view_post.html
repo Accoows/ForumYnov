@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Post.Title}} - ForumYnov</title>
+    <link rel="stylesheet" href="/static/post.css">
+</head>
+
+<body>
+    <div class="post-list">
+        <div class="background">
+            <div class="background-shadow">
+                <div class="container">
+                    <div class="container2">
+                        <a href="/"><img class="vector" src="/static/vector0.svg" /></a>
+                        <div class="forum-name">ForumYnov</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article">
+                <div class="div">
+                    <div class="img"></div>
+                    <div class="div2">
+                        <div class="div3">
+                            <div class="Pseudo">{{.Post.AuthorUsername}}</div>
+                            <div class="timestamp">{{.Post.Created_at}}</div>
+                        </div>
+                        <div class="title-content">{{.Post.Title}}</div>
+                        <div class="text-content">{{format .Post.Content}}</div>
+                        <form method="POST" action="/like" style="margin-top: 10px; margin-left: 10px;">
+                            <input type="hidden" name="post_id" value="{{.Post.ID}}">
+                            <button type="submit" name="action" value="like">👍 {{.Post.LikeCount}}</button>
+                            <button type="submit" name="action" value="dislike">👎 {{.Post.DislikeCount}}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-left: 100px;"><strong>Catégorie :</strong> {{.Post.CategoryName}}</p>
+            <p style="margin-left: 100px;"><a href="/posts">Retour aux posts</a></p>
+
+            {{if .IsAuthor}}
+            <form action="/posts/edit" method="GET" style="margin-top: 20px;">
+                <input type="hidden" name="id" value="{{.Post.ID}}">
+                <button type="submit">Modifier</button>
+            </form>
+            <form action="/posts/delete" method="POST" style="margin-top: 20px;">
+                <input type="hidden" name="id" value="{{.Post.ID}}">
+                <button type="submit">Supprimer</button>
+            </form>
+            {{end}}
+
+            <hr>
+            <h3>Commentaires</h3>
+
+            {{range .Comments}}
+            <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+                <strong>{{.AuthorUsername}}</strong> – <em>{{.Created_at}}</em><br>
+                <p>{{format .Content}}</p>
+                <form method="POST" action="/like" style="margin-top: 5px;">
+                    <input type="hidden" name="comment_id" value="{{.ID}}">
+                    <input type="hidden" name="parent_post_id" value="{{$.Post.ID}}">
+                    <button type="submit" name="action" value="like">👍 {{.LikeCount}}</button>
+                    <button type="submit" name="action" value="dislike">👎 {{.DislikeCount}}</button>
+                </form>
+
+                <!-- A MODIFIER POUR METTRE EN PLACE LA VERIFICATION UTILISATEUR UUID AVEC COOKIE -->
+                {{if eq $.ConnectedUser .User_id}}
+                <form action="/comments/delete" method="POST" style="margin-top: 10px;">
+                    <input type="hidden" name="comment_id" value="{{.ID}}">
+                    <input type="hidden" name="post_id" value="{{$.Post.ID}}">
+                    <button type="submit"
+                        style="background: red; color: white; border: none; padding: 5px 10px; border-radius: 4px;">
+                        Supprimer
+                    </button>
+                </form>
+                {{end}}
+            </div>
+            {{else}}
+            <p>Aucun commentaire pour le moment.</p>
+            {{end}}
+
+            {{if .ConnectedUser}}
+            <h3>Ajouter un commentaire</h3>
+            <form action="/comments/create" method="POST">
+                <input type="hidden" name="post_id" value="{{.Post.ID}}">
+                <textarea name="content" rows="4" cols="60" placeholder="Votre commentaire..."
+                    required></textarea><br><br>
+                <button type="submit">Poster le commentaire</button>
+            </form>
+            {{else}}
+            <p><em>Vous devez être connecté pour poster un commentaire.</em></p>
+            <p>
+                <a href="/login"><button type="button">Se connecter</button></a>
+                <a href="/register"><button type="button">S’inscrire</button></a>
+            </p>
+            {{end}}
+        </div>
+    </div>
+    <script src="/scripts/scroll_restore.js"></script>
+</body>
+
+</html>

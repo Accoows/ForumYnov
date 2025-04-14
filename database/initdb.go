@@ -128,7 +128,7 @@ func GetCategoriesData() ([]Categories, error) {
 	var categories []Categories // Categories is a slice of Categories struct
 	for rows.Next() {           // rows.Next() is used to iterate over the rows returned by the query
 		var categorie Categories // categorie is a variable of type Categories struct
-		err := rows.Scan(&categorie.ID, &categorie.Name, &categorie.Parent_id)
+		err := rows.Scan(&categorie.ID, &categorie.Name, &categorie.ParentID)
 		if err != nil {
 			return nil, err
 		}

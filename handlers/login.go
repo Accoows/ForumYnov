@@ -6,13 +6,33 @@ import (
 	"forumynov/database"
 	"forumynov/models"
 	"html/template"
+	"log"
 	"net/http"
+	"path/filepath"
 	"time"
 
 	uuid "github.com/satori/go.uuid"
 )
 
-var tpl *template.Template // template for rendering HTML pages
+// Page d'accueil, général
+
+// Gestionnaire pour servir la page de login
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodGet {
+		tmpl, err := template.ParseFiles(filepath.Join("./templates/", "login.html"))
+		if err != nil {
+			log.Println(err)
+			return
+		}
+		tmpl.Execute(w, nil)
+		return
+	}
+	if r.Method == http.MethodPost {
+		// Traiter les données du formulaire
+		LoginUsers(w, r)
+		return
+	}
+}
 
 // LoginUsers handles the login process for users. It verifies the user's credentials and creates a session if they are valid.
 func LoginUsers(w http.ResponseWriter, r *http.Request) {
@@ -38,7 +58,7 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 	}
 
 	emailRight := VerifyEmailConformity(&newUser) // check if the email is valid
-	if emailRight == false {
+	if !emailRight {
 		http.Error(w, "Email does not comply", http.StatusBadRequest)
 		return
 	}

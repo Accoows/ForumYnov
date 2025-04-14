@@ -3,6 +3,7 @@ package handlers
 import (
 	"forumynov/database"
 	"forumynov/models"
+	"html/template"
 	"log"
 	"net/http"
 	"time"
@@ -10,19 +11,41 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+func RegisterHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodGet {
+		// Afficher le formulaire
+		tmpl, err := template.ParseFiles("templates/register.html")
+		if err != nil {
+			log.Println("[handlers/register.go] Erreur chargement template :", err)
+			ErrorHandler(w, http.StatusInternalServerError)
+			return
+		}
+		tmpl.Execute(w, nil)
+		return
+	}
+
+	if r.Method == http.MethodPost {
+		// Traiter les données du formulaire
+		RegisterUsers(w, r)
+		return
+	}
+
+	ErrorHandler(w, http.StatusMethodNotAllowed)
+}
+
 /*
 RegisterUsers handles the registration process for new users. It verifies the provided data, hashes the password, and stores the user in the database.
 It also checks for the uniqueness of the email and username before inserting the new user into the database.
 */
 func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "Unauthorized method", http.StatusMethodNotAllowed)
+		ErrorHandler(w, http.StatusMethodNotAllowed)
 		return
 	}
 
 	err := r.ParseForm()
 	if err != nil {
-		http.Error(w, "Error during form processing", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
@@ -34,29 +57,29 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 	password := r.FormValue("password")
 
 	if newUser.Email == "" || newUser.Username == "" || password == "" { // check if the email, username, and password fields are empty
-		http.Error(w, "All fields are mandatory", http.StatusBadRequest)
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
 	emailRight := VerifyEmailConformity(&newUser) // check if the email is valid
-	if emailRight == false {
-		http.Error(w, "Email does not comply", http.StatusBadRequest)
+	if !emailRight {
+		ErrorHandler(w, http.StatusBadRequest)
 		return
 	}
 
 	exists, err := VerifyEmailAndUsernameUnicity(newUser.Email, newUser.Username) // check if the email or username already exists in the database
 	if err != nil {
-		http.Error(w, "Error during user verification", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 	if exists {
-		http.Error(w, "Email or username already used", http.StatusConflict)
+		ErrorHandler(w, http.StatusConflict)
 		return
 	}
 
 	password_hash, err := models.HashPassword(password) // hash the password using the HashPassword function from the models package
 	if err != nil {
-		http.Error(w, "Error while hashing password", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 	newUser.Password_hash = password_hash // set the hashed password in the user struct
