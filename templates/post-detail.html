@@ -5,10 +5,15 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.CategoryName}} - ForumYnov</title>
-    <link rel="stylesheet" type="text/css" href="static/post-detail.css">
+    <link rel="stylesheet" type="text/css" href="/static/post-detail.css">
+    <link rel="stylesheet" type="text/css" href="/static/notifications.css">
 </head>
 
 <body>
+    <div id="notification-toast" class="hidden notif-toast">
+        <span id="notification-message"></span>
+        <button id="close-notification-toast" class="close-btn">&times;</button>
+    </div>
     <div class="post-list">
         <div class="background">
             <div class="background-shadow">
@@ -18,6 +23,7 @@
                     </div>
                     <button id="dark-mode-toggle">Dark Mode</button>
                     <a href="/"><button id="home-button">Home</button></a>
+                    <a href="/post-list"><button id="home-button">Category</button></a>
                 </div>
             </div>
 
@@ -27,17 +33,17 @@
 
             <div class="posts-container">
                 {{range .Posts}}
-                    <div class="post-card">
-                        <h2>{{.Title}}</h2>
-                        <p>{{format .Content}}</p>
-                        <p class="meta">Posté par <strong>{{.AuthorUsername}}</strong> - {{.Created_at}}</p>
-                        <a href="/posts/view?id={{.ID}}">Voir le post</a>
-                    </div>
+                <div class="post-card">
+                    <h2>{{.Title}}</h2>
+                    <p>{{format .Content}}</p>
+                    <p class="meta">Posté par <strong>{{.AuthorUsername}}</strong> - {{.Created_at}}</p>
+                    <a href="/posts/view?id={{.ID}}">Voir le post</a>
+                </div>
                 {{else}}
-                    <p>Aucun post dans cette catégorie pour l’instant.</p>
+                <p>Aucun post dans cette catégorie pour l’instant.</p>
                 {{end}}
             </div>
-            
+
             <h3>si plus d'un certain nombre de post afficher bouton suivant/retour pour afficher les suivants</h3>
 
             <div class="container15">
@@ -60,6 +66,7 @@
             </div>
         </div>
         <script src="scripts/script.js"></script>
+        <script src="scripts/notifications.js"></script>
 </body>
 
 </html>

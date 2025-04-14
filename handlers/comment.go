@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"forumynov/database"
+	"forumynov/models"
 	"log"
 	"net/http"
 	"strconv"
@@ -18,14 +19,14 @@ func CreateCommentHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println("[handlers/comment.go] [CreateCommentHandler] ParseForm échoué >>>", err)
 		ErrorHandler(w, http.StatusBadRequest)
-
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 
 	userID, err := getConnectedUserID(r)
 	if err != nil {
 		log.Println("[handlers/comment.go] [CreateCommentHandler] Utilisateur non connecté >>>", err)
-		http.Error(w, "Connexion requise pour commenter", http.StatusUnauthorized)
+		models.SetNotification(w, "You must be logged in to comment", "error")
 		return
 	}
 
@@ -34,17 +35,18 @@ func CreateCommentHandler(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil || content == "" {
 		log.Println("[handlers/comment.go] [CreateCommentHandler] Données invalides >>>", err)
-		ErrorHandler(w, http.StatusBadRequest)
+		models.SetNotification(w, "Missing or invalid comment data", "error")
 		return
 	}
 
 	err = database.CreateComment(userID, postID, content)
 	if err != nil {
 		log.Println("[handlers/comment.go] [CreateCommentHandler] Erreur CreateComment >>", err)
-		ErrorHandler(w, http.StatusMethodNotAllowed)
+		models.SetNotification(w, "Could not post your comment", "error")
 		return
 	}
 
+	models.SetNotification(w, "Comment successfully posted", "success")
 	http.Redirect(w, r, "/posts/view?id="+strconv.Itoa(postID), http.StatusSeeOther)
 }
 
@@ -79,7 +81,7 @@ func DeleteCommentHandler(w http.ResponseWriter, r *http.Request) {
 
 	if comment.User_id != userID {
 		log.Println("[handlers/comment.go] [DeleteCommentHandler] Suppression refusée pour utilisateur :", userID)
-		http.Error(w, "Suppression non autorisée", http.StatusUnauthorized)
+		models.SetNotification(w, "You are not allowed to delete this comment", "error")
 		return
 	}
 
@@ -92,5 +94,6 @@ func DeleteCommentHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	models.SetNotification(w, "Comment successfully deleted", "success")
 	http.Redirect(w, r, "/posts/view?id="+postID, http.StatusSeeOther)
 }
