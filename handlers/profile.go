@@ -2,6 +2,10 @@ package handlers
 
 import (
 	"forumynov/database"
+<<<<<<< HEAD
+=======
+	"forumynov/models"
+>>>>>>> main
 	"html/template"
 	"net/http"
 )
@@ -10,7 +14,12 @@ import (
 func ProfilePage(w http.ResponseWriter, r *http.Request) {
 	cookie, err := r.Cookie("user_cookie") // get the cookie from the request using the cookie name
 	if err != nil {
+<<<<<<< HEAD
 		http.Error(w, "Unauthorized : cookie not found", http.StatusUnauthorized)
+=======
+		models.SetNotification(w, "You are logged out", "error")
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+>>>>>>> main
 		return
 	}
 
@@ -30,6 +39,7 @@ func ProfilePage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+<<<<<<< HEAD
 	// Get posts created by the user
 	createdPosts, err := database.GetPostsByUser(userID)
 	if err != nil {
@@ -55,6 +65,12 @@ func ProfilePage(w http.ResponseWriter, r *http.Request) {
 		Email:        user.Email,
 		CreatedPosts: createdPosts,
 		LikedPosts:   likedPosts,
+=======
+	data := struct { // data to be passed to the template
+		Username string
+	}{
+		Username: user.Username,
+>>>>>>> main
 	}
 
 	tmpl, err := template.ParseFiles("templates/edit-profile.html") // parse the HTML template file

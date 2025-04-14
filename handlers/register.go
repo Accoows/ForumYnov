@@ -93,6 +93,11 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+<<<<<<< HEAD
+=======
+	models.SetNotification(w, "Registration successful! You can now log in.", "success") // set a notification message to inform the user about the registration status
+
+>>>>>>> main
 	http.Redirect(w, r, "/", http.StatusFound) // redirect the user to the home page after registration
 }
 

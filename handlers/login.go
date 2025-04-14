@@ -59,17 +59,29 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 
 	emailRight := VerifyEmailConformity(&newUser) // check if the email is valid
 	if !emailRight {
+<<<<<<< HEAD
 		http.Error(w, "Email does not comply", http.StatusBadRequest)
+=======
+		models.SetNotification(w, "Email does not comply", "error")
+>>>>>>> main
 		return
 	}
 	userUUID, hashedPassword, err := GetHashedPasswordAndUUID(newUser.Email) // get the hashed password and user UUID from the database using the email
 	if err != nil {
+<<<<<<< HEAD
 		http.Error(w, "Incorrect email", http.StatusNotFound)
+=======
+		models.SetNotification(w, "Incorrect email", "error")
+>>>>>>> main
 		return
 	}
 
 	if !models.CheckPasswordHash(newUser.Password_hash, hashedPassword) { // check if the provided password matches the hashed password from the database
+<<<<<<< HEAD
 		http.Error(w, "Incorrect password", http.StatusUnauthorized)
+=======
+		models.SetNotification(w, "Incorrect password", "error")
+>>>>>>> main
 		return
 	}
 
@@ -104,6 +116,11 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 
 	http.SetCookie(w, userIdCookie) // set the cookie in the response header to send it to the client
 
+<<<<<<< HEAD
+=======
+	models.SetNotification(w, "Login successful", "success")
+
+>>>>>>> main
 	http.Redirect(w, r, "/profile", http.StatusFound) // redirect the user to the profile page after successful login
 }
 
