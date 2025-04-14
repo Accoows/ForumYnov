@@ -8,8 +8,15 @@ html,body {
     width: 100%;
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+=======
     position: relative;
     overflow-x: hidden;
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
   }
   
   html {
@@ -253,7 +260,11 @@ html,body {
     align-items: center;
     justify-content: flex-start;
     flex-shrink: 0;
+<<<<<<< HEAD
+    width: 100%;
+=======
     width: 752px;
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
     position: relative;
     overflow: hidden;
   }
@@ -426,6 +437,15 @@ html,body {
     }
   
     html {
+<<<<<<< HEAD
+      font-size: 20px;
+    }
+  
+    .post-list {
+      width: 95%; 
+      margin: 0 auto; 
+      padding: 5px; 
+=======
       font-size: 12px; /* Reduce base font size for smaller screens */
     }
   
@@ -433,38 +453,78 @@ html,body {
       width: 95%; /* Reduce width to fit better on smaller screens */
       margin: 0 auto; /* Center the content */
       padding: 5px; /* Reduce padding */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
     }
   
     .background-shadow {
       width: 100%;
       box-shadow: none;
+<<<<<<< HEAD
+      padding: 10px; 
+=======
       padding: 10px; /* Reduce padding */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
     }
   
     .container {
       flex-direction: column;
       align-items: center;
       text-align: center;
+<<<<<<< HEAD
+      padding: 10px; 
+=======
       padding: 10px; /* Reduce padding */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
     }
   
     .tab-group {
       flex-direction: column;
+<<<<<<< HEAD
+      gap: 8px; 
+=======
       gap: 8px; /* Reduce gap between tabs */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
     }
   
     .tab {
       width: 100%;
+<<<<<<< HEAD
+      padding: 8px; 
+=======
       padding: 8px; /* Reduce padding */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
     }
   
     .container9 {
       width: 100%;
+<<<<<<< HEAD
+      padding: 8px; 
+=======
       padding: 8px; /* Reduce padding */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
     }
   
     .background-shadow3 {
       width: 100%;
+<<<<<<< HEAD
+      padding: 8px;
+    }
+  
+    .background-border, .background6 {
+      padding: 8px 10px;
+      width: 90%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  
+    .menu-item, .new-post {
+      font-size: 12px;
+      text-align: center;
+    }
+  
+    .icon {
+      width: 20px;
+=======
       padding: 8px; /* Reduce padding */
     }
   
@@ -482,27 +542,45 @@ html,body {
   
     .icon {
       width: 20px; /* Reduce icon size */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
       height: 20px;
       font-size: 16px;
     }
   
     .title2 {
+<<<<<<< HEAD
+      font-size: 8px;
+=======
       font-size: 8px; /* Reduce font size for tab titles */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
       line-height: 12px;
     }
   
     .voyages, .language, .manga {
+<<<<<<< HEAD
+      font-size: 14px;
+=======
       font-size: 14px; /* Reduce section titles font size */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
       line-height: 18px;
     }
   
     .culture, .foods, .destinations, .sh-jo, .sh-nen, .seinen, .category-item {
+<<<<<<< HEAD
+      font-size: 12px;
+=======
       font-size: 12px; /* Reduce font size for category items */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
       line-height: 16px;
     }
   
     button {
+<<<<<<< HEAD
+      font-size: 14px;
+      padding: 8px 16px;
+=======
       font-size: 14px; /* Reduce button font size */
       padding: 8px 16px; /* Reduce button padding */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
     }
   }

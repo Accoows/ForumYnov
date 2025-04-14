@@ -1,0 +1,67 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ForumYnov Login</title>
+  <link rel="stylesheet" type="text/css" href="static/login.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="html">
+    <div class="body">
+      <div class="background">
+        <div class="background-shadow">
+          <div class="container">
+            <div class="forum-name">Forum Name</div>
+            <div class="button-group">
+              <button id="dark-mode-toggle">Dark Mode</button>
+              <a href="/"><button id="home-button">Home</button></a>
+            </div>
+          </div>
+        </div>
+        <div class="login">Login</div>
+        <form action="/login" method="POST" class="form">
+          <div class="input">
+            <div class="textfield">
+              <input type="email" class="text" name="email" placeholder="Email" required>
+            </div>
+          </div>
+          <div class="input2">
+            <div class="textfield">
+              <input type="password" class="text" name="password" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="container8">
+            <div class="selection">
+              <div class="chip-group">
+                <label class="remember"><input type="checkbox">Remember Me</label>
+                <button class="chip">
+                  <div class="text2">Reset password</div>
+                </button>
+              </div>
+            </div>
+            <div class="button2">
+              <button class="primary" type="submit">
+                <div class="title2">Login</div>
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="selection">
+          <div class="title">Don't have an account yet ?</div>
+          <div class="chip-group">
+            <a href="/register" class="register-btn">
+              <span>Register</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>
