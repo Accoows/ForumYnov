@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 html,
 body {
   background: url('fond.jpg') no-repeat;
@@ -960,6 +962,7 @@ body.dark-mode .page {
   }
 }
 =======
+>>>>>>> main
 html {
   background: url('fond.jpg') no-repeat;
   background-size: cover;
@@ -967,12 +970,18 @@ html {
   border-radius: 10px;
   border-color: #000000;
 }
+<<<<<<< HEAD
+=======
   
+>>>>>>> main
 .page,
 .page * {
   box-sizing: border-box;
 }
+<<<<<<< HEAD
+=======
   
+>>>>>>> main
 .page {
   background: rgb(238, 234, 234,50%);
   backdrop-filter: blur(10px);
@@ -986,10 +995,15 @@ html {
   position: relative;
   width: 90%;
   margin-left: 5%;
+<<<<<<< HEAD
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
+}
+=======
   margin-right: 5%;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
 }
   
+>>>>>>> main
 .top-bar {
   border-radius: 10px;
   background: #F3D1D1; /* Changed */
@@ -1005,7 +1019,10 @@ html {
   background-color: #ffffff;
   border-radius: 10px;
   border-color: #000000;
+<<<<<<< HEAD
+=======
   margin: 20px;
+>>>>>>> main
 }
 .content {
   padding: 12px 8px 12px 16px;
@@ -1045,7 +1062,14 @@ html {
 }
 .tab {
   border-radius: 20px;
+<<<<<<< HEAD
+  border-style: solid;
   box-shadow: 0px 0px 2px 0px #ffffff;
+  border-color: rgba(0, 0, 0);
+  border-width: 2px;
+=======
+  box-shadow: 0px 0px 2px 0px #ffffff;
+>>>>>>> main
   padding: 4px;
   display: flex;
   flex-direction: column;
@@ -1337,6 +1361,11 @@ html {
 .chip {
   background-color: #F3D1D1;
   border-radius: 6px;
+<<<<<<< HEAD
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.2);
+=======
+>>>>>>> main
   border-width: 1px;
   padding: 12px;
   display: flex;
@@ -1666,7 +1695,14 @@ html {
 }
 
 /* Version Dark Mode */
+<<<<<<< HEAD
+
+/* Version Dark Mode */
 body.dark-mode {
+  background-color: #121212;
+=======
+body.dark-mode {
+>>>>>>> main
   color: #ffffff;
 }
 
@@ -1757,6 +1793,9 @@ body.dark-mode #dark-mode-toggle {
 
 body.dark-mode .page {
   background-color: #121212;
+<<<<<<< HEAD
+}
+=======
 }
 
 /* Styles spécifiques aux petits écrans */
@@ -1846,3 +1885,4 @@ body.dark-mode .page {
   }
 }
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main

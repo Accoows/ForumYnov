@@ -2,7 +2,10 @@ package handlers
 
 import (
 	"forumynov/database"
+<<<<<<< HEAD
+=======
 	"forumynov/models"
+>>>>>>> main
 	"net/http"
 	"time"
 )
@@ -27,8 +30,12 @@ func LogoutUsers(w http.ResponseWriter, r *http.Request) {
 
 	cookie, err := r.Cookie("user_cookie") // get the cookie from the request using the cookie name
 	if err != nil {
+<<<<<<< HEAD
+		http.Error(w, "Unauthorized : cookie not found", http.StatusUnauthorized)
+=======
 		models.SetNotification(w, "You have been logged out", "error")
 		http.Redirect(w, r, "/", http.StatusSeeOther) // redirect the user to the home page if the cookie is not found
+>>>>>>> main
 		return
 	}
 
@@ -42,7 +49,10 @@ func LogoutUsers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+<<<<<<< HEAD
+=======
 	models.SetNotification(w, "You have been logged out", "error") // set a notification message to inform the user about the logout status
 
+>>>>>>> main
 	http.Redirect(w, r, "/", http.StatusFound) // redirect the user to the home page after logout
 }

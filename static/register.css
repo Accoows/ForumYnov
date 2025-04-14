@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 html {
   background: url('fond.jpg') no-repeat;
   background-size: cover;
@@ -352,16 +354,29 @@ body.dark-mode .form {
     width: 100%;
   }
 =======
+>>>>>>> main
 html {
   background: url('fond.jpg') no-repeat;
   background-size: cover;
   background-position: center;
+<<<<<<< HEAD
+  border-radius: 10px;
+  border-color: #000000;
+=======
+>>>>>>> main
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
+}
+
+body{
+  height: 100%;
+=======
   height: 100%;
   overflow: auto;
+>>>>>>> main
 }
 
 .background,
@@ -379,6 +394,10 @@ html {
     gap: 0px;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
+    /* align-self: stretch; */
+=======
+>>>>>>> main
     flex-shrink: 0;
     position: relative;
     height: 100%;
@@ -567,6 +586,8 @@ html {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+<<<<<<< HEAD
+=======
 }
 
 .form{
@@ -677,4 +698,5 @@ body.dark-mode .form {
       width: 100%; 
   }
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
 }

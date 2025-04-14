@@ -9,14 +9,20 @@ html,body {
     margin: 0;
     padding: 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+<<<<<<< HEAD
+=======
 =======
     position: relative;
     overflow-x: hidden;
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
   }
   
   html {
@@ -261,10 +267,14 @@ html,body {
     justify-content: flex-start;
     flex-shrink: 0;
 <<<<<<< HEAD
+    width: 752px;
+=======
+<<<<<<< HEAD
     width: 100%;
 =======
     width: 752px;
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
     position: relative;
     overflow: hidden;
   }
@@ -438,6 +448,8 @@ html,body {
   
     html {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
       font-size: 20px;
     }
   
@@ -446,6 +458,7 @@ html,body {
       margin: 0 auto; 
       padding: 5px; 
 =======
+>>>>>>> main
       font-size: 12px; /* Reduce base font size for smaller screens */
     }
   
@@ -453,17 +466,24 @@ html,body {
       width: 95%; /* Reduce width to fit better on smaller screens */
       margin: 0 auto; /* Center the content */
       padding: 5px; /* Reduce padding */
+<<<<<<< HEAD
+=======
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
     }
   
     .background-shadow {
       width: 100%;
       box-shadow: none;
 <<<<<<< HEAD
+      padding: 10px; /* Reduce padding */
+=======
+<<<<<<< HEAD
       padding: 10px; 
 =======
       padding: 10px; /* Reduce padding */
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
     }
   
     .container {
@@ -471,41 +491,59 @@ html,body {
       align-items: center;
       text-align: center;
 <<<<<<< HEAD
+      padding: 10px; /* Reduce padding */
+=======
+<<<<<<< HEAD
       padding: 10px; 
 =======
       padding: 10px; /* Reduce padding */
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
     }
   
     .tab-group {
       flex-direction: column;
 <<<<<<< HEAD
+      gap: 8px; /* Reduce gap between tabs */
+=======
+<<<<<<< HEAD
       gap: 8px; 
 =======
       gap: 8px; /* Reduce gap between tabs */
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
     }
   
     .tab {
       width: 100%;
 <<<<<<< HEAD
-      padding: 8px; 
-=======
       padding: 8px; /* Reduce padding */
->>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
-    }
-  
-    .container9 {
-      width: 100%;
+=======
 <<<<<<< HEAD
       padding: 8px; 
 =======
       padding: 8px; /* Reduce padding */
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
+    }
+  
+    .container9 {
+      width: 100%;
+<<<<<<< HEAD
+      padding: 8px; /* Reduce padding */
+=======
+<<<<<<< HEAD
+      padding: 8px; 
+=======
+      padding: 8px; /* Reduce padding */
+>>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
     }
   
     .background-shadow3 {
       width: 100%;
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
       padding: 8px;
     }
@@ -525,6 +563,7 @@ html,body {
     .icon {
       width: 20px;
 =======
+>>>>>>> main
       padding: 8px; /* Reduce padding */
     }
   
@@ -542,39 +581,58 @@ html,body {
   
     .icon {
       width: 20px; /* Reduce icon size */
+<<<<<<< HEAD
+=======
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
       height: 20px;
       font-size: 16px;
     }
   
     .title2 {
 <<<<<<< HEAD
+      font-size: 8px; /* Reduce font size for tab titles */
+=======
+<<<<<<< HEAD
       font-size: 8px;
 =======
       font-size: 8px; /* Reduce font size for tab titles */
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
       line-height: 12px;
     }
   
     .voyages, .language, .manga {
 <<<<<<< HEAD
+      font-size: 14px; /* Reduce section titles font size */
+=======
+<<<<<<< HEAD
       font-size: 14px;
 =======
       font-size: 14px; /* Reduce section titles font size */
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
       line-height: 18px;
     }
   
     .culture, .foods, .destinations, .sh-jo, .sh-nen, .seinen, .category-item {
 <<<<<<< HEAD
+      font-size: 12px; /* Reduce font size for category items */
+=======
+<<<<<<< HEAD
       font-size: 12px;
 =======
       font-size: 12px; /* Reduce font size for category items */
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
       line-height: 16px;
     }
   
     button {
+<<<<<<< HEAD
+      font-size: 14px; /* Reduce button font size */
+      padding: 8px 16px; /* Reduce button padding */
+=======
 <<<<<<< HEAD
       font-size: 14px;
       padding: 8px 16px;
@@ -582,5 +640,6 @@ html,body {
       font-size: 14px; /* Reduce button font size */
       padding: 8px 16px; /* Reduce button padding */
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
     }
   }

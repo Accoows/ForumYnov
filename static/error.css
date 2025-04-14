@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 html {
     background: url('fond.jpg') no-repeat;
     background-size: cover;
@@ -59,6 +61,7 @@ body {
   .error-container a:hover {
     background-color: #cc0000;
 =======
+>>>>>>> main
 html {
     background: url('fond.jpg') no-repeat;
     background-size: cover;
@@ -69,7 +72,10 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
+=======
     height: 100%;
+>>>>>>> main
 }
 
 body {
@@ -78,6 +84,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
+    height: 100vh;
+=======
+>>>>>>> main
     margin: 0;
   }
 
@@ -118,5 +128,8 @@ body {
 
   .error-container a:hover {
     background-color: #cc0000;
+<<<<<<< HEAD
+=======
 >>>>>>> 910adcb7ff8e7cf90a0ba03ba2b8ee90a9146701
+>>>>>>> main
   }

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 <!-- CREATE_POST.html-->
+>>>>>>> main
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,6 +16,11 @@
   <form action="/posts/create" method="POST">
     <label for="title">Titre :</label><br>
     <input type="text" id="title" name="title" required><br><br>
+<<<<<<< HEAD
+
+    <!-- MAJ A FAIRE : Mettre en place le système de boucle pour parcourir toutes les catégories disponibles -->
+=======
+>>>>>>> main
     <label for="category_id">Catégorie :</label><br>
     <select name="category_id" id="category_id" required>
       {{range .AllCategories}}
@@ -29,7 +37,11 @@
   </form>
 
 
+<<<<<<< HEAD
+  <p><a href="/posts">Retour à la liste des posts</a></p>
+=======
   <p><a href="/category?id={{.CategoryID}}">Retour à la catégorie</a></p>
+>>>>>>> main
 </body>
 
 </html>

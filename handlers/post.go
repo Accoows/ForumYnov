@@ -80,8 +80,12 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+<<<<<<< HEAD
+		http.Redirect(w, r, "/posts", http.StatusSeeOther)
+=======
 		models.SetNotification(w, "Post successfully created", "success")
 		http.Redirect(w, r, "/category?id="+strconv.Itoa(categoryID), http.StatusSeeOther)
+>>>>>>> main
 	}
 }
 
@@ -175,8 +179,12 @@ func DeletePostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+<<<<<<< HEAD
+	http.Redirect(w, r, "/posts", http.StatusSeeOther)
+=======
 	models.SetNotification(w, "Post successfully deleted", "success")
 	http.Redirect(w, r, "/category?id="+strconv.Itoa(post.Category_id), http.StatusSeeOther)
+>>>>>>> main
 }
 
 // =========================
@@ -254,7 +262,10 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+<<<<<<< HEAD
+=======
 		models.SetNotification(w, "Post successfully updated", "info")
+>>>>>>> main
 		http.Redirect(w, r, "/posts/view?id="+strconv.Itoa(postID), http.StatusSeeOther)
 	}
 }
