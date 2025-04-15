@@ -1,0 +1,51 @@
+<!-- post.html -->
+<!DOCTYPE html>
+<html>
+
+<!--
+==================== CHANGELOG / TO DO LIST ==========================
+- Ajouter un système de pagination pour les posts (10 posts par page)
+
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>ForumYnov</title>
+    <link rel="stylesheet" href="/static/post.css">
+</head>
+
+<body>
+    <div class="post-list">
+        <div class="background">
+            <div class="background-shadow">
+                <div class="container">
+                    <div class="container2">
+                        <a href="/"><img class="vector" src="/static/vector0.svg" /></a>
+                        <div class="forum-name">ForumYnov</div>
+                    </div>
+                    <div class="button">
+                        <button id="dark-mode-toggle">Dark Mode</button>
+                    </div>
+                </div>
+            </div>
+            {{range .Posts}}
+            <div class="article">
+                <div class="div">
+                    <div class="img"></div>
+                    <div class="div2">
+                        <div class="div3">
+                            <div class="Pseudo">{{.AuthorUsername}}</div>
+                            <div class="timestamp">{{.Created_at}}</div>
+                        </div>
+                        <div class="title-content"> {{.Title}}</div>
+                        <div class="text-content">{{.Content}}</div>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
