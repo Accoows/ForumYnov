@@ -18,10 +18,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	userID, err := models.GetUserIDFromRequest(r)
-	isLoggedIn := false
-	if err == nil && userID != "" {
-		isLoggedIn, _ = models.VerifyCookieValidity(r, userID)
-	}
+	isLoggedIn := err == nil && userID != ""
 
 	data := struct {
 		IsLoggedIn bool
