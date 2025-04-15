@@ -32,10 +32,31 @@ func ProfilePage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := struct { // data to be passed to the template
-		Username string
+	// Get posts created by the user
+	createdPosts, err := database.GetPostsByUser(userID)
+	if err != nil {
+		http.Error(w, "Error fetching created posts", http.StatusInternalServerError)
+		return
+	}
+
+	// Get posts liked by the user
+	likedPosts, err := database.GetLikedPostsByUser(userID)
+	if err != nil {
+		http.Error(w, "Error fetching liked posts", http.StatusInternalServerError)
+		return
+	}
+
+	// data to be passed to the template
+	data := struct {
+		Username     string
+		Email        string
+		CreatedPosts []database.Posts
+		LikedPosts   []database.Posts
 	}{
-		Username: user.Username,
+		Username:     user.Username,
+		Email:        user.Email,
+		CreatedPosts: createdPosts,
+		LikedPosts:   likedPosts,
 	}
 
 	tmpl, err := template.ParseFiles("templates/edit-profile.html") // parse the HTML template file

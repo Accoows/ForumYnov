@@ -1,18 +1,17 @@
-html {
+html,
+body {
   background: url('fond.jpg') no-repeat;
   background-size: cover;
   background-position: center;
-  border-radius: 10px;
-  border-color: #000000;
 }
-  
+
 .page,
 .page * {
   box-sizing: border-box;
 }
-  
+
 .page {
-  background: rgb(238, 234, 234,50%);
+  background: rgb(238, 234, 234, 50%);
   backdrop-filter: blur(10px);
   border-radius: 10px;
   padding: 0px 0px 12px 0px;
@@ -27,7 +26,7 @@ html {
   margin-right: 5%;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
 }
-  
+
 .top-bar {
   border-radius: 10px;
   background: #F3D1D1; /* Changed */
@@ -45,6 +44,7 @@ html {
   border-color: #000000;
   margin: 20px;
 }
+
 .content {
   padding: 12px 8px 12px 16px;
   display: flex;
@@ -58,6 +58,7 @@ html {
   border-radius: 10px;
   border-color: #000000;
 }
+
 .title {
   color: #000000;
   text-align: left;
@@ -68,6 +69,7 @@ html {
   position: relative;
   flex: 1;
 }
+
 .tab-group {
   border-radius: 20px;
   padding: 5px 12px 5px 12px;
@@ -81,6 +83,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .tab {
   border-radius: 20px;
   box-shadow: 0px 0px 2px 0px #ffffff;
@@ -95,8 +98,8 @@ html {
   border-color: #eeeaea;
   background-color: #F3D1D1;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 1);
-  
 }
+
 .frame {
   background: rgba(0, 0, 0, 0.9);
   border-radius: 24px;
@@ -107,6 +110,7 @@ html {
   aspect-ratio: 1;
   background-color: #92A8D1; /* Added */
 }
+
 .icon {
   color: #000000;
   text-align: center;
@@ -126,6 +130,7 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .title2 {
   color: #000000;
   text-align: center;
@@ -142,6 +147,7 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .list {
   padding: 5px 12px 5px 12px;
   display: flex;
@@ -153,6 +159,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .section-title {
   padding: 16px 1px 2px 0px;
   display: flex;
@@ -164,6 +171,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .text {
   display: flex;
   flex-direction: column;
@@ -173,6 +181,7 @@ html {
   flex: 1;
   position: relative;
 }
+
 .title3 {
   color: #000000;
   text-align: left;
@@ -183,10 +192,11 @@ html {
   position: relative;
   align-self: stretch;
 }
+
 .item {
   background-color: #F3D1D1;
   border-radius: 10px;
-  box-shadow: 0px 0px 1px 0px #000000;  
+  box-shadow: 0px 0px 1px 0px #000000;
   padding: 12px 1px 12px 1px;
   display: flex;
   flex-direction: row;
@@ -197,6 +207,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .frame2 {
   background: #92A8D1;
   border-radius: 16px;
@@ -206,6 +217,7 @@ html {
   position: relative;
   aspect-ratio: 1;
 }
+
 .icon2 {
   color: #000000;
   text-align: center;
@@ -225,6 +237,7 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .frame-427318906 {
   display: flex;
   flex-direction: column;
@@ -234,6 +247,7 @@ html {
   flex: 1;
   position: relative;
 }
+
 .title4 {
   color: #000000;
   text-align: left;
@@ -244,6 +258,7 @@ html {
   position: relative;
   align-self: stretch;
 }
+
 .list2 {
   padding: 0px 12px 0px 12px;
   display: flex;
@@ -255,10 +270,11 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .article {
   background-color: #F3D1D1;
   border-radius: 10px;
-  box-shadow: 0px 0px 1px 0px #000000; 
+  box-shadow: 0px 0px 1px 0px #000000;
   padding: 8px 1px 8px 1px;
   display: flex;
   flex-direction: row;
@@ -269,6 +285,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .image-container {
   display: flex;
   flex-direction: row;
@@ -281,12 +298,14 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .image {
   background: #92A8D1;
   align-self: stretch;
   flex: 1;
   position: relative;
 }
+
 .title5 {
   color: #000000;
   text-align: left;
@@ -297,6 +316,7 @@ html {
   position: relative;
   align-self: stretch;
 }
+
 .subtitle {
   color: #000000;
   text-align: left;
@@ -307,6 +327,7 @@ html {
   position: relative;
   align-self: stretch;
 }
+
 .user {
   padding: 4px 0px 4px 0px;
   display: flex;
@@ -318,6 +339,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .avatar {
   display: flex;
   flex-direction: row;
@@ -327,6 +349,7 @@ html {
   flex: 1;
   position: relative;
 }
+
 .avatar2 {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 20px;
@@ -337,6 +360,7 @@ html {
   overflow: hidden;
   aspect-ratio: 1;
 }
+
 .title6 {
   color: #000000;
   text-align: left;
@@ -350,6 +374,7 @@ html {
   overflow: hidden;
   white-space: nowrap;
 }
+
 .list3 {
   padding: 0px 12px 0px 12px;
   display: flex;
@@ -362,6 +387,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .row {
   display: flex;
   flex-direction: row;
@@ -372,6 +398,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .chip {
   background-color: #F3D1D1;
   border-radius: 6px;
@@ -387,6 +414,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .title7 {
   color: #000000;
   text-align: left;
@@ -403,6 +431,7 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .post {
   background-color: #F3D1D1;
   border-radius: 6px;
@@ -418,6 +447,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .user2 {
   padding: 8px;
   display: flex;
@@ -429,6 +459,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .avatar3 {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 24px;
@@ -439,6 +470,7 @@ html {
   overflow: hidden;
   aspect-ratio: 1;
 }
+
 .icon-buttons {
   display: flex;
   flex-direction: row;
@@ -448,6 +480,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .icon3 {
   color: #000000;
   text-align: center;
@@ -464,6 +497,7 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .image-container2 {
   display: flex;
   flex-direction: row;
@@ -476,6 +510,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .title8 {
   color: #000000;
   text-align: center;
@@ -493,6 +528,7 @@ html {
   align-items: center;
   justify-content: center;
 }
+
 .pagination {
   display: flex;
   flex-direction: row;
@@ -504,6 +540,7 @@ html {
   translate: -50%;
   bottom: 8px;
 }
+
 .rectangle-3343 {
   background: #ffffff;
   border-radius: 100px;
@@ -512,6 +549,7 @@ html {
   height: 4px;
   position: relative;
 }
+
 .rectangle-3344 {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 100px;
@@ -522,6 +560,7 @@ html {
   aspect-ratio: 1;
   background-color: #eeeaea; /* Added */
 }
+
 .rectangle-3347 {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 100px;
@@ -532,6 +571,7 @@ html {
   aspect-ratio: 1;
   background-color: #eeeaea; /* Added */
 }
+
 .rectangle-3340 {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 100px;
@@ -542,6 +582,7 @@ html {
   aspect-ratio: 1;
   background-color: #eeeaea; /* Added */
 }
+
 .text-content {
   padding: 12px;
   display: flex;
@@ -553,6 +594,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .title9 {
   color: #000000;
   text-align: left;
@@ -563,6 +605,7 @@ html {
   position: relative;
   align-self: stretch;
 }
+
 .selection {
   display: flex;
   flex-direction: row;
@@ -574,6 +617,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .label-normal {
   background: #92A8D1;
   border-radius: 2px;
@@ -590,6 +634,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .label-text {
   color: #000000;
   text-align: left;
@@ -599,6 +644,7 @@ html {
   font-weight: 400;
   position: relative;
 }
+
 .button {
   padding: 0px 12px 0px 12px;
   display: flex;
@@ -611,6 +657,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .border {
   background-color: #ffffff;
   width: 90%;
@@ -623,6 +670,7 @@ html {
   padding: 20px 45px 20px 20px;
   margin: 20px 20px;
 }
+
 .seconday {
   background: #92A8D1;
   border-radius: 8px;
@@ -637,6 +685,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .title10 {
   color: #000000;
   text-align: left;
@@ -646,6 +695,7 @@ html {
   font-weight: 500;
   position: relative;
 }
+
 .card {
   background: #92A8D1;
   border-radius: 6px;
@@ -660,6 +710,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .user3 {
   display: flex;
   flex-direction: row;
@@ -670,6 +721,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .title12 {
   color: #000000;
   text-align: left;
@@ -683,6 +735,7 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .icon-buttons2 {
   display: flex;
   flex-direction: row;
@@ -727,7 +780,7 @@ body.dark-mode .seconday,
 body.dark-mode .card,
 body.dark-mode .chip,
 body.dark-mode .post,
-body.dark-mode .search{
+body.dark-mode .search {
   background-color: #2c2c2c;
   border-color: #444444;
 }
@@ -750,7 +803,7 @@ body.dark-mode .icon3,
 body.dark-mode .icon-buttons .icon3,
 body.dark-mode .icon-buttons2 .icon3,
 body.dark-mode .selection .label-normal,
-body.dark-mode .label-text{
+body.dark-mode .label-text {
   color: #ffffff;
 }
 
@@ -799,8 +852,9 @@ body.dark-mode .page {
 
 /* Styles spécifiques aux petits écrans */
 @media (max-width: 768px) {
-  html, body {
-    height: 100%;
+
+  html,
+  body {
     flex-direction: column;
     padding: 0;
     margin: 0;
@@ -816,16 +870,16 @@ body.dark-mode .page {
 
   .page {
     min-height: 100vh;
-    width: 95%; 
-    margin: 0 auto; 
-    padding: 5px; 
+    width: 95%;
+    margin: 0 auto;
+    padding: 5px;
   }
 
   .top-bar {
     align-self: center;
     width: 100%;
-    padding: 10px; 
-    box-shadow: none; 
+    padding: 10px;
+    box-shadow: none;
   }
 
   .top-bar .content {
@@ -842,31 +896,46 @@ body.dark-mode .page {
 
   .tab {
     width: 100%;
-    padding: 8px; 
+    padding: 8px;
   }
 
-  .list, .list2, .list3 {
+  .list,
+  .list2,
+  .list3 {
     width: 100%;
-    padding: 8px; 
+    padding: 8px;
   }
 
-  .article, .item, .chip, .post, .card {
+  .article,
+  .item,
+  .chip,
+  .post,
+  .card {
     width: 100%;
-    padding: 8px; 
+    padding: 8px;
   }
 
-  .title, .title2, .title3, .title4, .title5, .title6, .title7 {
+  .title,
+  .title2,
+  .title3,
+  .title4,
+  .title5,
+  .title6,
+  .title7 {
     font-size: 14px;
     line-height: 18px;
   }
 
-  .icon, .icon2 {
+  .icon,
+  .icon2 {
     width: 20px;
     height: 20px;
     font-size: 16px;
   }
 
-  .subtitle, .text, .label-text {
+  .subtitle,
+  .text,
+  .label-text {
     font-size: 12px;
     line-height: 16px;
   }
@@ -875,11 +944,11 @@ body.dark-mode .page {
     font-size: 14px;
     padding: 8px 16px;
   }
-  
+
   .border {
     width: 90%;
     max-width: 300px;
-    padding: 10px; 
+    padding: 10px;
     margin: 0 auto;
   }
 }
