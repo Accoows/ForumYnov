@@ -168,7 +168,7 @@ func DeletePostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = database.DeletePostByID(postID)
+	err = database.DeletePostWithDependencies(postID)
 	if err != nil {
 		log.Println("[handlers/post.go] [DeletePostHandler] Erreur suppression post >>>", err)
 		ErrorHandler(w, http.StatusInternalServerError)

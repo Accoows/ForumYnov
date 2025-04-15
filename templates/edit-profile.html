@@ -39,11 +39,21 @@
           <div class="container7">
             <div class="profile-picture">Profile picture</div>
           </div>
-          <div class="frame-427318907"></div>
+          <div class="frame-427318907 profile-picture-wrapper">
+            <img src="{{if .ProfilePicture}}/static/uploads/{{.ProfilePicture}}{{else}}/static/default-profile.png{{end}}" alt="Profile Picture">
+            {{if .ProfilePicture}}
+              <form action="/delete-profile-picture" method="POST" class="delete-button-form">
+                <button type="submit" class="delete-picture-btn">&times;</button>
+              </form>
+            {{end}}
+          </div>       
           <div class="container8">
-            <button class="link2">
-              <div class="upload">Upload</div>
-            </button>
+            <form action="/upload-profile-picture" method="POST" enctype="multipart/form-data">
+              <input type="file" name="profile_picture" id="file-upload" accept="image/*" hidden onchange="this.form.submit()">
+              <button type="button" class="link2" onclick="document.getElementById('file-upload').click()">
+                <div class="upload">Upload</div>
+              </button>
+            </form>
           </div>
         </div>
         <div class="margin3">

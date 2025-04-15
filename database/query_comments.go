@@ -12,8 +12,17 @@ func CreateComment(userID string, postID int, content string) error {
 	return InsertCommentsData(comment)
 }
 
+func DeleteLikesByCommentID(commentID int) error {
+	_, err := SQL.Exec("DELETE FROM Likes_Dislikes WHERE comment_id = ?", commentID)
+	return err
+}
+
 func DeleteCommentByID(id int) error {
-	_, err := SQL.Exec("DELETE FROM Comments WHERE id = ?", id)
+	err := DeleteLikesByCommentID(id)
+	if err != nil {
+		return err
+	}
+	_, err = SQL.Exec("DELETE FROM Comments WHERE id = ?", id)
 	return err
 }
 

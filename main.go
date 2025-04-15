@@ -27,6 +27,8 @@ func main() {
 
 	http.Handle("/templates/", http.StripPrefix("/templates/", http.FileServer(http.Dir("./templates"))))
 
+	http.Handle("/static/uploads/", http.StripPrefix("/static/uploads/", http.FileServer(http.Dir("static/uploads"))))
+
 	// ========================
 
 	// Routes
@@ -36,8 +38,8 @@ func main() {
 	http.HandleFunc("/register", handlers.RegisterHandler)
 	http.HandleFunc("/logout", handlers.LogoutUsers)
 	http.HandleFunc("/profile", handlers.ProfilePage)
-	//http.HandleFunc("/reset-password", handlers.ResetPasswordHandler)
-	//http.HandleFunc("/forgot-username", handlers.ForgotUsernameHandler)
+	http.HandleFunc("/upload-profile-picture", handlers.UploadProfilePictureHandler)
+	http.HandleFunc("/delete-profile-picture", handlers.DeleteProfilePictureHandler)
 
 	// CRUD pour les posts
 	http.HandleFunc("/posts", handlers.PostsHandler)
@@ -46,7 +48,7 @@ func main() {
 	http.HandleFunc("/posts/edit", handlers.EditPostHandler)
 	http.HandleFunc("/posts/delete", handlers.DeletePostHandler)
 	http.HandleFunc("/posts/filter", handlers.FilterPostsByCategories)
-	//http.HandleFunc("/post-detail", handlers.PostDetailHandler)
+
 	http.HandleFunc("/category", handlers.CategoryPostsHandler)
 	http.HandleFunc("/post-list", handlers.PostListHandler)
 
@@ -56,8 +58,6 @@ func main() {
 	http.HandleFunc("/comments/delete", handlers.DeleteCommentHandler)
 
 	http.HandleFunc("/like", handlers.LikeHandler)
-
-	//http.HandleFunc("/filter", handlers.FilterHandler)
 
 	fmt.Println("Starting server at port 8080")
 	fmt.Println(">>>> http://localhost:8080 <<<<")
