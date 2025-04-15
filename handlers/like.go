@@ -3,6 +3,7 @@ package handlers
 import (
 	"database/sql"
 	"forumynov/database"
+	"forumynov/models"
 	"log"
 	"net/http"
 	"strconv"
@@ -17,8 +18,10 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 
 	userID, err := getConnectedUserID(r)
 	if err != nil {
-		http.Error(w, "Vous devez être connecté pour liker", http.StatusUnauthorized) // à vérifier
+		models.SetNotification(w, "You must be logged in to like or dislike", "error")
+		http.Redirect(w, r, r.Referer(), http.StatusSeeOther)
 		return
+
 	}
 
 	// Récupérer les valeurs du formulaire
