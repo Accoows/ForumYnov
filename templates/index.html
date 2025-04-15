@@ -15,11 +15,16 @@
       <div class="content">
         <div class="title">Forum Name</div>
         <button id="dark-mode-toggle">Dark Mode</button>
-        <a href="/login"><button id="login-button">Login</button></a>
-        <a href="/register"><button id="register-button">Register</button></a>
         <a href="/post-list"><button id="post-list">Posts list</button></a>
         <a href="/posts"><button id="post">Post</button></a>
-        <a href="/profile"><button id="profile">Profile</button></a>
+        {{if .IsLoggedIn}}
+          <a href="/profile"><button id="profile">Profile</button></a>
+          <form action="/logout" method="POST">
+            <button type="submit" class="disconect" name="logout" value="true">Disconect</button>
+          </form>
+        {{else}}
+          <a href="/login"><button id="login-button">Login</button></a>
+        {{end}}
       </div>
     </div>
     <h1>Afficher les 3 catégories avec le plus d'intéraction/réponses dans les dernieres 24h (trending)?</h1>

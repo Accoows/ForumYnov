@@ -29,6 +29,17 @@
                     </div>
                 </div>
             </div>
+            <div class="filter-section">
+                <form action="/posts/filter" method="GET">
+                    <label for="category">Filter by category:</label>
+                    <select id="category" name="category">
+                        <option value="Voyages">Voyages</option>
+                        <option value="Langue">Langue</option>
+                        <option value="Anime/Manga">Anime/Manga</option>
+                    </select>
+                    <button type="submit">Filter</button>
+                </form>
+            </div>
             {{range .Posts}}
             <div class="article">
                 <div class="div">
