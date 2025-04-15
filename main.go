@@ -45,6 +45,7 @@ func main() {
 	http.HandleFunc("/posts/view", handlers.ViewPostHandler)
 	http.HandleFunc("/posts/edit", handlers.EditPostHandler)
 	http.HandleFunc("/posts/delete", handlers.DeletePostHandler)
+	http.HandleFunc("/posts/filter", handlers.FilterPostsByCategories)
 	//http.HandleFunc("/post-detail", handlers.PostDetailHandler)
 	http.HandleFunc("/category", handlers.CategoryPostsHandler)
 	http.HandleFunc("/post-list", handlers.PostListHandler)
