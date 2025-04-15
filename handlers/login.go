@@ -102,8 +102,7 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 		Unparsed:   []string{},
 	}
 
-	http.SetCookie(w, userIdCookie) // set the cookie in the response header to send it to the client
-
+	http.SetCookie(w, userIdCookie)                   // set the cookie in the response header to send it to the client
 	http.Redirect(w, r, "/profile", http.StatusFound) // redirect the user to the profile page after successful login
 }
 
