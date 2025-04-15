@@ -12,19 +12,26 @@
 <body>
   <div class="page">
     <div class="top-bar">
-      <div class="content">
-        <div class="title">Forum Name</div>
-        <button id="dark-mode-toggle">Dark Mode</button>
-        <a href="/post-list"><button id="post-list">Posts list</button></a>
-        <a href="/posts"><button id="post">Post</button></a>
-        {{if .IsLoggedIn}}
+      <div class="top-bar-inner">
+        <!-- Logo positionné indépendamment -->
+        <a href="/">
+          <img src="/static/logoforum.png" alt="Forum Logo" class="forum-logo">
+        </a>
+
+          <!-- Contenu des boutons, aligné à droite -->
+        <div class="content">
+          <button id="dark-mode-toggle">Dark Mode</button>
+          <a href="/post-list"><button id="post-list">Posts list</button></a>
+          <a href="/posts"><button id="post">Post</button></a>
+          {{if .IsLoggedIn}}
           <a href="/profile"><button id="profile">Profile</button></a>
           <form action="/logout" method="POST">
             <button type="submit" class="disconect" name="logout" value="true">Disconnect</button>
           </form>
-        {{else}}
+          {{else}}
           <a href="/login"><button id="login-button">Login</button></a>
-        {{end}}
+          {{end}}
+        </div>
       </div>
     </div>
     <h1>Afficher les 3 catégories avec le plus d'intéraction/réponses dans les dernieres 24h (trending)?</h1>
@@ -154,7 +161,8 @@
     <div class="list3">
       <div class="section-title">
         <div class="text">
-          <div class="title3">Featured Posts (on peux afficher içi si possible les 3 derniers post crée sur le forum)</div>
+          <div class="title3">Featured Posts (on peux afficher içi si possible les 3 derniers post crée sur le forum)
+          </div>
         </div>
       </div>
       <div class="row">
@@ -172,7 +180,8 @@
           </div>
           <div class="image-container2">
             <div class="image">
-              <div class="title8">Le post en lui même avec mini mise en forme pour voir le nom de l'auteur en haut?</div>
+              <div class="title8">Le post en lui même avec mini mise en forme pour voir le nom de l'auteur en haut?
+              </div>
             </div>
           </div>
         </div>
@@ -226,7 +235,8 @@
     <div class="list3">
       <div class="section-title">
         <div class="text">
-          <div class="title3">Top Ratings(on peux faire un systeme de livre d'or pour le forum idk à la google review)</div>
+          <div class="title3">Top Ratings(on peux faire un systeme de livre d'or pour le forum idk à la google review)
+          </div>
         </div>
       </div>
       <div class="row">
