@@ -4,8 +4,7 @@
 
 <head>
   <title>ForumYnov</title>
-  <link rel="stylesheet" type="text/css" href="/static/index.css">
-  <link rel="stylesheet" type="text/css" href="/static/notifications.css">
+  <link rel="stylesheet" type="text/css" href="static/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajouté -->
 </head>
 
@@ -19,6 +18,7 @@
         <a href="/register"><button id="register-button">Register</button></a>
         <a href="/post-list"><button id="post-list">Posts list</button></a>
         <a href="/posts"><button id="post">Post</button></a>
+        <a href="/category"><button id="post-detail">Post detail</button></a>
         <a href="/profile"><button id="profile">Profile</button></a>
       </div>
     </div>
@@ -209,7 +209,7 @@
         </div>
       </div>
     </div>
-    <input type="text" class="border" placeholder="Enter keyword to search"></input>
+        <input type="text" class="border" placeholder="Enter keyword to search"></input>
     <div class="button">
       <button class="seconday">
         <div class="title10">My Subscriptions</div>
@@ -258,12 +258,7 @@
       </div>
     </div>
   </div>
-  <div id="notification-toast" class="hidden notif-toast">
-    <span id="notification-message"></span>
-    <button id="close-notification-toast" class="close-btn">&times;</button>
-  </div>
   <script src="scripts/script.js"></script>
-  <script src="scripts/notifications.js"></script>
 </body>
 
 </html>
