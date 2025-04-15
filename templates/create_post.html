@@ -1,0 +1,35 @@
+<!-- CREATE_POST.html-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Créer un post</title>
+</head>
+
+<body>
+  <h1>Créer un nouveau post</h1>
+
+  <form action="/posts/create" method="POST">
+    <label for="title">Titre :</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+    <label for="category_id">Catégorie :</label><br>
+    <select name="category_id" id="category_id" required>
+      {{range .AllCategories}}
+        <option value="{{.ID}}" {{if eq .ID $.CategoryID}}selected{{end}}>
+          {{.Name}}
+        </option>
+      {{end}}
+    </select><br><br>
+
+    <label for="content">Contenu :</label><br>
+    <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
+
+    <input type="submit" value="Publier le post">
+  </form>
+
+
+  <p><a href="/category?id={{.CategoryID}}">Retour à la catégorie</a></p>
+</body>
+
+</html>
