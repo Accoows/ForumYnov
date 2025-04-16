@@ -60,16 +60,19 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 	emailRight := VerifyEmailConformity(&newUser) // check if the email is valid
 	if !emailRight {
 		models.SetNotification(w, "Email does not comply", "error")
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
 		return
 	}
 	userUUID, hashedPassword, err := GetHashedPasswordAndUUID(newUser.Email) // get the hashed password and user UUID from the database using the email
 	if err != nil {
 		models.SetNotification(w, "Incorrect email", "error")
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
 		return
 	}
 
 	if !models.CheckPasswordHash(newUser.Password_hash, hashedPassword) { // check if the provided password matches the hashed password from the database
 		models.SetNotification(w, "Incorrect password", "error")
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
 		return
 	}
 
