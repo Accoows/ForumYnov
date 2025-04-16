@@ -113,3 +113,26 @@ func DeletePostWithDependencies(postID int) error {
 	_, err = SQL.Exec(`DELETE FROM Posts WHERE id = ?`, postID)
 	return err
 }
+
+func GetLatestPosts() ([]Posts, error) {
+	query := `SELECT Posts.id, Posts.user_id, Posts.category_id, Posts.title, Posts.content, Posts.created_at, Users.username, Categories.name, Categories.category_photos 
+	FROM Posts JOIN Users ON Posts.user_id = Users.id JOIN Categories ON Posts.category_id = Categories.id ORDER BY Posts.created_at DESC LIMIT 3;`
+
+	rows, err := SQL.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var posts []Posts
+	for rows.Next() {
+		var post Posts
+		err := rows.Scan(&post.ID, &post.User_id, &post.Category_id, &post.Title, &post.Content, &post.Created_at, &post.AuthorUsername, &post.CategoryName, &post.CategoryPhotos)
+		if err != nil {
+			return nil, err
+		}
+		posts = append(posts, post)
+	}
+
+	return posts, nil
+}

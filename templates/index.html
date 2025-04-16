@@ -13,47 +13,31 @@
   <div class="page">
     <div class="top-bar">
       <div class="top-bar-inner">
-        <!-- Logo positionné indépendamment -->
-        <a href="/">
-          <img src="/static/logoforum.png" alt="Forum Logo" class="forum-logo">
-        </a>
-
-          <!-- Contenu des boutons, aligné à droite -->
-        <div class="content">
+        <div class="container">
+          <div class="container2">
+              <a href="/">
+                  <img src="/static/logoforum.png" alt="Forum Logo" class="forum-logo">
+              </a>
+          </div>
           <button id="dark-mode-toggle">Dark Mode</button>
-          <a href="/post-list"><button id="post-list">Posts list</button></a>
-          <a href="/posts"><button id="post">Post</button></a>
           {{if .IsLoggedIn}}
           <a href="/profile"><button id="profile">Profile</button></a>
-          <form action="/logout" method="POST">
-            <button type="submit" class="disconect" name="logout" value="true">Disconnect</button>
-          </form>
           {{else}}
           <a href="/login"><button id="login-button">Login</button></a>
           {{end}}
         </div>
       </div>
     </div>
-    <h1>Afficher les 3 catégories avec le plus d'intéraction/réponses dans les dernieres 24h (trending)?</h1>
+    <h1>Top 3 Categories (this week)</h1>
     <div class="tab-group">
-      <button class="tab">
-        <div class="frame">
-          <div class="icon">📘</div> <!-- Education -->
-        </div>
-        <div class="title2">Education</div>
+      {{range .TopCategories}}
+      <button class="tab" onclick="location.href='/category?id={{.ID}}'">
+      <div class="frame">
+        <div class="icon">{{.CategoryPhotos}}</div>
+      </div>
+      <div class="title2">{{.Name}}</div>
       </button>
-      <button class="tab">
-        <div class="frame">
-          <div class="icon">💡</div> <!-- Ideas -->
-        </div>
-        <div class="title2">Ideas</div>
-      </button>
-      <button class="tab">
-        <div class="frame">
-          <div class="icon">✈️</div> <!-- Travel -->
-        </div>
-        <div class="title2">Travel</div>
-      </button>
+      {{end}}
     </div>
     <div class="list">
       <div class="section-title">
@@ -61,30 +45,29 @@
           <div class="title3">Popular Topics (all time)</div>
         </div>
       </div>
-      <button class="item">
+      {{range .TopCategoriesAllTime}}
+      <button class="item" onclick="location.href='/category?id={{.ID}}'">
         <div class="frame2">
-          <div class="icon2">🎌</div> <!-- Culture -->
+          <div class="icon2">{{.CategoryPhotos}}</div> <!-- Culture -->
         </div>
         <div class="frame-427318906">
-          <div class="title4">Culture</div>
+          <div class="title4">{{.Name}}</div>
         </div>
       </button>
-      <button class="item">
-        <div class="frame2">
-          <div class="icon2">🍣</div> <!-- Foods -->
-        </div>
-        <div class="frame-427318906">
-          <div class="title4">Foods</div>
-        </div>
+      {{end}}
+    </div>
+    <div class="button">
+      <button class="seconday" onclick="location.href='/post-list'">
+        <div class="title10">Posts list</div>
       </button>
-      <button class="item">
-        <div class="frame2">
-          <div class="icon2">🗻</div> <!-- Destinations -->
-        </div>
-        <div class="frame-427318906">
-          <div class="title4">Destinations</div>
-        </div>
-      </button>
+      {{if .IsLoggedIn}}
+        <button class="seconday" onclick="location.href='/profile'">
+          <div class="title10">Saved Posts</div>
+        </button>
+      {{end}}
+        <button class="seconday" onclick="location.href='/posts'">
+          <div class="title10">See all posts</div>
+        </button>
     </div>
     <div class="list2">
       <div class="section-title">
@@ -138,19 +121,19 @@
         </div>
       </div>
       <div class="row">
-        <button class="chip">
+        <button class="chip" onclick="location.href='/category?id=7'">
           <div class="frame2">
             <div class="icon2">🔤</div> <!-- Hiragana -->
           </div>
           <div class="title7">Hiragana</div>
         </button>
-        <button class="chip">
+        <button class="chip" onclick="location.href='/category?id=8'">
           <div class="frame2">
             <div class="icon2">🈂️</div> <!-- Katakana -->
           </div>
           <div class="title7">Katakana</div>
         </button>
-        <button class="chip">
+        <button class="chip" onclick="location.href='/category?id=9'">
           <div class="frame2">
             <div class="icon2">🈴</div> <!-- Kanji -->
           </div>
@@ -161,115 +144,40 @@
     <div class="list3">
       <div class="section-title">
         <div class="text">
-          <div class="title3">Featured Posts (on peux afficher içi si possible les 3 derniers post crée sur le forum)
+          <div class="title3">Featured Posts
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="post">
+        {{range .LatestPosts}}
+        <button class="post" onclick="window.location.href='/posts/view?id={{.ID}}'">
           <div class="user2">
-            <div class="avatar">
-              <div class="avatar3"></div>
-              <div class="frame-427318906">
-                <div class="title6">Shôjo(catégorie ou titre du post comme vous préferez)</div>
-              </div>
-            </div>
-            <div class="icon-buttons">
-              <div class="icon3">•••(ou les like idk👍)</div>
-            </div>
+        <div class="avatar">
+          <div class="avatar3">{{.CategoryPhotos}}</div>
+          <div class="frame-427318906">
+            <div class="title6">{{.CategoryName}} : {{.Title}}</div>
+          </div>
+        </div>
+        <div class="icon-buttons">
+          <div class="like">
+            👍 <span>{{.LikeCount}}</span>
+          </div>
+          <div class="dislike">
+            👎 <span>{{.DislikeCount}}</span>
+          </div>
+        </div>
           </div>
           <div class="image-container2">
-            <div class="image">
-              <div class="title8">Le post en lui même avec mini mise en forme pour voir le nom de l'auteur en haut?
-              </div>
-            </div>
-          </div>
+        <div class="post-header">
+          <div class="author">{{.AuthorUsername}}</div>
+          <div class="timestamp">{{.Created_at}}</div>
         </div>
-        <div class="post">
-          <div class="user2">
-            <div class="avatar">
-              <div class="avatar3"></div>
-              <div class="frame-427318906">
-                <div class="title6">Shônen</div>
-              </div>
-            </div>
-            <div class="icon-buttons">
-              <div class="icon3">•••</div>
-            </div>
-          </div>
-          <div class="image-container2">
-            <div class="image">
-              <div class="title8">Shônen Manga</div>
-            </div>
-          </div>
+        <div class="post-content">
+          <div class="content">{{.Content}}</div>
         </div>
-        <div class="post">
-          <div class="user2">
-            <div class="avatar">
-              <div class="avatar3"></div>
-              <div class="frame-427318906">
-                <div class="title6">Seinen</div>
-              </div>
-            </div>
-            <div class="icon-buttons">
-              <div class="icon3">•••</div>
-            </div>
           </div>
-          <div class="image-container2">
-            <div class="image">
-              <div class="title8">Seinen Manga</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <input type="text" class="border" placeholder="Enter keyword to search"></input>
-    <div class="button">
-      <button class="seconday">
-        <div class="title10">My Subscriptions</div>
-      </button>
-      <button class="seconday">
-        <div class="title10">Saved Posts</div>
-      </button>
-    </div>
-    <div class="list3">
-      <div class="section-title">
-        <div class="text">
-          <div class="title3">Top Ratings(on peux faire un systeme de livre d'or pour le forum idk à la google review)
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="card">
-          <div class="user3">
-            <div class="avatar">
-              <div class="avatar3"></div>
-              <div class="frame-427318906">
-                <div class="title6">ReviewMaster</div>
-              </div>
-            </div>
-          </div>
-          <div class="title12">This forum is a treasure trove of knowledge.</div>
-          <div class="icon-buttons2">
-            <div class="icon3">👍</div>
-            <div class="icon3">❤️</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="user3">
-            <div class="avatar">
-              <div class="avatar3"></div>
-              <div class="frame-427318906">
-                <div class="title6">DiscussionFan23</div>
-              </div>
-            </div>
-          </div>
-          <div class="title12">Engaging conversations on various topics.</div>
-          <div class="icon-buttons2">
-            <div class="icon3">👍</div>
-            <div class="icon3">❤️</div>
-          </div>
-        </div>
+        </button>
+        {{end}}
       </div>
     </div>
   </div>

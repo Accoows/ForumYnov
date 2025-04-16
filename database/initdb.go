@@ -120,7 +120,7 @@ func InsertLikesDislikesData(likesDislikes *LikesDislikes) error {
 /* Get functions allows to get data from the sql tables */
 
 func GetCategoriesData() ([]Categories, error) {
-	rows, err := SQL.Query("SELECT id, name, parent_id FROM Categories") // SELECT is used to select data from the table
+	rows, err := SQL.Query("SELECT id, name, parent_id, category_photos FROM Categories") // SELECT is used to select data from the table
 	if err != nil {
 		return nil, err
 	}
@@ -128,7 +128,7 @@ func GetCategoriesData() ([]Categories, error) {
 	var categories []Categories // Categories is a slice of Categories struct
 	for rows.Next() {           // rows.Next() is used to iterate over the rows returned by the query
 		var categorie Categories // categorie is a variable of type Categories struct
-		err := rows.Scan(&categorie.ID, &categorie.Name, &categorie.ParentID)
+		err := rows.Scan(&categorie.ID, &categorie.Name, &categorie.ParentID, &categorie.CategoryPhotos)
 		if err != nil {
 			return nil, err
 		}

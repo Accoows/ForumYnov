@@ -73,18 +73,12 @@ html{
     flex: 1;
     position: relative;
   }
-  .forum-name {
-    color: #000000;
-    text-align: left;
-    font-family: "Roboto-Medium", sans-serif;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 500;
-    position: relative;
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  .forum-logo {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    align-self: center;
+    margin-top: 5px;
   }
   .button {
     background: #ffffff;
@@ -253,6 +247,61 @@ html{
     overflow: hidden;
   }
   .background-border {
+    background: #92A8D1;
+    border-radius: 8px;
+    border-width: 1px;
+    padding: 10px 12px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .title10 {
+    color: #000000;
+    text-align: left;
+    font-family: "Roboto-Medium", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .manga {
+      color: #000000;
+      text-align: left;
+      font-family: "Roboto-Medium", sans-serif;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 500;
+      position: relative;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+  }
+  
+  .container15 {
+    padding: 0px 12px 0px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .background-border {
     background: #92a8d1;
     border-radius: 8px;
     border-width: 1px;
@@ -265,6 +314,28 @@ html{
     flex-shrink: 0;
     position: relative;
   }
+  .background6 {
+    background: #000000;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .new-post {
+    color: #ffffff;
+    text-align: left;
+    font-family: "Roboto-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    position: relative;
+  }
+
   .background6 {
     background: #000000;
     border-radius: 8px;
@@ -328,7 +399,7 @@ html{
       height: 48px;
       position: relative;
       aspect-ratio: 1;
-      background-color: #92A8D1; /* Added */
+      background-color: #92A8D1;
     }
     .icon {
       color: #000000;
@@ -384,18 +455,15 @@ html{
       align-items: center;
       justify-content: flex-start;
   }
-  
+
   .menu-item {
-      color: #000000;
-      text-align: left;
-      font-family: "Roboto-Medium", sans-serif;
-      font-size: 16px;
-      line-height: 10px;
-      font-weight: 500;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
+    color: #000000;
+    text-align: left;
+    font-family: "Roboto-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    position: relative;
   }
   
   .menu-item.new-post {

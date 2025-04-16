@@ -272,10 +272,27 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 // =========================
 
 func PostListHandler(w http.ResponseWriter, r *http.Request) {
+	userID, err := models.GetUserIDFromRequest(r)
+	isLoggedIn := err == nil && userID != ""
+
+	topCategories, err := database.GetMostsPostsCategoriesOfTheWeek()
+	if err != nil {
+		http.Error(w, "Error fetching top categories", http.StatusInternalServerError)
+		return
+	}
+
+	data := struct {
+		IsLoggedIn    bool
+		TopCategories []database.Categories
+	}{
+		IsLoggedIn:    isLoggedIn,
+		TopCategories: topCategories,
+	}
+
 	tmpl, err := template.ParseFiles(filepath.Join("./templates/", "post-list.html"))
 	if err != nil {
 		log.Println(err)
 		return
 	}
-	tmpl.Execute(w, nil)
+	tmpl.Execute(w, data)
 }
