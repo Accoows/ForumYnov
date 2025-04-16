@@ -33,14 +33,17 @@
 
             <div class="posts-container">
                 {{range .Posts}}
-                <div class="post-card">
-                    <h2>{{.Title}}</h2>
-                    <p>{{format .Content}}</p>
-                    <p class="meta">Posté par <strong>{{.AuthorUsername}}</strong> - {{.Created_at}}</p>
-                    <a href="/posts/view?id={{.ID}}">Voir le post</a>
-                </div>
+                <div class="post-card-wrapper">
+                    <button class="background-border post-card-button" onclick="window.location.href='/posts/view?id={{.ID}}'">
+                        <div class="container14">
+                            <div class="menu-item title">{{.Title}}</div>
+                            <div class="menu-item content">{{format .Content}}</div>
+                            <div class="menu-item meta">{{printf "Posté par %s – %s" .AuthorUsername .Created_at}}</div>
+                        </div>
+                    </button>
+                </div>                  
                 {{else}}
-                <p>Aucun post dans cette catégorie pour l’instant.</p>
+                <p>No posts in this category for now</p>
                 {{end}}
             </div>
 

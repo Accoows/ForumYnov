@@ -1,12 +1,5 @@
-<!-- post.html -->
 <!DOCTYPE html>
 <html>
-
-<!--
-==================== CHANGELOG / TO DO LIST ==========================
-- Ajouter un système de pagination pour les posts (10 posts par page)
-
--->
 
 <head>
     <meta charset="UTF-8">
@@ -33,26 +26,22 @@
                 <form action="/posts/filter" method="GET">
                     <label for="category">Filter by category:</label>
                     <select id="category" name="category">
-                        <option value="Voyages">Voyages</option>
-                        <option value="Langue">Langue</option>
+                        <option value="Voyages">Travel</option>
+                        <option value="Langue">Language</option>
                         <option value="Anime/Manga">Anime/Manga</option>
                     </select>
                     <button type="submit">Filter</button>
                 </form>
             </div>
             {{range .Posts}}
-            <div class="article">
-                <div class="div">
-                    <div class="img"></div>
-                    <div class="div2">
-                        <div class="div3">
-                            <div class="Pseudo">{{.AuthorUsername}}</div>
-                            <div class="timestamp">{{.Created_at}}</div>
-                        </div>
-                        <div class="title-content"> {{.Title}}</div>
-                        <div class="text-content">{{.Content}}</div>
+            <div class="post-card-wrapper">
+                <button class="background-border post-card-button" onclick="window.location.href='/posts/view?id={{.ID}}'">
+                    <div class="container14">
+                        <div class="menu-item title">{{.Title}}</div>
+                        <div class="menu-item content">{{.Content}}</div>
+                        <div class="menu-item meta">Posted by {{.AuthorUsername}} – {{.Created_at}}</div>
                     </div>
-                </div>
+                </button>
             </div>
             {{end}}
         </div>

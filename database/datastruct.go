@@ -22,11 +22,12 @@ type CategoryPageData struct {
 }
 
 type Users struct {
-	ID            string
-	Email         string
-	Username      string
-	Password_hash string
-	Created_at    string
+	ID             string
+	Email          string
+	Username       string
+	Password_hash  string
+	Created_at     string
+	ProfilePicture string
 }
 
 type Sessions struct {

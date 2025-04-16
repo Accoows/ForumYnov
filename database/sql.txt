@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS Users (
     username TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL, -- hashed password for security; it ensures sensitive data is not stored directly
     created_at TEXT NOT NULL -- timestamp of when the user registered on the platform
+    profilepicture TEXT
 );
 
 /*

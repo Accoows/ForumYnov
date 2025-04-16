@@ -14,9 +14,9 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
-// Page d'accueil, général
+// Home page, general
 
-// Gestionnaire pour servir la page de login
+// Handler to serve the login page
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
 		tmpl, err := template.ParseFiles(filepath.Join("./templates/", "login.html"))
@@ -28,7 +28,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if r.Method == http.MethodPost {
-		// Traiter les données du formulaire
+		// Process form data
 		LoginUsers(w, r)
 		return
 	}

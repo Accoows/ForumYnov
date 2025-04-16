@@ -13,7 +13,7 @@ import (
 
 func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
-		// Afficher le formulaire
+		// Display the form
 		tmpl, err := template.ParseFiles("templates/register.html")
 		if err != nil {
 			log.Println("[handlers/register.go] Erreur chargement template :", err)
@@ -25,7 +25,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == http.MethodPost {
-		// Traiter les données du formulaire
+		// Process the form data
 		RegisterUsers(w, r)
 		return
 	}

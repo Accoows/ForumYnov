@@ -14,11 +14,6 @@ func CreatePost(userID string, categoryID int, title, content string) error {
 	return InsertPostsData(post)
 }
 
-func DeletePostByID(id int) error {
-	_, err := SQL.Exec("DELETE FROM Posts WHERE id = ?", id)
-	return err
-}
-
 func GetCompletePostList() ([]Posts, error) {
 	rows, err := SQL.Query(`
 		SELECT Posts.id, Posts.user_id, Posts.category_id, Posts.title, Posts.content, Posts.created_at,
@@ -76,12 +71,6 @@ func GetPostByID(id int) (Posts, error) {
 
 	post.LikeCount, post.DislikeCount, _ = CountLikesForPost(SQL, post.ID)
 
-	// TODO : Remplacer "1" par l'ID de l'utilisateur connecté (via session/cookie)
-	// likeInfo, _ := GetExistingLikeDislike("1", post.ID, 0)
-	// if likeInfo != nil {
-	//     post.UserLikeType = likeInfo.TypeValue
-	// }
-
 	return post, err
 }
 
@@ -89,5 +78,31 @@ func UpdatePost(id int, title, content string) error {
 	_, err := SQL.Exec(`
 		UPDATE Posts SET title = ?, content = ? WHERE id = ?
 	`, title, content, id)
+	return err
+}
+
+func DeletePostWithDependencies(postID int) error {
+	// Supprimer les likes associés au post
+	_, err := SQL.Exec(`DELETE FROM Likes_Dislikes WHERE post_id = ?`, postID)
+	if err != nil {
+		return err
+	}
+
+	// Supprimer les likes associés aux commentaires de ce post
+	_, err = SQL.Exec(`
+		DELETE FROM Likes_Dislikes 
+		WHERE comment_id IN (SELECT id FROM Comments WHERE post_id = ?)`, postID)
+	if err != nil {
+		return err
+	}
+
+	// Supprimer les commentaires associés au post
+	_, err = SQL.Exec(`DELETE FROM Comments WHERE post_id = ?`, postID)
+	if err != nil {
+		return err
+	}
+
+	// Supprimer le post lui-même
+	_, err = SQL.Exec(`DELETE FROM Posts WHERE id = ?`, postID)
 	return err
 }

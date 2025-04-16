@@ -9,20 +9,20 @@ import (
 
 // FilterPostsByCategories handles the filtering of posts by categories.
 func FilterPostsByCategories(w http.ResponseWriter, r *http.Request) {
-	categoryName := r.URL.Query().Get("category") // Get the category name from the URL query parameters
+	categoryName := r.URL.Query().Get("category") // Retrieve the category name from the URL query parameters
 	if categoryName == "" {                       // If no category is provided, redirect to the posts page
 		ErrorHandler(w, http.StatusBadRequest)
 		http.Redirect(w, r, "/posts", http.StatusSeeOther)
 		return
 	}
 
-	categoryID, err := database.GetCategoryIDByName(categoryName) // Get the category ID from the database based on the category name
+	categoryID, err := database.GetCategoryIDByName(categoryName) // Retrieve the category ID from the database based on the category name
 	if err != nil {
-		http.Error(w, "Erreur lors de la récupération de la catégorie", http.StatusInternalServerError)
+		http.Error(w, "Error retrieving the category", http.StatusInternalServerError)
 		return
 	}
 
-	posts, err := database.GetPostsByCategory(categoryID) // Get the posts associated with the category ID
+	posts, err := database.GetPostsByCategory(categoryID) // Retrieve the posts associated with the category ID
 	if err != nil {
 		ErrorHandler(w, http.StatusInternalServerError)
 		return
@@ -34,7 +34,7 @@ func FilterPostsByCategories(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl.Execute(w, struct { //Execute the template with the posts and category name
+	tmpl.Execute(w, struct { // Execute the template with the posts and category name
 		Posts    []database.Posts
 		Category string
 	}{

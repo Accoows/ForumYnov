@@ -39,10 +39,10 @@ func CloseDatabase() {
 
 func InsertUsersData(users *Users) error {
 	// INSERT OR IGNORE is used to insert the data in the tables avoiding inserting duplicate entries
-	insertUsersInSql := `INSERT OR IGNORE INTO Users(id, email, username, password_hash, created_at) VALUES (?, ?, ?, ?, ?)`
+	insertUsersInSql := `INSERT OR IGNORE INTO Users(id, email, username, password_hash, created_at, profilepicture) VALUES (?, ?, ?, ?, ?, ?)`
 
 	// sql.Exec() is used to execute the SQL statement
-	_, err = SQL.Exec(insertUsersInSql, users.ID, users.Email, users.Username, users.Password_hash, users.Created_at)
+	_, err = SQL.Exec(insertUsersInSql, users.ID, users.Email, users.Username, users.Password_hash, users.Created_at, users.ProfilePicture)
 
 	ErrorTest(err)
 
@@ -139,7 +139,7 @@ func GetCategoriesData() ([]Categories, error) {
 }
 
 func GetUsersData() ([]Users, error) {
-	rows, err := SQL.Query("SELECT id, email, username, password_hash, created_at FROM Users")
+	rows, err := SQL.Query("SELECT id, email, username, password_hash, created_at, profilepicture FROM Users")
 	if err != nil {
 		return nil, err
 	}
@@ -147,7 +147,7 @@ func GetUsersData() ([]Users, error) {
 	var users []Users
 	for rows.Next() {
 		var user Users
-		err := rows.Scan(&user.ID, &user.Email, &user.Username, &user.Password_hash, &user.Created_at)
+		err := rows.Scan(&user.ID, &user.Email, &user.Username, &user.Password_hash, &user.Created_at, &user.ProfilePicture)
 		if err != nil {
 			return nil, err
 		}
@@ -249,4 +249,15 @@ func DeleteExpiredSessions() {
 	if err != nil {
 		log.Printf("Error deleting expired sessions: %v\n", err)
 	}
+}
+
+func UpdateProfilePicture(userID string, filename string) error {
+	stmt, err := SQL.Prepare("UPDATE Users SET profilepicture = ? WHERE id = ?")
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec(filename, userID)
+	return err
 }

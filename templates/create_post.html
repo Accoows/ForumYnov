@@ -1,35 +1,40 @@
-<!-- CREATE_POST.html-->
+<!-- CREATE_POST.html -->
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
-  <title>Créer un post</title>
+  <title>Create a Post</title>
+  <link rel="stylesheet" type="text/css" href="/static/post-form.css">
 </head>
-
 <body>
-  <h1>Créer un nouveau post</h1>
+  <div class="form-wrapper">
+    <h1>Create a New Post</h1>
 
-  <form action="/posts/create" method="POST">
-    <label for="title">Titre :</label><br>
-    <input type="text" id="title" name="title" required><br><br>
-    <label for="category_id">Catégorie :</label><br>
-    <select name="category_id" id="category_id" required>
-      {{range .AllCategories}}
-        <option value="{{.ID}}" {{if eq .ID $.CategoryID}}selected{{end}}>
-          {{.Name}}
-        </option>
-      {{end}}
-    </select><br><br>
+    <form action="/posts/create" method="POST">
+      <label for="title">Title :</label>
+      <input type="text" id="title" name="title" required>
 
-    <label for="content">Contenu :</label><br>
-    <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
+      <label for="category_id">Category :</label>
+      <select name="category_id" id="category_id" required>
+        {{range .AllCategories}}
+          <option value="{{.ID}}" {{if eq .ID $.CategoryID}}selected{{end}}>
+            {{.Name}}
+          </option>
+        {{end}}
+      </select>
 
-    <input type="submit" value="Publier le post">
-  </form>
+      <label for="content">Content :</label>
+      <textarea id="content" name="content" required></textarea>
 
-
-  <p><a href="/category?id={{.CategoryID}}">Retour à la catégorie</a></p>
+      <div class="form-actions">
+        <div class="button-container">
+          <input type="submit" value="Publier le post">
+        </div>
+        <a href="/category?id={{.CategoryID}}">
+          <button type="button">Back to Category</button>
+        </a>
+      </div>
+    </form>
+  </div>
 </body>
-
 </html>
