@@ -12,8 +12,17 @@ func CreateComment(userID string, postID int, content string) error {
 	return InsertCommentsData(comment)
 }
 
+func DeleteLikesByCommentID(commentID int) error {
+	_, err := SQL.Exec("DELETE FROM Likes_Dislikes WHERE comment_id = ?", commentID)
+	return err
+}
+
 func DeleteCommentByID(id int) error {
-	_, err := SQL.Exec("DELETE FROM Comments WHERE id = ?", id)
+	err := DeleteLikesByCommentID(id)
+	if err != nil {
+		return err
+	}
+	_, err = SQL.Exec("DELETE FROM Comments WHERE id = ?", id)
 	return err
 }
 
@@ -63,12 +72,6 @@ func GetCommentsByPostID(postID int) ([]Comments, error) {
 		}
 
 		comment.LikeCount, comment.DislikeCount, _ = CountLikesForComment(SQL, comment.ID)
-
-		// TODO : Remplacer "1" par l'ID de l'utilisateur connecté (via session/cookie)
-		// likeInfo, _ := GetExistingLikeDislike("1", 0, comment.ID)
-		// if likeInfo != nil {
-		//     comment.UserLikeType = likeInfo.TypeValue
-		// }
 
 		comments = append(comments, comment)
 	}

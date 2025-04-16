@@ -1,19 +1,23 @@
-html {
+html,
+body {
   background: url('fond.jpg') no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 10px;
   border-color: #000000;
+  font-size: 16px;
 }
+
 .page,
 .page * {
   box-sizing: border-box;
 }
+
 .page {
-  background: rgb(238, 234, 234,50%);
+  background: rgb(238, 234, 234, 50%);
   backdrop-filter: blur(10px);
   border-radius: 10px;
-  padding: 0px 0px 12px 0px;
+  padding: 0px 0px 30px 0px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -22,37 +26,71 @@ html {
   position: relative;
   width: 90%;
   margin-left: 5%;
+  margin-right: 5%;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
 }
+
 .top-bar {
+  padding: 0px 0px 12px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+  margin: 20px;
+}
+
+.top-bar-inner {
+  background: #ffffff;
   border-radius: 10px;
-  background: #F3D1D1; /* Changed */
   display: flex;
   flex-direction: column;
   gap: 0px;
   align-items: flex-start;
   justify-content: flex-start;
-  align-self: stretch;
   flex-shrink: 0;
+  align-self: stretch;
   position: relative;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
-  background-color: #ffffff;
-  border-radius: 10px;
-  border-color: #000000;
 }
-.content {
+.container {
   padding: 12px 8px 12px 16px;
   display: flex;
   flex-direction: row;
-  gap: 8px;
   align-items: center;
   justify-content: space-between;
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
-  border-radius: 10px;
-  border-color: #000000;
 }
+.container2 {
+  display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+}
+.forum-logo {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  align-self: center;
+  margin-top: 5px;
+}
+
+.content {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+
 .title {
   color: #000000;
   text-align: left;
@@ -63,6 +101,7 @@ html {
   position: relative;
   flex: 1;
 }
+
 .tab-group {
   border-radius: 20px;
   padding: 5px 12px 5px 12px;
@@ -76,12 +115,10 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .tab {
   border-radius: 20px;
-  border-style: solid;
   box-shadow: 0px 0px 2px 0px #ffffff;
-  border-color: rgba(0, 0, 0);
-  border-width: 2px;
   padding: 4px;
   display: flex;
   flex-direction: column;
@@ -93,8 +130,8 @@ html {
   border-color: #eeeaea;
   background-color: #F3D1D1;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 1);
-  
 }
+
 .frame {
   background: rgba(0, 0, 0, 0.9);
   border-radius: 24px;
@@ -105,6 +142,7 @@ html {
   aspect-ratio: 1;
   background-color: #92A8D1; /* Added */
 }
+
 .icon {
   color: #000000;
   text-align: center;
@@ -124,6 +162,7 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .title2 {
   color: #000000;
   text-align: center;
@@ -140,6 +179,44 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.button {
+  padding: 0px 12px 0px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.seconday {
+  background: #92A8D1;
+  border-radius: 8px;
+  border-width: 1px;
+  padding: 10px 12px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.title10 {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  position: relative;
+}
+
 .list {
   padding: 5px 12px 5px 12px;
   display: flex;
@@ -151,6 +228,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .section-title {
   padding: 16px 1px 2px 0px;
   display: flex;
@@ -162,6 +240,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .text {
   display: flex;
   flex-direction: column;
@@ -171,6 +250,7 @@ html {
   flex: 1;
   position: relative;
 }
+
 .title3 {
   color: #000000;
   text-align: left;
@@ -181,10 +261,11 @@ html {
   position: relative;
   align-self: stretch;
 }
+
 .item {
   background-color: #F3D1D1;
   border-radius: 10px;
-  box-shadow: 0px 0px 1px 0px #000000;  
+  box-shadow: 0px 0px 1px 0px #000000;
   padding: 12px 1px 12px 1px;
   display: flex;
   flex-direction: row;
@@ -195,6 +276,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .frame2 {
   background: #92A8D1;
   border-radius: 16px;
@@ -204,6 +286,7 @@ html {
   position: relative;
   aspect-ratio: 1;
 }
+
 .icon2 {
   color: #000000;
   text-align: center;
@@ -223,6 +306,7 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .frame-427318906 {
   display: flex;
   flex-direction: column;
@@ -232,6 +316,7 @@ html {
   flex: 1;
   position: relative;
 }
+
 .title4 {
   color: #000000;
   text-align: left;
@@ -242,6 +327,7 @@ html {
   position: relative;
   align-self: stretch;
 }
+
 .list2 {
   padding: 0px 12px 0px 12px;
   display: flex;
@@ -253,10 +339,11 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .article {
   background-color: #F3D1D1;
   border-radius: 10px;
-  box-shadow: 0px 0px 1px 0px #000000; 
+  box-shadow: 0px 0px 1px 0px #000000;
   padding: 8px 1px 8px 1px;
   display: flex;
   flex-direction: row;
@@ -267,6 +354,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .image-container {
   display: flex;
   flex-direction: row;
@@ -279,12 +367,14 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .image {
   background: #92A8D1;
   align-self: stretch;
   flex: 1;
   position: relative;
 }
+
 .title5 {
   color: #000000;
   text-align: left;
@@ -295,6 +385,7 @@ html {
   position: relative;
   align-self: stretch;
 }
+
 .subtitle {
   color: #000000;
   text-align: left;
@@ -305,6 +396,7 @@ html {
   position: relative;
   align-self: stretch;
 }
+
 .user {
   padding: 4px 0px 4px 0px;
   display: flex;
@@ -316,6 +408,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .avatar {
   display: flex;
   flex-direction: row;
@@ -325,6 +418,7 @@ html {
   flex: 1;
   position: relative;
 }
+
 .avatar2 {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 20px;
@@ -335,6 +429,7 @@ html {
   overflow: hidden;
   aspect-ratio: 1;
 }
+
 .title6 {
   color: #000000;
   text-align: left;
@@ -348,6 +443,7 @@ html {
   overflow: hidden;
   white-space: nowrap;
 }
+
 .list3 {
   padding: 0px 12px 0px 12px;
   display: flex;
@@ -360,6 +456,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .row {
   display: flex;
   flex-direction: row;
@@ -370,11 +467,10 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .chip {
   background-color: #F3D1D1;
   border-radius: 6px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.2);
   border-width: 1px;
   padding: 12px;
   display: flex;
@@ -387,6 +483,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .title7 {
   color: #000000;
   text-align: left;
@@ -403,21 +500,27 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .post {
   background-color: #F3D1D1;
   border-radius: 6px;
   border-style: solid;
-  border-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0,0,0,0.2);
   border-width: 1px;
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 8px;
   align-items: center;
   justify-content: flex-start;
   flex: 1;
   position: relative;
   overflow: hidden;
+  min-width: 250px;
+  min-height: 300px;
+  width: auto;
+  height: auto;
 }
+
 .user2 {
   padding: 8px;
   display: flex;
@@ -429,25 +532,47 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .avatar3 {
-  background: rgba(0, 0, 0, 0.1);
+  color: #000000;
+  text-align: center;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 400;
+  background: #92A8D1;
   border-radius: 24px;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  aspect-ratio: 1;
 }
+
 .icon-buttons {
   display: flex;
-  flex-direction: row;
-  gap: 8px;
   align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
 }
+
+.like,
+.dislike {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 5px 10px;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+}
+
 .icon3 {
   color: #000000;
   text-align: center;
@@ -457,7 +582,7 @@ html {
   font-weight: 400;
   position: relative;
   width: 24px;
-  height: 24px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -465,34 +590,46 @@ html {
   overflow: hidden;
 }
 .image-container2 {
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 336px;
-  position: relative;
-  overflow: hidden;
-}
-.title8 {
-  color: #000000;
-  text-align: center;
-  font-family: "Roboto-Medium", sans-serif;
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 500;
   position: absolute;
-  right: 16px;
-  left: 16px;
-  top: 50%;
-  translate: 0 -50%;
-  height: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #92A8D1;
+  border-radius: 0 0 8px 8px;
+  padding: 16px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 60px;
 }
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.author {
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 14px;
+  color: #000000;
+}
+
+.timestamp {
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 12px;
+  color: #737373;
+}
+
+.post-content {
+  text-align: center;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 16px;
+  color: #404040;
+}
+
 .pagination {
   display: flex;
   flex-direction: row;
@@ -504,6 +641,7 @@ html {
   translate: -50%;
   bottom: 8px;
 }
+
 .rectangle-3343 {
   background: #ffffff;
   border-radius: 100px;
@@ -512,6 +650,7 @@ html {
   height: 4px;
   position: relative;
 }
+
 .rectangle-3344 {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 100px;
@@ -520,8 +659,9 @@ html {
   height: 4px;
   position: relative;
   aspect-ratio: 1;
-  background-color: #eeeaea; /* Added */
+  background-color: #eeeaea;
 }
+
 .rectangle-3347 {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 100px;
@@ -530,8 +670,9 @@ html {
   height: 4px;
   position: relative;
   aspect-ratio: 1;
-  background-color: #eeeaea; /* Added */
+  background-color: #eeeaea;
 }
+
 .rectangle-3340 {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 100px;
@@ -540,8 +681,9 @@ html {
   height: 4px;
   position: relative;
   aspect-ratio: 1;
-  background-color: #eeeaea; /* Added */
+  background-color: #eeeaea;
 }
+
 .text-content {
   padding: 12px;
   display: flex;
@@ -553,6 +695,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .title9 {
   color: #000000;
   text-align: left;
@@ -563,6 +706,7 @@ html {
   position: relative;
   align-self: stretch;
 }
+
 .selection {
   display: flex;
   flex-direction: row;
@@ -574,6 +718,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .label-normal {
   background: #92A8D1;
   border-radius: 2px;
@@ -590,6 +735,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .label-text {
   color: #000000;
   text-align: left;
@@ -599,18 +745,9 @@ html {
   font-weight: 400;
   position: relative;
 }
-.button {
-  padding: 0px 12px 0px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
-}
+
+
+
 .border {
   background-color: #ffffff;
   width: 90%;
@@ -623,29 +760,7 @@ html {
   padding: 20px 45px 20px 20px;
   margin: 20px 20px;
 }
-.seconday {
-  background: #92A8D1;
-  border-radius: 8px;
-  border-width: 1px;
-  padding: 10px 12px 10px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-.title10 {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Medium", sans-serif;
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 500;
-  position: relative;
-}
+
 .card {
   background: #92A8D1;
   border-radius: 6px;
@@ -660,6 +775,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .user3 {
   display: flex;
   flex-direction: row;
@@ -670,6 +786,7 @@ html {
   flex-shrink: 0;
   position: relative;
 }
+
 .title12 {
   color: #000000;
   text-align: left;
@@ -683,6 +800,7 @@ html {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .icon-buttons2 {
   display: flex;
   flex-direction: row;
@@ -694,20 +812,14 @@ html {
   position: relative;
 }
 
-#dark-mode-toggle {
-  background-color: #ffffff;
-  color: #000000;
-  border: 1px solid #000000;
+
+button {
+  font-size: 16px;
   padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Version Dark Mode */
-
-/* Version Dark Mode */
 body.dark-mode {
-  background-color: #121212;
   color: #ffffff;
 }
 
@@ -730,7 +842,7 @@ body.dark-mode .seconday,
 body.dark-mode .card,
 body.dark-mode .chip,
 body.dark-mode .post,
-body.dark-mode .search{
+body.dark-mode .search {
   background-color: #2c2c2c;
   border-color: #444444;
 }
@@ -753,7 +865,7 @@ body.dark-mode .icon3,
 body.dark-mode .icon-buttons .icon3,
 body.dark-mode .icon-buttons2 .icon3,
 body.dark-mode .selection .label-normal,
-body.dark-mode .label-text{
+body.dark-mode .label-text {
   color: #ffffff;
 }
 
@@ -798,4 +910,119 @@ body.dark-mode #dark-mode-toggle {
 
 body.dark-mode .page {
   background-color: #121212;
+}
+
+/* Styles spécifiques aux petits écrans */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    background: url('fond.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    font-size: 12px;
+  }
+
+  .page {
+    min-height: 100vh;
+    width: 95%;
+    margin: 0 auto;
+    padding: 5px;
+  }
+
+  .top-bar {
+    width: 95%;
+    margin: 0 auto;
+    padding: 5px;
+  }
+
+  .top-bar-inner {
+    width: 100%;
+    box-shadow: none;
+    padding: 10px;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .tab-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tab {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .list,
+  .list2,
+  .list3 {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .article,
+  .item,
+  .chip,
+  .post,
+  .card {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .title,
+  .title2,
+  .title3,
+  .title4,
+  .title5,
+  .title6,
+  .title7 {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .icon,
+  .icon2 {
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+  }
+
+  .subtitle,
+  .text,
+  .label-text {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .border {
+    width: 90%;
+    max-width: 300px;
+    padding: 10px;
+    margin: 0 auto;
+  }
 }

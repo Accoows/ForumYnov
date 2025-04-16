@@ -18,7 +18,7 @@ func ErrorHandler(w http.ResponseWriter, statusCode int) {
 
 	tmpl, err := template.ParseFiles("./templates/error.html")
 	if err != nil {
-		log.Println("[handlers/error.go] [ErrorHandler] Erreur ParseFiles >>>", err)
+		log.Println("[handlers/error.go] [ErrorHandler] Error ParseFiles >>>", err)
 		http.Error(w, msg, statusCode)
 		return
 	}
@@ -29,7 +29,7 @@ func ErrorHandler(w http.ResponseWriter, statusCode int) {
 	}
 
 	if err := tmpl.Execute(w, data); err != nil {
-		log.Println("[handlers/error.go] [ErrorHandler] Erreur Execute >>>", err)
+		log.Println("[handlers/error.go] [ErrorHandler] Error Execute >>>", err)
 		http.Error(w, msg, statusCode)
 		return
 	}

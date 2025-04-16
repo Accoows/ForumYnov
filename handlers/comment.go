@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"forumynov/database"
+	"forumynov/models"
 	"log"
 	"net/http"
 	"strconv"
@@ -9,23 +10,23 @@ import (
 
 func CreateCommentHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		log.Println("[handlers/comment.go] [CreateCommentHandler] Méthode non autorisée >>>", r.Method)
+		log.Println("[handlers/comment.go] [CreateCommentHandler] Method not allowed >>>", r.Method)
 		ErrorHandler(w, http.StatusMethodNotAllowed)
 		return
 	}
 
 	err := r.ParseForm()
 	if err != nil {
-		log.Println("[handlers/comment.go] [CreateCommentHandler] ParseForm échoué >>>", err)
+		log.Println("[handlers/comment.go] [CreateCommentHandler] ParseForm failed >>>", err)
 		ErrorHandler(w, http.StatusBadRequest)
-
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 
 	userID, err := getConnectedUserID(r)
 	if err != nil {
-		log.Println("[handlers/comment.go] [CreateCommentHandler] Utilisateur non connecté >>>", err)
-		http.Error(w, "Connexion requise pour commenter", http.StatusUnauthorized)
+		log.Println("[handlers/comment.go] [CreateCommentHandler] User not connected >>>", err)
+		models.SetNotification(w, "You must be logged in to comment", "error")
 		return
 	}
 
@@ -33,32 +34,33 @@ func CreateCommentHandler(w http.ResponseWriter, r *http.Request) {
 	content := r.FormValue("content")
 
 	if err != nil || content == "" {
-		log.Println("[handlers/comment.go] [CreateCommentHandler] Données invalides >>>", err)
-		ErrorHandler(w, http.StatusBadRequest)
+		log.Println("[handlers/comment.go] [CreateCommentHandler] Invalid data >>>", err)
+		models.SetNotification(w, "Missing or invalid comment data", "error")
 		return
 	}
 
 	err = database.CreateComment(userID, postID, content)
 	if err != nil {
-		log.Println("[handlers/comment.go] [CreateCommentHandler] Erreur CreateComment >>", err)
-		ErrorHandler(w, http.StatusMethodNotAllowed)
+		log.Println("[handlers/comment.go] [CreateCommentHandler] CreateComment error >>>", err)
+		models.SetNotification(w, "Could not post your comment", "error")
 		return
 	}
 
+	models.SetNotification(w, "Comment successfully posted", "success")
 	http.Redirect(w, r, "/posts/view?id="+strconv.Itoa(postID), http.StatusSeeOther)
 }
 
 func DeleteCommentHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
-		log.Println("[handlers/post.go] [DeleteCommentHandler] Méthode non autorisée >>>", r.Method)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		log.Println("[handlers/post.go] [DeleteCommentHandler] Method not allowed >>>", r.Method)
 		return
 	}
 
 	userID, err := getConnectedUserID(r)
 	if err != nil {
-		log.Println("[handlers/comment.go] [DeleteCommentHandler] Utilisateur non connecté >>>", err)
-		http.Error(w, "Connexion requise", http.StatusUnauthorized)
+		log.Println("[handlers/comment.go] [DeleteCommentHandler] User not connected >>>", err)
+		http.Error(w, "Login required", http.StatusUnauthorized)
 		return
 	}
 
@@ -66,20 +68,20 @@ func DeleteCommentHandler(w http.ResponseWriter, r *http.Request) {
 	commentID, err := strconv.Atoi(idStr)
 	if err != nil {
 		ErrorHandler(w, http.StatusBadRequest)
-		log.Println("[handlers/post.go] [DeleteCommentHandler] ID invalide >>>", err)
+		log.Println("[handlers/post.go] [DeleteCommentHandler] Invalid ID >>>", err)
 		return
 	}
 
 	comment, err := database.GetCommentByID(commentID)
 	if err != nil {
-		log.Println("[handlers/comment.go] [DeleteCommentHandler] Erreur récupération commentaire >>>", err)
+		log.Println("[handlers/comment.go] [DeleteCommentHandler] Error retrieving comment >>>", err)
 		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 
 	if comment.User_id != userID {
-		log.Println("[handlers/comment.go] [DeleteCommentHandler] Suppression refusée pour utilisateur :", userID)
-		http.Error(w, "Suppression non autorisée", http.StatusUnauthorized)
+		log.Println("[handlers/comment.go] [DeleteCommentHandler] Deletion denied for user:", userID)
+		models.SetNotification(w, "You are not allowed to delete this comment", "error")
 		return
 	}
 
@@ -87,10 +89,11 @@ func DeleteCommentHandler(w http.ResponseWriter, r *http.Request) {
 
 	err = database.DeleteCommentByID(commentID)
 	if err != nil {
-		log.Println("[handlers/post.go] [DeleteCommentHandler] Erreur suppression commentaires >>>", err)
+		log.Println("[handlers/post.go] [DeleteCommentHandler] Error deleting comment >>>", err)
 		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 
+	models.SetNotification(w, "Comment successfully deleted", "success")
 	http.Redirect(w, r, "/posts/view?id="+postID, http.StatusSeeOther)
 }

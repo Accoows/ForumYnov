@@ -1,3 +1,4 @@
+<!-- VIEW_POST.html-->
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,6 +6,8 @@
     <meta charset="UTF-8">
     <title>{{.Post.Title}} - ForumYnov</title>
     <link rel="stylesheet" href="/static/post.css">
+    <link rel="stylesheet" href="/static/notifications.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -13,7 +16,7 @@
             <div class="background-shadow">
                 <div class="container">
                     <div class="container2">
-                        <a href="/"><img class="vector" src="/static/vector0.svg" /></a>
+                        <a href="/"><img class="vector" src="/static/homebtn.jpeg" /></a>
                         <div class="forum-name">ForumYnov</div>
                     </div>
                 </div>
@@ -38,17 +41,19 @@
                 </div>
             </div>
 
-            <p style="margin-left: 100px;"><strong>Catégorie :</strong> {{.Post.CategoryName}}</p>
-            <p style="margin-left: 100px;"><a href="/posts">Retour aux posts</a></p>
+            <p style="margin-left: 100px;"><strong>Category :</strong> {{.Post.CategoryName}}</p>
+            <p style="margin-left: 100px;">
+                <a href="/category?id={{.Post.Category_id}}">Back to Category</a>
+            </p>
 
             {{if .IsAuthor}}
             <form action="/posts/edit" method="GET" style="margin-top: 20px;">
                 <input type="hidden" name="id" value="{{.Post.ID}}">
-                <button type="submit">Modifier</button>
+                <button type="submit">Edit</button>
             </form>
-            <form action="/posts/delete" method="POST" style="margin-top: 20px;">
+            <form action="/posts/delete" method="POST" style="margin-top: 20px;" onsubmit="return confirmDelete();">
                 <input type="hidden" name="id" value="{{.Post.ID}}">
-                <button type="submit">Supprimer</button>
+                <button type="submit">Delete</button> 
             </form>
             {{end}}
 
@@ -66,40 +71,45 @@
                     <button type="submit" name="action" value="dislike">👎 {{.DislikeCount}}</button>
                 </form>
 
-                <!-- A MODIFIER POUR METTRE EN PLACE LA VERIFICATION UTILISATEUR UUID AVEC COOKIE -->
                 {{if eq $.ConnectedUser .User_id}}
-                <form action="/comments/delete" method="POST" style="margin-top: 10px;">
+                <form action="/comments/delete" method="POST" style="margin-top: 10px;" onsubmit="return confirmDelete();">
                     <input type="hidden" name="comment_id" value="{{.ID}}">
                     <input type="hidden" name="post_id" value="{{$.Post.ID}}">
                     <button type="submit"
                         style="background: red; color: white; border: none; padding: 5px 10px; border-radius: 4px;">
-                        Supprimer
+                        Delete
                     </button>
                 </form>
                 {{end}}
             </div>
             {{else}}
-            <p>Aucun commentaire pour le moment.</p>
+            <p>No comments yet</p>
             {{end}}
 
             {{if .ConnectedUser}}
-            <h3>Ajouter un commentaire</h3>
+            <h3>Add a Comment</h3>
             <form action="/comments/create" method="POST">
                 <input type="hidden" name="post_id" value="{{.Post.ID}}">
                 <textarea name="content" rows="4" cols="60" placeholder="Votre commentaire..."
                     required></textarea><br><br>
-                <button type="submit">Poster le commentaire</button>
+                <button type="submit">Post comment</button>
             </form>
             {{else}}
-            <p><em>Vous devez être connecté pour poster un commentaire.</em></p>
+            <p><em>You must be logged in to post a comment</em></p>
             <p>
-                <a href="/login"><button type="button">Se connecter</button></a>
-                <a href="/register"><button type="button">S’inscrire</button></a>
+                <a href="/login"><button type="button">Log In</button></a>
+                <a href="/register"><button type="button">Sign Up</button></a>
             </p>
             {{end}}
         </div>
     </div>
+    <div id="notification-toast" class="hidden notif-toast">
+        <span id="notification-message"></span>
+        <button id="close-notification-toast" class="close-btn">&times;</button>
+    </div>      
+    <script src="/scripts/notifications.js"></script>
     <script src="/scripts/scroll_restore.js"></script>
+    <script src="/scripts/script.js"></script>
 </body>
 
 </html>

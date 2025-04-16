@@ -8,10 +8,8 @@ html,body {
     width: 100%;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
   }
   
   html {
@@ -428,7 +426,7 @@ html,body {
     }
   
     html {
-      font-size: 12px; /* Reduce base font size for smaller screens */
+      font-size: 20px; /* Reduce base font size for smaller screens */
     }
   
     .post-list {
@@ -508,3 +506,54 @@ html,body {
       padding: 8px 16px; /* Reduce button padding */
     }
   }
+
+  /* Styles for the post detail page */
+
+/* Conteneur principal */
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Conteneur individuel de chaque post */
+.post-card-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Bouton post centré et même largeur */
+.post-card-button {
+  width: 600px;
+  max-width: 90%;
+  text-align: left;
+  padding: 16px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+/* Effet hover */
+.post-card-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Formatage du contenu */
+.post-card-button .title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.post-card-button .content {
+  margin: 8px 0;
+  color: #333;
+}
+
+.post-card-button .meta {
+  font-size: 12px;
+  color: #666;
+}

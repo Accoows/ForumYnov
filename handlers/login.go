@@ -14,9 +14,9 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
-// Page d'accueil, général
+// Home page, general
 
-// Gestionnaire pour servir la page de login
+// Handler to serve the login page
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
 		tmpl, err := template.ParseFiles(filepath.Join("./templates/", "login.html"))
@@ -28,7 +28,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if r.Method == http.MethodPost {
-		// Traiter les données du formulaire
+		// Process form data
 		LoginUsers(w, r)
 		return
 	}
@@ -59,17 +59,17 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 
 	emailRight := VerifyEmailConformity(&newUser) // check if the email is valid
 	if !emailRight {
-		http.Error(w, "Email does not comply", http.StatusBadRequest)
+		models.SetNotification(w, "Email does not comply", "error")
 		return
 	}
 	userUUID, hashedPassword, err := GetHashedPasswordAndUUID(newUser.Email) // get the hashed password and user UUID from the database using the email
 	if err != nil {
-		http.Error(w, "Incorrect email", http.StatusNotFound)
+		models.SetNotification(w, "Incorrect email", "error")
 		return
 	}
 
 	if !models.CheckPasswordHash(newUser.Password_hash, hashedPassword) { // check if the provided password matches the hashed password from the database
-		http.Error(w, "Incorrect password", http.StatusUnauthorized)
+		models.SetNotification(w, "Incorrect password", "error")
 		return
 	}
 
@@ -102,7 +102,10 @@ func LoginUsers(w http.ResponseWriter, r *http.Request) {
 		Unparsed:   []string{},
 	}
 
-	http.SetCookie(w, userIdCookie)                   // set the cookie in the response header to send it to the client
+	http.SetCookie(w, userIdCookie) // set the cookie in the response header to send it to the client
+
+	models.SetNotification(w, "Login successful", "success")
+
 	http.Redirect(w, r, "/profile", http.StatusFound) // redirect the user to the profile page after successful login
 }
 

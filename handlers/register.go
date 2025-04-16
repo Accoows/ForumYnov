@@ -13,7 +13,7 @@ import (
 
 func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
-		// Afficher le formulaire
+		// Display the form
 		tmpl, err := template.ParseFiles("templates/register.html")
 		if err != nil {
 			log.Println("[handlers/register.go] Erreur chargement template :", err)
@@ -25,7 +25,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == http.MethodPost {
-		// Traiter les données du formulaire
+		// Process the form data
 		RegisterUsers(w, r)
 		return
 	}
@@ -92,6 +92,8 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error during user registration", http.StatusInternalServerError)
 		return
 	}
+
+	models.SetNotification(w, "Registration successful! You can now log in.", "success") // set a notification message to inform the user about the registration status
 
 	http.Redirect(w, r, "/", http.StatusFound) // redirect the user to the home page after registration
 }

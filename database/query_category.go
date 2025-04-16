@@ -61,3 +61,65 @@ func GetAllCategories() ([]Categories, error) {
 	}
 	return categories, nil
 }
+
+func GetMostsPostsCategoriesOfTheWeek() ([]Categories, error) {
+	query := `SELECT Categories.id, Categories.name, Categories.category_photos FROM Categories JOIN Posts ON Categories.id = Posts.category_id
+    WHERE Posts.created_at >= datetime('now', '-7 days') GROUP BY Categories.id, Categories.name, Categories.category_photos ORDER BY COUNT(Posts.id) DESC LIMIT 3;`
+
+	rows, err := SQL.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var categories []Categories
+	if !rows.Next() {
+		return categories, nil
+	}
+
+	for {
+		var category Categories
+		err := rows.Scan(&category.ID, &category.Name, &category.CategoryPhotos)
+		if err != nil {
+			return nil, err
+		}
+		categories = append(categories, category)
+
+		if !rows.Next() {
+			break
+		}
+	}
+
+	return categories, nil
+}
+
+func GetMostsPostsCategories() ([]Categories, error) {
+	query := `SELECT Categories.id, Categories.name, Categories.category_photos FROM Categories JOIN Posts ON Categories.id = Posts.category_id
+    GROUP BY Categories.id, Categories.name, Categories.category_photos ORDER BY COUNT(Posts.id) DESC LIMIT 3;`
+
+	rows, err := SQL.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var categories []Categories
+	if !rows.Next() {
+		return categories, nil // Retourne une liste vide
+	}
+
+	for {
+		var category Categories
+		err := rows.Scan(&category.ID, &category.Name, &category.CategoryPhotos)
+		if err != nil {
+			return nil, err
+		}
+		categories = append(categories, category)
+
+		if !rows.Next() {
+			break
+		}
+	}
+
+	return categories, nil
+}

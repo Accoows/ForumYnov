@@ -3,12 +3,13 @@ package handlers
 import (
 	"database/sql"
 	"forumynov/database"
+	"forumynov/models"
 	"log"
 	"net/http"
 	"strconv"
 )
 
-// LikeHandler gère les likes/dislikes d'un post ou d'un commentaire
+// LikeHandler handles likes/dislikes for a post or comment
 func LikeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		ErrorHandler(w, http.StatusMethodNotAllowed)
@@ -17,14 +18,15 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 
 	userID, err := getConnectedUserID(r)
 	if err != nil {
-		http.Error(w, "Vous devez être connecté pour liker", http.StatusUnauthorized) // à vérifier
+		models.SetNotification(w, "You must be logged in to like or dislike", "error")
+		http.Redirect(w, r, r.Referer(), http.StatusSeeOther)
 		return
 	}
 
-	// Récupérer les valeurs du formulaire
+	// Retrieve form values
 	postIDStr := r.FormValue("post_id")
 	commentIDStr := r.FormValue("comment_id")
-	action := r.FormValue("action") // "like" ou "dislike" avec en SQL 1 ou -1
+	action := r.FormValue("action") // "like" or "dislike" with SQL values 1 or -1
 
 	postID, _ := strconv.Atoi(postIDStr)
 	commentID, _ := strconv.Atoi(commentIDStr)
@@ -40,7 +42,7 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Structure existante dans datastruct.go de LikesDislikes
+	// Existing structure in datastruct.go for LikesDislikes
 	like := &database.LikesDislikes{
 		User_id:    userID,
 		Post_id:    sql.NullInt64{Int64: int64(postID), Valid: postID != 0},
@@ -48,24 +50,24 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 		TypeValue:  typeValue,
 	}
 
-	err = InsertOrUpdateLikeDislike(like) // Mise à jour des likes/dislikes
+	err = InsertOrUpdateLikeDislike(like) // Update likes/dislikes
 	if err != nil {
-		log.Println("[HandleLike] Erreur InsertOrUpdateLikeDislike:", err)
+		log.Println("[HandleLike] Error InsertOrUpdateLikeDislike:", err)
 		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 
-	// Redirection après le like
+	// Redirect after the like
 	if postID != 0 {
 		http.Redirect(w, r, "/posts/view?id="+postIDStr, http.StatusSeeOther)
 	} else {
-		// Dans le cas d’un commentaire, il faut que le parent_post_id soit fourni dans le formulaire A VERIFIER
+		// In the case of a comment, the parent_post_id must be provided in the form TO VERIFY
 		parentPostID := r.FormValue("parent_post_id")
 		http.Redirect(w, r, "/posts/view?id="+parentPostID, http.StatusSeeOther)
 	}
 }
 
-// InsertOrUpdateLikeDislike insère ou met à jour un like/dislike dans la base de données
+// InsertOrUpdateLikeDislike inserts or updates a like/dislike in the database
 func InsertOrUpdateLikeDislike(like *database.LikesDislikes) error {
 	postID := 0
 	commentID := 0
@@ -79,7 +81,7 @@ func InsertOrUpdateLikeDislike(like *database.LikesDislikes) error {
 
 	existing, err := database.GetExistingLikeDislike(like.User_id, postID, commentID)
 	if err != nil {
-		log.Println("[InsertOrUpdateLikeDislike] Erreur GetExistingLikeDislike:", err)
+		log.Println("[InsertOrUpdateLikeDislike] Error GetExistingLikeDislike:", err)
 		return err
 	}
 
@@ -87,7 +89,7 @@ func InsertOrUpdateLikeDislike(like *database.LikesDislikes) error {
 		row := database.SQL.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM Likes_Dislikes")
 		err = row.Scan(&like.ID)
 		if err != nil {
-			log.Println("[InsertOrUpdateLikeDislike] Erreur Scan ID:", err)
+			log.Println("[InsertOrUpdateLikeDislike] Error Scan ID:", err)
 			return err
 		}
 
@@ -96,7 +98,7 @@ func InsertOrUpdateLikeDislike(like *database.LikesDislikes) error {
 			VALUES (?, ?, ?, ?, ?)`,
 			like.ID, like.User_id, like.Post_id, like.Comment_id, like.TypeValue)
 		if err != nil {
-			log.Println("[InsertOrUpdateLikeDislike] Erreur INSERT:", err)
+			log.Println("[InsertOrUpdateLikeDislike] Error INSERT:", err)
 		}
 		return err
 	}
@@ -104,14 +106,14 @@ func InsertOrUpdateLikeDislike(like *database.LikesDislikes) error {
 	if existing.TypeValue == like.TypeValue {
 		_, err = database.SQL.Exec(`DELETE FROM Likes_Dislikes WHERE id = ?`, existing.ID)
 		if err != nil {
-			log.Println("[InsertOrUpdateLikeDislike] Erreur DELETE toggle:", err)
+			log.Println("[InsertOrUpdateLikeDislike] Error DELETE toggle:", err)
 		}
 		return err
 	}
 
 	_, err = database.SQL.Exec(`UPDATE Likes_Dislikes SET type = ? WHERE id = ?`, like.TypeValue, existing.ID)
 	if err != nil {
-		log.Println("[InsertOrUpdateLikeDislike] Erreur UPDATE:", err)
+		log.Println("[InsertOrUpdateLikeDislike] Error UPDATE:", err)
 	}
 	return err
 }
