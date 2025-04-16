@@ -8,5 +8,5 @@ services:
       - "8080:8080"
     working_dir: /app
     command: ["/app/forumynov"]
-#    volumes:
-#      - ./database:/app/database
+    volumes:
+      - ./database:/app/database

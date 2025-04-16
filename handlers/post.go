@@ -170,14 +170,14 @@ func DeletePostHandler(w http.ResponseWriter, r *http.Request) {
 	userID, err := getConnectedUserID(r) // Retrieve the logged-in user ID from the request
 	if err != nil || userID != post.User_id {
 		log.Println("[handlers/post.go] [DeletePostHandler] Forbidden access for user:", userID)
-		http.Error(w, "Unauthorized deletion", http.StatusUnauthorized)
+		models.SetNotification(w, "Unauthorized deletion", "error")
 		return
 	}
 
 	err = database.DeletePostWithDependencies(postID) // Delete post and related data (comments + likes)
 	if err != nil {
 		log.Println("[handlers/post.go] [DeletePostHandler] Error deleting post >>>", err)
-		ErrorHandler(w, http.StatusInternalServerError)
+		models.SetNotification(w, "Error deleting post", "error")
 		return
 	}
 
@@ -231,7 +231,7 @@ func EditPostHandler(w http.ResponseWriter, r *http.Request) {
 	userID, err := getConnectedUserID(r)      // Retrieve the logged-in user ID from the request
 	if err != nil || userID != post.User_id { // Check if the logged-in user is the author of the post
 		log.Println("[handlers/post.go] [EditPostHandler] Forbidden access for user:", userID)
-		http.Error(w, "Unauthorized modification", http.StatusUnauthorized)
+		models.SetNotification(w, "Unauthorized modification", "error")
 		return
 	}
 
