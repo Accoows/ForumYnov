@@ -27,7 +27,6 @@ func DeleteCommentByID(id int) error {
 	if err != nil {
 		return err
 	}
-
 	// Then delete the comment itself from the Comments table
 	_, err = SQL.Exec("DELETE FROM Comments WHERE id = ?", id)
 	return err
@@ -84,7 +83,6 @@ func GetCommentsByPostID(postID int) ([]Comments, error) {
 
 		// Count the likes and dislikes of the comment directly using the CountLikesForComment function in query_likes.go
 		comment.LikeCount, comment.DislikeCount, _ = CountLikesForComment(SQL, comment.ID)
-
 		comments = append(comments, comment)
 	}
 	return comments, nil
