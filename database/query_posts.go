@@ -108,8 +108,9 @@ func DeletePostWithDependencies(postID int) error {
 }
 
 func GetLatestPosts() ([]Posts, error) {
-	query := `SELECT Posts.id, Posts.user_id, Posts.category_id, Posts.title, Posts.content, Posts.created_at, Users.username, Categories.name, Categories.category_photos 
-	FROM Posts JOIN Users ON Posts.user_id = Users.id JOIN Categories ON Posts.category_id = Categories.id ORDER BY Posts.created_at DESC LIMIT 3;`
+	query := `SELECT Posts.id, Posts.user_id, Posts.category_id, Posts.title, Posts.content, Posts.created_at, Users.username, Categories.name, Categories.category_photos, COALESCE(SUM(CASE WHEN Likes_Dislikes.type = 1 THEN 1 ELSE 0 END), 0) AS like_count,
+    COALESCE(SUM(CASE WHEN Likes_Dislikes.type = -1 THEN 1 ELSE 0 END), 0) AS dislike_count FROM Posts JOIN Users ON Posts.user_id = Users.id JOIN Categories ON Posts.category_id = Categories.id LEFT JOIN Likes_Dislikes ON Posts.id = Likes_Dislikes.post_id 
+	GROUP BY Posts.id, Posts.user_id, Posts.category_id, Posts.title, Posts.content, Posts.created_at, Users.username, Categories.name, Categories.category_photos ORDER BY Posts.created_at DESC LIMIT 3;`
 
 	rows, err := SQL.Query(query)
 	if err != nil {
@@ -120,7 +121,7 @@ func GetLatestPosts() ([]Posts, error) {
 	var posts []Posts
 	for rows.Next() {
 		var post Posts
-		err := rows.Scan(&post.ID, &post.User_id, &post.Category_id, &post.Title, &post.Content, &post.Created_at, &post.AuthorUsername, &post.CategoryName, &post.CategoryPhotos)
+		err := rows.Scan(&post.ID, &post.User_id, &post.Category_id, &post.Title, &post.Content, &post.Created_at, &post.AuthorUsername, &post.CategoryName, &post.CategoryPhotos, &post.LikeCount, &post.DislikeCount)
 		if err != nil {
 			return nil, err
 		}
