@@ -15,21 +15,21 @@ func CategoryPostsHandler(w http.ResponseWriter, r *http.Request) {
 	categoryID, err := strconv.Atoi(categoryIDStr)
 	if err != nil {
 		ErrorHandler(w, http.StatusBadRequest)
-		log.Println("[handlers/post.go][CategoryPostsHandler] ID invalide >>>", err)
+		log.Println("[handlers/post.go][CategoryPostsHandler] Invalid ID >>>", err)
 		return
 	}
 
 	posts, err := database.GetPostsByCategoryID(categoryID)
 	if err != nil {
 		ErrorHandler(w, http.StatusInternalServerError)
-		log.Println("[handlers/post.go][CategoryPostsHandler] Erreur GetPostsByCategoryID >>>", err)
+		log.Println("[handlers/post.go][CategoryPostsHandler] Error GetPostsByCategoryID >>>", err)
 		return
 	}
 
 	category, err := database.GetCategoryByID(categoryID)
 	if err != nil {
 		ErrorHandler(w, http.StatusInternalServerError)
-		log.Println("[handlers/post.go][CategoryPostsHandler] Erreur GetCategoryByID >>>", err)
+		log.Println("[handlers/post.go][CategoryPostsHandler] Error GetCategoryByID >>>", err)
 		return
 	}
 
@@ -49,7 +49,7 @@ func CategoryPostsHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err = tmpl.ParseFiles(filepath.Join("./templates/", "post-detail.html"))
 	if err != nil {
 		ErrorHandler(w, http.StatusInternalServerError)
-		log.Println("[handlers/post.go][CategoryPostsHandler] Erreur ParseFiles >>>", err)
+		log.Println("[handlers/post.go][CategoryPostsHandler] Error ParseFiles >>>", err)
 		return
 	}
 

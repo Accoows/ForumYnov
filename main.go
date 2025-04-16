@@ -19,7 +19,7 @@ func main() {
 		}
 	}()
 
-	// Gère les requêtes vers le dossier "Scripts", de manière similaire au dossier "Styles".
+	// Handles requests to the "Scripts" folder, similar to the "Styles" folder
 	http.Handle("/scripts/", http.StripPrefix("/scripts/", http.FileServer(http.Dir("./scripts"))))
 
 	// Serve static files (CSS, images, etc.) from the current directory
@@ -41,7 +41,7 @@ func main() {
 	http.HandleFunc("/upload-profile-picture", handlers.UploadProfilePictureHandler)
 	http.HandleFunc("/delete-profile-picture", handlers.DeleteProfilePictureHandler)
 
-	// CRUD pour les posts
+	// CRUD for posts
 	http.HandleFunc("/posts", handlers.PostsHandler)
 	http.HandleFunc("/posts/create", handlers.CreatePostHandler)
 	http.HandleFunc("/posts/view", handlers.ViewPostHandler)
@@ -52,8 +52,8 @@ func main() {
 	http.HandleFunc("/category", handlers.CategoryPostsHandler)
 	http.HandleFunc("/post-list", handlers.PostListHandler)
 
-	// CRUD pour les commentaires
-	// L'affichage des commentaires est géré dans la page de post (ViewPostHandler)
+	// CRUD for comments
+	// Comment display is handled in the post page (ViewPostHandler)
 	http.HandleFunc("/comments/create", handlers.CreateCommentHandler)
 	http.HandleFunc("/comments/delete", handlers.DeleteCommentHandler)
 
@@ -62,7 +62,7 @@ func main() {
 	fmt.Println("Starting server at port 8080")
 	fmt.Println(">>>> http://localhost:8080 <<<<")
 
-	// Démarre le serveur HTTP sur le port 8080
+	// Starts the HTTP server on port 8080
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		fmt.Printf("Server failed to start: %v\n", err)
 	}

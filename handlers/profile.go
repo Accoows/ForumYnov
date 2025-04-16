@@ -146,7 +146,7 @@ func DeleteProfilePictureHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Supprimer le fichier s’il existe
+	// Delete the file if it exists
 	if filename != "" {
 		path := filepath.Join("static/uploads", filename)
 		log.Println("Attempting to delete file:", path)
@@ -166,7 +166,7 @@ func DeleteProfilePictureHandler(w http.ResponseWriter, r *http.Request) {
 		log.Println("No profile picture to delete")
 	}
 
-	// Réinitialiser la valeur en DB
+	// Reset the value in the DB
 	err = database.UpdateProfilePicture(userID, "")
 	if err != nil {
 		models.SetNotification(w, "Error updating database", "error")

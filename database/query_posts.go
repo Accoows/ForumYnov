@@ -71,12 +71,6 @@ func GetPostByID(id int) (Posts, error) {
 
 	post.LikeCount, post.DislikeCount, _ = CountLikesForPost(SQL, post.ID)
 
-	// TODO : Remplacer "1" par l'ID de l'utilisateur connecté (via session/cookie)
-	// likeInfo, _ := GetExistingLikeDislike("1", post.ID, 0)
-	// if likeInfo != nil {
-	//     post.UserLikeType = likeInfo.TypeValue
-	// }
-
 	return post, err
 }
 

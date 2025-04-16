@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<!--
-==================== CHANGELOG / TO DO LIST ==========================
-- Ajouter un système de pagination pour les posts (10 posts par page)
--->
-
 <head>
     <meta charset="UTF-8">
     <title>ForumYnov</title>
@@ -31,8 +26,8 @@
                 <form action="/posts/filter" method="GET">
                     <label for="category">Filter by category:</label>
                     <select id="category" name="category">
-                        <option value="Voyages">Voyages</option>
-                        <option value="Langue">Langue</option>
+                        <option value="Voyages">Travel</option>
+                        <option value="Langue">Language</option>
                         <option value="Anime/Manga">Anime/Manga</option>
                     </select>
                     <button type="submit">Filter</button>
@@ -44,7 +39,7 @@
                     <div class="container14">
                         <div class="menu-item title">{{.Title}}</div>
                         <div class="menu-item content">{{.Content}}</div>
-                        <div class="menu-item meta">Posté par {{.AuthorUsername}} – {{.Created_at}}</div>
+                        <div class="menu-item meta">Posted by {{.AuthorUsername}} – {{.Created_at}}</div>
                     </div>
                 </button>
             </div>

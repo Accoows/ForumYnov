@@ -3,26 +3,26 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Modifier le post</title>
+  <title>Edit Post</title>
   <link rel="stylesheet" type="text/css" href="/static/post-form.css">
 </head>
 <body>
   <div class="form-wrapper">
-    <h1>Modifier le post</h1>
+    <h1>Edit Post</h1>
 
     <form action="/posts/edit?id={{.ID}}" method="POST">
-      <label for="title">Titre :</label>
+      <label for="title">Title :</label>
       <input type="text" id="title" name="title" value="{{.Title}}" required>
 
-      <label for="content">Contenu :</label>
+      <label for="content">Content :</label>
       <textarea id="content" name="content" required>{{.Content}}</textarea>
 
       <div class="form-actions">
         <div class="button-container">
-          <button type="submit">Enregistrer les modifications</button>
+          <button type="submit">Save Changes</button>
         </div>
         <a href="/posts/view?id={{.ID}}">
-          <button type="button">Retour au post</button>
+          <button type="button">Back to Post</button>
         </a>
       </div>
     </form>

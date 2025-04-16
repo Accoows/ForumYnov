@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// GetUserIDFromRequest récupère l'ID utilisateur depuis le cookie si valide
+// GetUserIDFromRequest retrieves the user ID from the cookie if valid
 func GetUserIDFromRequest(r *http.Request) (string, error) {
 	cookie, err := r.Cookie("user_cookie")
 	if err != nil {

@@ -19,15 +19,15 @@ window.addEventListener("DOMContentLoaded", () => {
     toast.classList.remove("bg-green", "bg-blue", "bg-red");
     if (type === "success") toast.classList.add("bg-green");
     else if (type === "info") toast.classList.add("bg-blue");
-    else toast.classList.add("bg-red"); // défaut : erreur
+    else toast.classList.add("bg-red"); // Default : error
 
     toast.style.animation = "slideIn 0.4s ease";
 
-    // Suppression des cookies
+    // Delete cookies
     document.cookie = "notif_msg=; Max-Age=0; path=/;";
     document.cookie = "notif_type=; Max-Age=0; path=/;";
 
-    // Disparition automatique
+    // Automatic disappearance
     setTimeout(() => {
       toast.style.animation = "slideOut 0.4s ease forwards";
       setTimeout(() => {
@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }, 400);
     }, 5000);
 
-    // Fermeture manuelle
+    // Manual closing
     closeBtn.addEventListener("click", () => {
       toast.style.animation = "slideOut 0.4s ease forwards";
       setTimeout(() => {
