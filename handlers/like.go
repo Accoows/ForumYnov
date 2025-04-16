@@ -16,7 +16,7 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	userID, err := getConnectedUserID(r)
+	userID, err := getConnectedUserID(r) // Ensure user is logged in
 	if err != nil {
 		models.SetNotification(w, "You must be logged in to like or dislike", "error")
 		http.Redirect(w, r, r.Referer(), http.StatusSeeOther)
@@ -32,6 +32,7 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 	postID, _ := strconv.Atoi(postIDStr)
 	commentID, _ := strconv.Atoi(commentIDStr)
 
+	// Determine SQL type value: 1 = like, -1 = dislike
 	var typeValue int
 	switch action {
 	case "like":
@@ -51,7 +52,7 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 		TypeValue:  typeValue,
 	}
 
-	err = InsertOrUpdateLikeDislike(like) // Update likes/dislikes
+	err = InsertOrUpdateLikeDislike(like) // Update likes/dislikes in the database
 	if err != nil {
 		log.Println("[HandleLike] Error InsertOrUpdateLikeDislike:", err)
 		ErrorHandler(w, http.StatusInternalServerError)
@@ -73,6 +74,7 @@ func InsertOrUpdateLikeDislike(like *database.LikesDislikes) error {
 	postID := 0
 	commentID := 0
 
+	// Extract valid IDs for use
 	if like.Post_id.Valid {
 		postID = int(like.Post_id.Int64)
 	}
@@ -80,13 +82,14 @@ func InsertOrUpdateLikeDislike(like *database.LikesDislikes) error {
 		commentID = int(like.Comment_id.Int64)
 	}
 
+	// Check if a like/dislike already exists from this user
 	existing, err := database.GetExistingLikeDislike(like.User_id, postID, commentID)
 	if err != nil {
 		log.Println("[InsertOrUpdateLikeDislike] Error GetExistingLikeDislike:", err)
 		return err
 	}
 
-	if existing == nil {
+	if existing == nil { // No existing like: insert a new one
 		row := database.SQL.QueryRow("SELECT COALESCE(MAX(id), 0) + 1 FROM Likes_Dislikes")
 		err = row.Scan(&like.ID)
 		if err != nil {
@@ -104,7 +107,7 @@ func InsertOrUpdateLikeDislike(like *database.LikesDislikes) error {
 		return err
 	}
 
-	if existing.TypeValue == like.TypeValue {
+	if existing.TypeValue == like.TypeValue { // Same value clicked again: toggle (delete)
 		_, err = database.SQL.Exec(`DELETE FROM Likes_Dislikes WHERE id = ?`, existing.ID)
 		if err != nil {
 			log.Println("[InsertOrUpdateLikeDislike] Error DELETE toggle:", err)
@@ -112,6 +115,7 @@ func InsertOrUpdateLikeDislike(like *database.LikesDislikes) error {
 		return err
 	}
 
+	// Different value clicked (like → dislike or vice versa): update
 	_, err = database.SQL.Exec(`UPDATE Likes_Dislikes SET type = ? WHERE id = ?`, like.TypeValue, existing.ID)
 	if err != nil {
 		log.Println("[InsertOrUpdateLikeDislike] Error UPDATE:", err)

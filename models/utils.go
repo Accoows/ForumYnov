@@ -19,11 +19,11 @@ func CheckPasswordHash(password, hash string) bool {
 	return err == nil
 }
 
-// SetNotification sets a temporary cookie containing a notification message
+// SetNotification sets a temporary cookie containing a notification message for the popup
 func SetNotification(w http.ResponseWriter, message string, notifType string) {
 	http.SetCookie(w, &http.Cookie{
 		Name:   "notif_msg",
-		Value:  url.QueryEscape(message),
+		Value:  url.QueryEscape(message), // URL-encode the message to handle special characters
 		Path:   "/",
 		MaxAge: 5,
 	})
