@@ -85,20 +85,21 @@ func ProfilePage(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, data) // execute the template with the data and write it to the response
 }
 
+// UpdateProfileHandler handles the profile picture update for users.
 func UploadProfilePictureHandler(w http.ResponseWriter, r *http.Request) {
-	userID, err := models.GetUserIDFromRequest(r)
+	userID, err := models.GetUserIDFromRequest(r) // get the user ID from the request using the cookie
 	if err != nil || userID == "" {
 		models.SetNotification(w, "Unauthorized", "error")
 		return
 	}
 
-	err = r.ParseMultipartForm(10 << 20) // 10MB
+	err = r.ParseMultipartForm(10 << 20) // 10MB // set the maximum memory for the form data
 	if err != nil {
 		models.SetNotification(w, "File too large (10MB)", "error")
 		return
 	}
 
-	file, handler, err := r.FormFile("profile_picture")
+	file, handler, err := r.FormFile("profile_picture") // get the file from the form data
 	if err != nil {
 		models.SetNotification(w, "Invalid file", "error")
 
@@ -106,23 +107,25 @@ func UploadProfilePictureHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer file.Close()
 
+	// create a unique filename using the current timestamp and the original filename
+	// and save it in the static/uploads directory
 	filename := fmt.Sprintf("%d_%s", time.Now().UnixNano(), filepath.Base(handler.Filename))
 	path := filepath.Join("static/uploads", filename)
 
-	dst, err := os.Create(path)
+	dst, err := os.Create(path) // create the file in the static/uploads directory
 	if err != nil {
 		models.SetNotification(w, "Unable to save file", "error")
 		return
 	}
-	defer dst.Close()
+	defer dst.Close() // close the file after writing
 
-	_, err = io.Copy(dst, file)
+	_, err = io.Copy(dst, file) // copy the file content to the new file
 	if err != nil {
 		models.SetNotification(w, "Error saving file", "error")
 		return
 	}
 
-	err = database.UpdateProfilePicture(userID, filename)
+	err = database.UpdateProfilePicture(userID, filename) // update the profile picture in the database
 	if err != nil {
 		models.SetNotification(w, "Error updating user", "error")
 		return
@@ -132,6 +135,7 @@ func UploadProfilePictureHandler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/profile", http.StatusSeeOther)
 }
 
+// Deletes a post only if the connected user is its author
 func DeleteProfilePictureHandler(w http.ResponseWriter, r *http.Request) {
 	userID, err := models.GetUserIDFromRequest(r)
 	if err != nil || userID == "" {
@@ -140,6 +144,7 @@ func DeleteProfilePictureHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var filename string
+	// Get the current profile picture filename from the database
 	err = database.SQL.QueryRow("SELECT profilepicture FROM Users WHERE id = ?", userID).Scan(&filename)
 	if err != nil {
 		models.SetNotification(w, "Error retrieving image", "error")
@@ -148,11 +153,11 @@ func DeleteProfilePictureHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Delete the file if it exists
 	if filename != "" {
-		path := filepath.Join("static/uploads", filename)
+		path := filepath.Join("static/uploads", filename) // construct the file path
 		log.Println("Attempting to delete file:", path)
 
-		if err := os.Remove(path); err != nil {
-			if os.IsNotExist(err) {
+		if err := os.Remove(path); err != nil { // delete the file
+			if os.IsNotExist(err) { // check if the file does not exist
 				log.Println("File does not exist:", path)
 			} else {
 				log.Println("Failed to delete file:", err)
@@ -167,12 +172,13 @@ func DeleteProfilePictureHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Reset the value in the DB
-	err = database.UpdateProfilePicture(userID, "")
+	err = database.UpdateProfilePicture(userID, "") // update the profile picture in the database to an empty string
 	if err != nil {
 		models.SetNotification(w, "Error updating database", "error")
 		return
 	}
 
+	// Notify user of success and redirect to the profile page
 	models.SetNotification(w, "Profile picture deleted successfully", "info")
 	http.Redirect(w, r, "/profile", http.StatusSeeOther)
 }
