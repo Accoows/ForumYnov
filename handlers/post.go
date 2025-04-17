@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"database/sql"
 	"forumynov/database"
 	"forumynov/models"
 	"html/template"
@@ -105,6 +106,15 @@ func ViewPostHandler(w http.ResponseWriter, r *http.Request) {
 		log.Println("[handlers/post.go] [ViewPostHandler] Error GetPostByID >>>", err)
 		ErrorHandler(w, http.StatusNotFound)
 		return
+	}
+
+	// Fetch the profile picture of the post's author
+	var profilePicture sql.NullString
+	err = database.SQL.QueryRow("SELECT profilepicture FROM Users WHERE id = ?", post.User_id).Scan(&profilePicture)
+	if err != nil {
+		log.Println("[handlers/post.go] [ViewPostHandler] Error getting profile picture:", err)
+	} else if profilePicture.Valid {
+		post.ProfilePicture = profilePicture.String
 	}
 
 	comments, err := database.GetCommentsByPostID(postID) // Fetch comments associated with the post
