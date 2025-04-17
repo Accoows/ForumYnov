@@ -53,18 +53,39 @@ html {
     color: #000;
   }
   
+  .forum-logo {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+  
+  /* === ARTICLE === */
   .article {
     background-color: #92A8D1;
     border-radius: 50px;
     padding: 24px;
-    margin: 0 100px 20px 100px;
+    margin: 0 auto 20px auto;
+    max-width: 760px;
+    width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     position: relative;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
   }
   
   .div, .div2, .div3 {
     background: transparent;
     position: static;
+  }
+  
+  .author-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
   }
   
   .img {
@@ -75,16 +96,29 @@ html {
     display: inline-block;
   }
   
+  .profile-picture-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
   .Pseudo {
     font-weight: bold;
     color: #000;
     font-size: 16px;
+    margin-bottom: 4px;
   }
   
   .timestamp {
     font-size: 14px;
     color: #737373;
-    float: right;
   }
   
   .title-content {
@@ -103,9 +137,9 @@ html {
   
   .like-form {
     margin-top: 10px;
-    margin-left: 10px;
   }
   
+  /* === COMMENTAIRE === */
   h3 {
     margin-left: 100px;
     color: #000;
@@ -165,6 +199,7 @@ html {
     margin-left: 100px;
   }
   
+  /* === BUTTONS === */
   a {
     color: #000;
     text-decoration: underline;
@@ -182,8 +217,6 @@ html {
     cursor: pointer;
   }
   
-  /* === Boutons personnalisés unifiés === */
-  
   .btn-like,
   .btn-dislike,
   .btn-edit,
@@ -198,9 +231,8 @@ html {
     margin-right: 10px;
     transition: background-color 0.2s ease-in-out;
   }
-
   
-.btn-delete {
+  .btn-delete {
     background-color: #dc3545;
     color: #fff;
     border: none;
@@ -211,13 +243,6 @@ html {
     margin-right: 10px;
     transition: background-color 0.2s ease-in-out;
   }
-
-  .no-comments {
-    text-align: center;
-    font-style: italic;
-    color: #444;
-    margin-top: 20px;
-  }  
   
   .btn-like:hover,
   .btn-dislike:hover,
@@ -225,7 +250,7 @@ html {
   .btn-comment:hover {
     background-color: #b4aa9d;
   }
-
+  
   .btn-delete:hover {
     background-color: #a72834;
   }
@@ -262,8 +287,7 @@ html {
     background-color: #8793aa;
   }
   
-  /* === Divers === */
-  
+  /* === OTHER === */
   .post-meta,
   .post-controls {
     margin: 20px auto;
@@ -316,47 +340,49 @@ html {
     display: inline;
     margin: 0;
   }
-
-  .forum-logo {
-    height: 70px;
-    width: auto;
-    object-fit: contain;
-    margin-right: 10px;
-  }
-
-  .profile-picture-img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 50%;
+  
+  .no-comments {
+    text-align: center;
+    font-style: italic;
+    color: #444;
+    margin-top: 20px;
   }
   
-  .author-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 12px;
-  }
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    .article {
+      padding: 16px;
+      border-radius: 30px;
+      margin: 0 auto 20px auto;
+    
+      .img {
+        width: 50px;
+        height: 50px;
+      }
+    }
   
-  .author-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+    .author-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
   
-  .author-info .Pseudo {
-    margin-bottom: 4px;
-  }
+    .profile-picture-img {
+      width: 50px;
+      height: 50px;
+    }
   
-  .article-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-  }
+    .title-content {
+      font-size: 18px;
+      margin-top: 10px;
+    }
   
-  .post-content-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
+    .text-content {
+      font-size: 15px;
+      margin-top: 8px;
+    }
   
+    .like-form {
+      margin-left: 0;
+    }
+  }
