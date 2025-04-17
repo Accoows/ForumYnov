@@ -1,261 +1,318 @@
 html {
-    background: url('fond.jpg') no-repeat;
+    background: url('/static/fond.jpg') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    border-color: #000000;
-  }
-  
-  .post-list,
-  .post-list * {
-    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
   }
   
   .post-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    height: auto;
-    position: relative;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
   }
   
   .background {
-    background: rgb(238, 234, 234, 50%);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 0px 0px 12px 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
+    background: rgba(238, 234, 234, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   }
   
   .background-shadow {
-    background: #f2e3d5;
-    border-radius: 10px;
+    background-color: #f2e3d5;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    align-self: stretch;
-    position: relative;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
-    margin: 20px;
+    align-items: center;
+    justify-content: space-between;
   }
   
   .container {
-    padding: 12px 8px 12px 16px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-between;
-    align-self: stretch;
-    flex-shrink: 0;
-    position: relative;
+    align-items: center;
   }
   
   .container2 {
     display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex: 1;
-    position: relative;
+    align-items: center;
+    gap: 12px;
   }
   
   .vector {
-    flex-shrink: 0;
-    width: 30px;
-    height: 27px;
-    position: relative;
-    overflow: visible;
+    width: 32px;
+    height: 32px;
   }
   
   .forum-name {
-    color: #000000;
-    text-align: left;
-    font-family: "Roboto-Medium", sans-serif;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 500;
-    position: absolute;
-    left: 50%;
-    translate: -50%;
-    top: 0px;
-    width: auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
   }
   
   .article {
-    background: #92A8D1;
-    border-style: solid;
+    background-color: #92A8D1;
     border-radius: 50px;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
-    border-color: #000000;
-    border-width: 0px 0px 1px 0px;
-    margin-left: 100px;
-    margin-right: 100px;
-    flex-shrink: 0;
-    width: 80%;
-    height: 249px;
+    padding: 24px;
+    margin: 0 100px 20px 100px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     position: relative;
   }
   
-  .div {
-    background: rgba(0, 0, 0, 0);
-    width: 100%;
-    height: 216px;
-    position: absolute;
-    top: 16px;
+  .div, .div2, .div3 {
+    background: transparent;
+    position: static;
   }
   
   .img {
-    display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: center;
-    justify-content: center;
     width: 40px;
     height: 40px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-  }
-  
-  .div2 {
-    background: rgba(0, 0, 0, 0);
-    width: 100%;
-    height: 216px;
-    margin-left: 30px;
-    position: absolute;
-    top: 0px;
-  }
-  
-  .div3 {
-    background: rgba(0, 0, 0, 0);
-    width: 100%;
-    height: 24px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: inline-block;
   }
   
   .Pseudo {
-    color: #000000;
-    text-align: left;
-    font-family: "Inter-Regular", sans-serif;
+    font-weight: bold;
+    color: #000;
     font-size: 16px;
-    line-height: 16px;
-    font-weight: 400;
-    position: absolute;
-    left: 0px;
-    top: 2px;
-    width: 119px;
-    height: 20px;
   }
   
   .timestamp {
-    color: #737373;
-    text-align: left;
-    font-family: "Inter-Regular", sans-serif;
     font-size: 14px;
-    line-height: 14px;
-    font-weight: 400;
-    position: absolute;
-    left: 90%;
-    top: 3px;
-    width: 46px;
-    height: 17px;
+    color: #737373;
+    float: right;
   }
   
   .title-content {
-    color: #000000;
-    text-align: left;
-    font-family: "Inter-Regular", sans-serif;
-    font-size: 18px;
-    line-height: 18px;
-    font-weight: 400;
-    position: absolute;
-    left: 10%;
-    top: 39px;
-    width: 637px;
-    height: 21px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 16px;
+    color: #000;
   }
   
   .text-content {
-    color: #404040;
-    text-align: left;
-    font-family: "Inter-Regular", sans-serif;
     font-size: 16px;
-    line-height: 16px;
-    font-weight: 400;
-    position: absolute;
-    left: 0px;
-    top: 114px;
-    width: 90%;
-    height: 20px;
+    color: #404040;
+    margin-top: 12px;
+    white-space: pre-wrap;
   }
   
-  @media (max-width: 768px) {
-    html {
-      font-size: 20px;
-    }
-  
-    .post-list {
-      flex-direction: column;
-      gap: 8px;
-      padding: 10px;
-    }
-  
-    .background {
-      width: 100%;
-      margin: 0 auto;
-      padding: 10px;
-      box-shadow: none;
-    }
-  
-    .article {
-      width: 90%;
-      height: auto;
-      margin: 10px auto;
-      padding: 10px;
-      border-radius: 20px;
-    }
-  
-    .div {
-      height: auto;
-      position: relative;
-      padding: 10px;
-    }
-  
-    .Pseudo,
-    .timestamp,
-    .title-content,
-    .text-content {
-      font-size: 14px;
-      line-height: 18px;
-      width: 100%;
-      position: relative;
-      text-align: center;
-    }
-  
-    .container {
-      align-items: center;
-      gap: 10px;
-      padding: 10px;
-    }
+  .like-form {
+    margin-top: 10px;
+    margin-left: 10px;
   }
   
+  h3 {
+    margin-left: 100px;
+    color: #000;
+  }
+  
+  .comment-block {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px auto;
+    max-width: 760px;
+    box-sizing: border-box;
+  }
+  
+  .comment-block strong {
+    color: #000;
+  }
+  
+  .comment-block em {
+    color: #737373;
+    font-size: 14px;
+  }
+  
+  .comment-block p {
+    margin-top: 8px;
+    color: #404040;
+  }
+  
+  .comment-block form {
+    margin-top: 10px;
+  }
+  
+  .comment-like-form {
+    margin-top: 5px;
+  }
+  
+  .comment-form {
+    margin: 20px auto;
+    max-width: 760px;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  form textarea {
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    resize: none;
+    box-sizing: border-box;
+  }
+  
+  .comment-login {
+    margin-left: 100px;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+  
+  a button {
+    margin-right: 10px;
+    border-radius: 6px;
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* === Boutons personnalisés unifiés === */
+  
+  .btn-like,
+  .btn-dislike,
+  .btn-edit,
+  .btn-comment {
+    background-color: #dbcfc4;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .no-comments {
+    text-align: center;
+    font-style: italic;
+    color: #444;
+    margin-top: 20px;
+  }  
+  
+  .btn-like:hover,
+  .btn-dislike:hover,
+  .btn-edit:hover,
+  .btn-comment:hover {
+    background-color: #b4aa9d;
+  }
+
+  .btn-delete:hover {
+    background-color: #a72834;
+  }
+  
+  .btn-auth {
+    background-color: #92A8D1;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .btn-auth:hover {
+    background-color: #6e8bc1;
+  }
+  
+  .btn-back {
+    background-color: #99a9c6;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .btn-back:hover {
+    background-color: #8793aa;
+  }
+  
+  /* === Divers === */
+  
+  .post-meta,
+  .post-controls {
+    margin: 20px auto;
+    max-width: 760px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .inline-form {
+    display: inline;
+  }
+  
+  .notif-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f2e3d5;
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+  }
+  
+  .notif-toast .close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    margin-left: 12px;
+    cursor: pointer;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .comment-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .comment-actions form {
+    display: inline;
+    margin: 0;
+  }
