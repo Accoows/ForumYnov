@@ -1,11 +1,11 @@
-<!-- VIEW_POST.html-->
+<!-- VIEW_POST.html -->
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <title>{{.Post.Title}} - ForumYnov</title>
-    <link rel="stylesheet" href="/static/post.css">
+    <link rel="stylesheet" href="/static/view_post.css">
     <link rel="stylesheet" href="/static/notifications.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -13,100 +13,123 @@
 <body>
     <div class="post-list">
         <div class="background">
+            <!-- Header -->
             <div class="background-shadow">
                 <div class="container">
                     <div class="container2">
-                        <a href="/"><img class="vector" src="/static/homebtn.jpeg" /></a>
-                        <div class="forum-name">ForumYnov</div>
+                        <a href="/">
+                            <img src="/static/logoforum.png" alt="Forum Logo" class="forum-logo">
+                        </a>
                     </div>
                 </div>
             </div>
 
+            <!-- Post -->
             <div class="article">
                 <div class="div">
-                    <div class="img"></div>
-                    <div class="div2">
-                        <div class="div3">
+                    <div class="div author-header">
+                        <div class="img">
+                            <img src="{{if .Post.ProfilePicture}}/static/uploads/{{.Post.ProfilePicture}}{{else}}/static/default-profile.png{{end}}" alt="Profile Picture" class="profile-picture-img">
+                        </div>
+                        <div class="author-info">
                             <div class="Pseudo">{{.Post.AuthorUsername}}</div>
                             <div class="timestamp">{{.Post.Created_at}}</div>
                         </div>
+                    </div>
+                    <div class="div2">
                         <div class="title-content">{{.Post.Title}}</div>
                         <div class="text-content">{{format .Post.Content}}</div>
-                        <form method="POST" action="/like" style="margin-top: 10px; margin-left: 10px;">
+
+                        <form method="POST" action="/like" class="like-form">
                             <input type="hidden" name="post_id" value="{{.Post.ID}}">
-                            <button type="submit" name="action" value="like">👍 {{.Post.LikeCount}}</button>
-                            <button type="submit" name="action" value="dislike">👎 {{.Post.DislikeCount}}</button>
+                            <button class="btn-like" type="submit" name="action" value="like">👍
+                                {{.Post.LikeCount}}</button>
+                            <button class="btn-dislike" type="submit" name="action" value="dislike">👎
+                                {{.Post.DislikeCount}}</button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <p style="margin-left: 100px;"><strong>Category :</strong> {{.Post.CategoryName}}</p>
-            <p style="margin-left: 100px;">
-                <a href="/category?id={{.Post.Category_id}}">Back to Category</a>
-            </p>
+            <!-- Catégorie et retour -->
+            <div class="post-meta">
+                <p><strong>Category :</strong> {{.Post.CategoryName}}</p>
+                <p><a href="/category?id={{.Post.Category_id}}"><button type="button" class="btn-back">Back to
+                            Category</button></a></p>
+            </div>
 
+            <!-- Édition / Suppression -->
             {{if .IsAuthor}}
-            <form action="/posts/edit" method="GET" style="margin-top: 20px;">
-                <input type="hidden" name="id" value="{{.Post.ID}}">
-                <button type="submit">Edit</button>
-            </form>
-            <form action="/posts/delete" method="POST" style="margin-top: 20px;" onsubmit="return confirmDelete();">
-                <input type="hidden" name="id" value="{{.Post.ID}}">
-                <button type="submit">Delete</button> 
-            </form>
+            <div class="post-controls">
+                <form action="/posts/edit" method="GET" class="inline-form">
+                    <input type="hidden" name="id" value="{{.Post.ID}}">
+                    <button type="submit" class="btn-edit">Edit</button>
+                </form>
+                <form action="/posts/delete" method="POST" class="inline-form" onsubmit="return confirmDelete();">
+                    <input type="hidden" name="id" value="{{.Post.ID}}">
+                    <button type="submit" class="btn-delete">Delete</button>
+                </form>
+            </div>
             {{end}}
 
+            <!-- Commentaires -->
             <hr>
             <h3>Commentaires</h3>
 
             {{range .Comments}}
-            <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
-                <strong>{{.AuthorUsername}}</strong> – <em>{{.Created_at}}</em><br>
+            <div class="comment-block">
+                <strong>{{.AuthorUsername}}</strong> – <em>{{.Created_at}}</em>
                 <p>{{format .Content}}</p>
-                <form method="POST" action="/like" style="margin-top: 5px;">
-                    <input type="hidden" name="comment_id" value="{{.ID}}">
-                    <input type="hidden" name="parent_post_id" value="{{$.Post.ID}}">
-                    <button type="submit" name="action" value="like">👍 {{.LikeCount}}</button>
-                    <button type="submit" name="action" value="dislike">👎 {{.DislikeCount}}</button>
-                </form>
 
-                {{if eq $.ConnectedUser .User_id}}
-                <form action="/comments/delete" method="POST" style="margin-top: 10px;" onsubmit="return confirmDelete();">
-                    <input type="hidden" name="comment_id" value="{{.ID}}">
-                    <input type="hidden" name="post_id" value="{{$.Post.ID}}">
-                    <button type="submit"
-                        style="background: red; color: white; border: none; padding: 5px 10px; border-radius: 4px;">
-                        Delete
-                    </button>
-                </form>
+                <div class="comment-actions">
+                    <form method="POST" action="/like" class="comment-like-form">
+                        <input type="hidden" name="comment_id" value="{{.ID}}">
+                        <input type="hidden" name="parent_post_id" value="{{$.Post.ID}}">
+                        <button class="btn-like" type="submit" name="action" value="like">👍 {{.LikeCount}}</button>
+                        <button class="btn-dislike" type="submit" name="action" value="dislike">👎
+                            {{.DislikeCount}}</button>
+                    </form>
+
+                    {{if eq $.ConnectedUser .User_id}}
+                    <form action="/comments/delete" method="POST" class="comment-delete-form"
+                        onsubmit="return confirmDelete();">
+                        <input type="hidden" name="comment_id" value="{{.ID}}">
+                        <input type="hidden" name="post_id" value="{{$.Post.ID}}">
+                        <button type="submit" class="btn-delete">Delete</button>
+                    </form>
+                </div>
                 {{end}}
             </div>
             {{else}}
-            <p>No comments yet</p>
+            <p class="no-comments">No comments yet</p>
             {{end}}
 
+            <!-- Ajouter un commentaire -->
             {{if .ConnectedUser}}
             <h3>Add a Comment</h3>
-            <form action="/comments/create" method="POST">
+            <form action="/comments/create" method="POST" class="comment-form">
                 <input type="hidden" name="post_id" value="{{.Post.ID}}">
                 <textarea name="content" rows="4" cols="60" placeholder="Votre commentaire..."
                     required></textarea><br><br>
-                <button type="submit">Post comment</button>
+                <button type="submit" class="btn-auth">Post comment</button>
             </form>
             {{else}}
-            <p><em>You must be logged in to post a comment</em></p>
-            <p>
-                <a href="/login"><button type="button">Log In</button></a>
-                <a href="/register"><button type="button">Sign Up</button></a>
+            <p class="comment-login"><em>You must be logged in to post a comment</em></p>
+            <p class="comment-login">
+                <a href="/login"><button type="button" class="btn-auth">Log In</button></a>
+                <a href="/register"><button type="button" class="btn-auth">Sign Up</button></a>
             </p>
             {{end}}
         </div>
     </div>
+
+    <!-- Notifications -->
     <div id="notification-toast" class="hidden notif-toast">
         <span id="notification-message"></span>
         <button id="close-notification-toast" class="close-btn">&times;</button>
-    </div>      
+    </div>
+
+    <!-- Scripts -->
     <script src="/scripts/notifications.js"></script>
     <script src="/scripts/scroll_restore.js"></script>
     <script src="/scripts/script.js"></script>

@@ -15,34 +15,30 @@
             <div class="background-shadow">
                 <div class="container">
                     <div class="container2">
-                        <div class="forum-name">Forum Name</div>
+                        <a href="/">
+                            <img src="/static/logoforum.png" alt="Forum Logo" class="forum-logo">
+                        </a>
                     </div>
-                        <button id="dark-mode-toggle">Dark Mode</button>
-                        <a href="/"><button id="home-button">Home</button></a>
+                    <button id="dark-mode-toggle">Dark Mode</button>
+                    <a href="/"><button id="home-button">Home</button></a>
                 </div>
             </div>
-            <h1>Afficher les 3 catégories avec le plus d'intéraction/réponses pour les 3 catégorie en dessous</h1>
+            <h1>Top 3 Categories (this week)</h1>
             <div class="tab-group">
-                <button class="tab">
+                {{range .TopCategories}}
+                <button class="tab" onclick="location.href='/category?id={{.ID}}'">
                     <div class="frame">
-                        <div class="icon">📘</div> <!-- Education -->
+                        <div class="icon">{{.CategoryPhotos}}</div>
                     </div>
-                    <div class="title2">Education</div>
+                    <div class="title2">{{.Name}}</div>
                 </button>
-                <button class="tab">
-                    <div class="frame">
-                        <div class="icon">💡</div> <!-- Ideas -->
-                    </div>
-                    <div class="title2">Ideas</div>
-                </button>
-                <button class="tab">
-                    <div class="frame">
-                        <div class="icon">✈️</div> <!-- Travel -->
-                    </div>
-                    <div class="title2">Travel</div>
+                {{end}}
+            </div>
+            <div class="container15">
+                <button class="background-border" onclick="location.href='/posts'">
+                        <div class="title10">See all posts</div>
                 </button>
             </div>
-                <input type="text" class="border" placeholder="Enter keyword to search"></input>
             <div class="container9">
                 <div class="voyages">Travel</div>
                 <button class="background-shadow3" onclick="location.href='/category?id=4'">
@@ -133,7 +129,7 @@
                         <div class="container11">
                             <div class="sh-jo">Shôjo</div>
                         </div>
-                    </div> 
+                    </div>
                 </button>
                 <button class="background-shadow3" onclick="location.href='/category?id=11'">
                     <div class="background5">
@@ -161,16 +157,17 @@
                 </button>
             </div>
             <div class="container15">
-                <button class="background-border">
-                    <div class="container14">
-                        <div class="menu-item">My Subscriptions</div>
-                    </div>
-                </button>
-                <button class="background-border">
-                    <div class="container14">
-                        <div class="menu-item">Saved Posts</div>
-                    </div>
-                </button>
+                <button class="background-border" onclick="location.href='/post-list'">
+                    <div class="title10">Posts list</div>
+                  </button>
+                  {{if .IsLoggedIn}}
+                    <button class="background-border" onclick="location.href='/profile'">
+                      <div class="title10">Saved Posts</div>
+                    </button>
+                  {{end}}
+                    <button class="background-border" onclick="location.href='/posts'">
+                      <div class="title10">See all posts</div>
+                    </button>
             </div>
         </div>
     </div>

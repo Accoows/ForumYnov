@@ -21,6 +21,7 @@ func LikeHandler(w http.ResponseWriter, r *http.Request) {
 		models.SetNotification(w, "You must be logged in to like or dislike", "error")
 		http.Redirect(w, r, r.Referer(), http.StatusSeeOther)
 		return
+
 	}
 
 	// Retrieve form values

@@ -10,9 +10,10 @@ import (
  */
 
 type Categories struct {
-	ID       int
-	Name     string
-	ParentID sql.NullInt64
+	ID             int
+	Name           string
+	ParentID       sql.NullInt64
+	CategoryPhotos string
 }
 
 type CategoryPageData struct {
@@ -47,6 +48,8 @@ type Posts struct {
 	AuthorUsername string
 	LikeCount      int
 	DislikeCount   int
+	CategoryPhotos string
+	ProfilePicture string
 }
 
 type CreatePostPageData struct {

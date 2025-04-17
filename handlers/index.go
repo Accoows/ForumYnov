@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"forumynov/database"
 	"forumynov/models"
 	"html/template"
 	"log"
@@ -19,10 +20,34 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	userID, err := models.GetUserIDFromRequest(r)
 	isLoggedIn := err == nil && userID != "" // true if a valid user ID is found
 
+	topCategories, err := database.GetMostsPostsCategoriesOfTheWeek()
+	if err != nil {
+		http.Error(w, "Error fetching top categories", http.StatusInternalServerError)
+		return
+	}
+
+	topCategoriesAllTime, err := database.GetMostsPostsCategories()
+	if err != nil {
+		http.Error(w, "Error fetching all time top categories", http.StatusInternalServerError)
+		return
+	}
+
+	latestPosts, err := database.GetLatestPosts() // Récupérer les 3 derniers posts
+	if err != nil {
+		http.Error(w, "Error fetching latest posts", http.StatusInternalServerError)
+		return
+	}
+
 	data := struct { // Define data passed to the template
-		IsLoggedIn bool
+		IsLoggedIn           bool
+		TopCategories        []database.Categories
+		TopCategoriesAllTime []database.Categories
+		LatestPosts          []database.Posts
 	}{
-		IsLoggedIn: isLoggedIn,
+		IsLoggedIn:           isLoggedIn,
+		TopCategories:        topCategories,
+		TopCategoriesAllTime: topCategoriesAllTime,
+		LatestPosts:          latestPosts,
 	}
 
 	// Load the index.html template

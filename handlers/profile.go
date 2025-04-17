@@ -27,7 +27,9 @@ func ProfilePage(w http.ResponseWriter, r *http.Request) {
 	// get the user ID from the session using the session ID from the cookie
 	err = database.SQL.QueryRow("SELECT user_id FROM Sessions WHERE id = ?", cookie.Value).Scan(&userID)
 	if err != nil {
+		log.Println("[handlers/profile.go] Invalid session ID in cookie:", cookie.Value)
 		models.SetNotification(w, "Invalid session", "error")
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
 		return
 	}
 
@@ -36,6 +38,7 @@ func ProfilePage(w http.ResponseWriter, r *http.Request) {
 	// get the user data from the database using the user ID
 	err = database.SQL.QueryRow("SELECT username, email, profilepicture FROM Users WHERE id = ?", userID).Scan(&user.Username, &user.Email, &profilePicture)
 	if err != nil {
+		log.Println("[handlers/profile.go] User not found for session ID:", userID)
 		models.SetNotification(w, "User not found", "error")
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
 		return
@@ -50,6 +53,7 @@ func ProfilePage(w http.ResponseWriter, r *http.Request) {
 	// Get posts created by the user
 	createdPosts, err := database.GetPostsByUser(userID)
 	if err != nil {
+		log.Println("[handlers/profile.go] Error fetching created posts:", err)
 		http.Error(w, "Error fetching created posts", http.StatusInternalServerError)
 		return
 	}
@@ -57,6 +61,7 @@ func ProfilePage(w http.ResponseWriter, r *http.Request) {
 	// Get posts liked by the user
 	likedPosts, err := database.GetLikedPostsByUser(userID)
 	if err != nil {
+		log.Println("[handlers/profile.go] Error fetching liked posts:", err)
 		http.Error(w, "Error fetching liked posts", http.StatusInternalServerError)
 		return
 	}
@@ -78,11 +83,16 @@ func ProfilePage(w http.ResponseWriter, r *http.Request) {
 
 	tmpl, err := template.ParseFiles("templates/edit-profile.html") // parse the HTML template file
 	if err != nil {
+		log.Println("[handlers/profile.go] Error loading template:", err)
 		http.Error(w, "Error loading template", http.StatusInternalServerError)
 		return
 	}
 
-	tmpl.Execute(w, data) // execute the template with the data and write it to the response
+	err = tmpl.Execute(w, data)
+	if err != nil {
+		log.Println("[handlers/profile.go] Error executing template:", err)
+	}
+	//tmpl.Execute(w, data) // execute the template with the data and write it to the response
 }
 
 // UpdateProfileHandler handles the profile picture update for users.
