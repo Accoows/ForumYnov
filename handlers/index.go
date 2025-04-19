@@ -22,19 +22,19 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 
 	topCategories, err := database.GetMostsPostsCategoriesOfTheWeek()
 	if err != nil {
-		http.Error(w, "Error fetching top categories", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 
 	topCategoriesAllTime, err := database.GetMostsPostsCategories()
 	if err != nil {
-		http.Error(w, "Error fetching all time top categories", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 
 	latestPosts, err := database.GetLatestPosts() // Récupérer les 3 derniers posts
 	if err != nil {
-		http.Error(w, "Error fetching latest posts", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 

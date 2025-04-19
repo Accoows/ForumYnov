@@ -108,7 +108,7 @@ body {
   display: flex;
   flex-direction: row;
   gap: 8px;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
@@ -470,6 +470,8 @@ body {
   overflow: auto;
 }
 
+
+
 .chip {
   background-color: #F3D1D1;
   border-radius: 6px;
@@ -812,6 +814,10 @@ body {
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
+}
+
+h1 {
+  text-align: center;
 }
 
 

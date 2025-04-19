@@ -23,7 +23,7 @@
                     <a href="/"><button id="home-button">Home</button></a>
                 </div>
             </div>
-            <h1>Top 3 Categories (this week)</h1>
+            <h1>Top 3 categories of the week</h1>
             <div class="tab-group">
                 {{range .TopCategories}}
                 <button class="tab" onclick="location.href='/category?id={{.ID}}'">
@@ -32,6 +32,8 @@
                     </div>
                     <div class="title2">{{.Name}}</div>
                 </button>
+                {{else}}
+                    <p>No created posts this week</p>
                 {{end}}
             </div>
             <div class="container15">

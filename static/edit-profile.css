@@ -105,32 +105,6 @@ html {
   margin-top: 5px;
 }
 
-
-.link {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.button2 {
-  background: #efefef;
-  border-style: solid;
-  border-color: #000000;
-  border-width: 2px;
-  padding: 3px 8px 3px 8px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-
 .home {
   color: #000000;
   text-align: center;
@@ -144,15 +118,16 @@ html {
 }
 
 .disconnect {
-  color: #000000;
+  color: #ffffff;
   text-align: center;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 12.780468940734863px;
-  font-weight: 400;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .margin2 {
@@ -233,16 +208,6 @@ html {
   justify-content: flex-start;
 }
 
-.frame-427318907 {
-  background: #fff2f2;
-  border-radius: 15px;
-  flex-shrink: 0;
-  width: 235px;
-  height: 204px;
-  position: relative;
-  overflow: hidden;
-}
-
 .container8 {
   padding: 0px 92px 0px 92px;
   display: flex;
@@ -310,13 +275,7 @@ html {
   overflow: hidden;
 }
 
-.input {
-  background: #ffffff;
-  border-radius: 40px;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.2);
-  border-width: 2px;
-  padding: 22px 47px 22px 22px;
+.container10, .input {
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -328,16 +287,13 @@ html {
   overflow: hidden;
 }
 
-.container10 {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
+.input {
+  background: #ffffff;
+  border-radius: 40px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-width: 2px;
+  padding: 22px 47px 22px 22px;
 }
 
 .user-info {
@@ -351,18 +307,6 @@ html {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-}
-
-.margin4 {
-  padding: 0px 10px 12px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
 }
 
 .password {
@@ -406,18 +350,7 @@ html {
   cursor: pointer;
 }
 
-.disconnect {
-  color: #ffffff;
-  text-align: left;
-  font-family: "Roboto-Medium", sans-serif;
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 500;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
+
 
 .posts-section {
   margin: 20px 0;
@@ -600,69 +533,6 @@ body.dark-mode .posts-section {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre renforcée pour un effet sombre */
 }
 
-/*@media screen and (max-width: 768px) {
-  html, body {
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
-  }
-
-  html {
-    background: url('fond.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    font-size: 15px;
-  }
-
-  .post-list {
-    width: 80%;
-    margin: 0 auto;
-    padding: 8px;
-  }
-
-  .background {
-    padding: 10px;
-    margin: 10px;
-  }
-
-  .background-shadow {
-    width: 100%;
-    box-shadow: none;
-    align-self: center;
-    padding: 10px;
-  }
-
-  .container1 {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 10px;
-  }
-
-  .forum-logo {
-    height: 50px;
-    width: auto;
-  }
-
-  .container9{
-    padding: 10px;
-    width: 100%;
-  }
-
-  .input {
-    padding: 15px;
-    font-size: 14px;
-    width: 90%;
-  }
-
-  .container1 {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  
-}*/
 @media (max-width: 768px) {
   html, body {
     flex-direction: column;
@@ -702,7 +572,7 @@ body.dark-mode .posts-section {
     padding: 20px;
     font-size: 16px;
   }
-  
+
   img {
       max-width: 100%;
       height: auto;
