@@ -7,14 +7,16 @@ import (
 	"net/http"
 )
 
+// Handles displaying a custom error page with the appropriate HTTP status code.
 func ErrorHandler(w http.ResponseWriter, statusCode int) {
+	// Get the standard HTTP status message (e.g., "Not Found", "Internal Server Error", etc.)
 	msg := http.StatusText(statusCode)
-	if msg == "" {
+	if msg == "" { // Fallback if the code is unknown
 		statusCode = http.StatusInternalServerError
 		msg = "Unknown error"
 	}
 
-	w.WriteHeader(statusCode)
+	w.WriteHeader(statusCode) // Set the HTTP status code in the response
 
 	tmpl, err := template.ParseFiles("./templates/error.html")
 	if err != nil {
@@ -23,7 +25,7 @@ func ErrorHandler(w http.ResponseWriter, statusCode int) {
 		return
 	}
 
-	data := database.ErrorPageData{
+	data := database.ErrorPageData{ // Prepare the data to send to the template
 		Code:    statusCode,
 		Message: msg,
 	}

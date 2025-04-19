@@ -3,36 +3,29 @@
 <html>
 
 <head>
-  <title>ForumYnov Login</title>
+  <title>Profile</title>
   <link rel="stylesheet" type="text/css" href="/static/edit-profile.css">
   <link rel="stylesheet" type="text/css" href="/static/notifications.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-<div class="container">
-    <div class="overlay-shadow-overlay-blur">
-      <div class="container2">
+  <div class="post-list">
+    <div class="background">
         <div class="background-shadow">
-          <div class="container3">
-            <div class="container4">
-              <div class="forum-name">Forum Name</div>
-            </div>
-            <div class="margin">
-              <div class="container5">
-                <div class="button">
-                  <div class="dark-mode">Dark Mode</div>
+            <div class="container1">
+                <div class="container2">
+                    <a href="/">
+                        <img src="/static/logoforum.png" alt="Forum Logo" class="forum-logo">
+                    </a>
                 </div>
+                <button id="dark-mode-toggle">Dark Mode</button>
                 <a href="/"><button id="home-button">Home</button></a>
-                <form action="/logout" method="POST">
-                    <button type="submit" class="disconnect" name="logout" value="true">Disconnect</button>
-                </form>
-              </div>
             </div>
-          </div>
         </div>
         <div class="margin2">
           <div class="container6">
-            <div class="edit-profile">Edit Profile</div>
+            <div class="edit-profile">Profile</div>
           </div>
         </div>
         <div class="overlay-shadow-overlay-blur2">
@@ -72,19 +65,19 @@
             </div>
           </div>
         </div>
-        <div class="container11">
           <div class="container12">
-            <button class="button3">
-                <div class="update">Update</div>
-            </button>
+            <form action="/logout" method="POST" >
+              <button type="submit" class="button3" name="logout" value="true">
+                <div class="disconnect">Disconnect</div>
+              </button>
+            </form>
           </div>
-        </div>
       </div>
       <div class="posts-section">
         <h2>Created posts :</h2>
-        <div class="post-list">
+        <div class="post-list2">
           {{range .CreatedPosts}}
-          <div class="article">
+          <button class="article" onclick="window.location.href='/posts/view?id={{.ID}}'">
             <div class="div">
               <div class="div2">
                 <div class="div3">
@@ -95,17 +88,17 @@
                 <div class="text-content">{{.Content}}</div>
               </div>
             </div>
-          </div>
+          </button>
           {{else}}
-          <p>No created posts.</p>
+          <p>No created posts</p>
           {{end}}
         </div>
       </div>
       <div class="posts-section">
         <h2>Liked posts :</h2>
-        <div class="post-list">
+        <div class="post-list2">
           {{range .LikedPosts}}
-          <div class="article">
+          <button class="article" onclick="window.location.href='/posts/view?id={{.ID}}'">
             <div class="div">
               <div class="div2">
                 <div class="div3">
@@ -116,14 +109,13 @@
                 <div class="text-content">{{.Content}}</div>
               </div>
             </div>
-          </div>
+          </button>
           {{else}}
           <p>No liked posts</p>
           {{end}}
         </div>
       </div>
     </div>
-  </div>
   <div id="notification-toast" class="hidden notif-toast">
     <span id="notification-message"></span>
     <button id="close-notification-toast" class="close-btn">&times;</button>

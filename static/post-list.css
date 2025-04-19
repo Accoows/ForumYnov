@@ -265,6 +265,71 @@ html{
     color: #000000;
     text-align: left;
     font-family: "Roboto-Medium", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .manga {
+      color: #000000;
+      text-align: left;
+      font-family: "Roboto-Medium", sans-serif;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 500;
+      position: relative;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+  }
+  
+  .container15 {
+    padding: 0px 12px 0px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .background-border {
+    background: #92a8d1;
+    border-radius: 8px;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .background6 {
+    background: #000000;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .new-post {
+    color: #ffffff;
+    text-align: left;
+    font-family: "Roboto-Medium", sans-serif;
     font-size: 16px;
     line-height: 22px;
     font-weight: 500;

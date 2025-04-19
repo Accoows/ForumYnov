@@ -589,6 +589,7 @@ body {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .image-container2 {
   position: absolute;
   top: 0;
@@ -745,7 +746,6 @@ body {
   font-weight: 400;
   position: relative;
 }
-
 
 
 .border {

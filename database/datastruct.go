@@ -49,6 +49,7 @@ type Posts struct {
 	LikeCount      int
 	DislikeCount   int
 	CategoryPhotos string
+	ProfilePicture string
 }
 
 type CreatePostPageData struct {
