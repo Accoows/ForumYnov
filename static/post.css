@@ -170,12 +170,12 @@ body.dark-mode .post-list {
   background-color: #1e1e1e;
 }
 
-body.dark-mode .background-shadow{
+body.dark-mode .background-shadow {
   background-color: #1e1e1e;
   color: #ffffff;
 }
 
-body.dark-mode .container{
+body.dark-mode .container {
   background-color: #333333;
   border-radius: 8px;
 }
@@ -228,7 +228,9 @@ body.dark-mode #filter-button {
 
 /* Mobile styles */
 @media (max-width: 768px) {
-  html, body {
+
+  html,
+  body {
     flex-direction: column;
     padding: 4px 0;
     margin: 0;
@@ -237,7 +239,7 @@ body.dark-mode #filter-button {
   html {
     font-size: 15px;
   }
-  
+
   body.dark-mode .post-list {
     background-color: #121212;
   }
@@ -264,14 +266,14 @@ body.dark-mode #filter-button {
   }
 
   .vector {
-    width: 50px; /* Largeur plus grande pour mobile */
+    width: 50px;
     height: 45px;
-}
+  }
 
   .vector img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ou utilisez "cover" selon l'effet souhaité */
+    object-fit: contain;
   }
 
   #filter-form {

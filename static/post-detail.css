@@ -1,113 +1,118 @@
-html,body {
-    background: url('fond.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    border-color: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    overflow-x: auto;
-  }
-  
-  html {
-    font-size: 16px; /* Base font size */
-  }
-  
-  .post-list,
-  .post-list * {
-    box-sizing: border-box;
-  }
-  .post-list {
-    background: rgb(238, 234, 234,50%);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    height: 100%;
-    position: relative;
-    margin: 20px;
-  }
-  .background {
-    padding: 0px 0px 12px 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    justify-content: flex-start;
-    align-self: stretch;
-    flex-shrink: 0;
-    height: 100%;
-    position: relative;
-    margin: 20px;
-  }
-  .background-shadow {
-    background: #ffffff;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    align-self: stretch;
-    position: relative;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
-  }
-  .container {
-    padding: 12px 8px 12px 16px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    align-self: stretch;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .container2 {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex: 1;
-    position: relative;
-  }
-  .forum-logo {
-    height: 70px;
-    width: auto;
-    object-fit: contain;
-    align-self: center;
-    margin-top: 5px;
-  }
-
-    /* Conteneur principal */
-.posts-container {
+html,
+body {
+  background: url('fond.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  border-color: #000000;
   display: flex;
-  flex-direction: column; /* Organise les enfants en colonne */
-  align-items: center; /* Centre horizontalement tous les enfants */
-  justify-content: center; /* Centre verticalement si nécessaire */
-  gap: 20px; /* Espacement constant entre les enfants */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   width: 100%;
-  text-align: center; /* Centre le contenu du texte */
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: auto;
 }
 
-/* Conteneur individuel de chaque post */
+html {
+  font-size: 16px;
+}
+
+.post-list,
+.post-list * {
+  box-sizing: border-box;
+}
+
+.post-list {
+  background: rgb(238, 234, 234, 50%);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  position: relative;
+  margin: 20px;
+}
+
+.background {
+  padding: 0px 0px 12px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+  margin: 20px;
+}
+
+.background-shadow {
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  align-self: stretch;
+  position: relative;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 12px 8px 12px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+
+.forum-logo {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  align-self: center;
+  margin-top: 5px;
+}
+
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  text-align: center;
+}
+
 .post-card-wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-/* Bouton post centré et même largeur */
 .post-card-button {
   width: 600px;
   max-width: 90%;
@@ -118,13 +123,11 @@ html,body {
   cursor: pointer;
 }
 
-/* Effet hover */
 .post-card-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Formatage du contenu */
 .post-card-button .title {
   font-weight: bold;
   font-size: 18px;
@@ -139,81 +142,81 @@ html,body {
   font-size: 12px;
   color: #666;
 }
-  
-  .container15 {
-    padding: 0px 12px 0px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;  
-    gap: 6px;
-    flex-shrink: 0;
-    width: 752px;
-    position: relative;
-    overflow: hidden;
-  }
 
-  .container15 .background6 {
-    margin-bottom: 20px; /* Ajoute un espace uniquement après background6 */
-  }
+.container15 {
+  padding: 0px 12px 0px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  flex-shrink: 0;
+  width: 752px;
+  position: relative;
+  overflow: hidden;
+}
 
-  .background6 {
-    background: #000000;
-    border-radius: 8px;
-    border-width: 1px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-self: stretch;
-    flex-shrink: 0;
-    padding: 12px 0px 12px 0px;
-    position: relative;
-  }
+.container15 .background6 {
+  margin-bottom: 20px;
+}
 
-  .background-border {
-    background: #92a8d1;
-    border-radius: 8px;
-    border-width: 1px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-self: stretch;
-    flex-shrink: 0;
-    position: relative;
-  }
-  
-  .menu-item {
-      color: #000000;
-      text-align: left;
-      font-family: "Roboto-Medium", sans-serif;
-      font-size: 16px;
-      line-height: 22px;
-      font-weight: 500;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  }
-  
-  .menu-item.new-post {
-      color: #ffffff;
-      text-align: left;
-      font-family: "Roboto-Medium", sans-serif;
-      font-size: 16px;
-      line-height: 22px;
-      font-weight: 500;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-  }
-  
-  button {
-    font-size: 16px;
-    padding: 10px 20px;
-  }
+.background6 {
+  background: #000000;
+  border-radius: 8px;
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  padding: 12px 0px 12px 0px;
+  position: relative;
+}
+
+.background-border {
+  background: #92a8d1;
+  border-radius: 8px;
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.menu-item {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item.new-post {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+button {
+  font-size: 16px;
+  padding: 10px 20px;
+}
 
 /* Dark Mode */
 body.dark-mode {
@@ -221,16 +224,14 @@ body.dark-mode {
   color: #ffffff;
 }
 
-/* Conteneur principal */
 body.dark-mode .post-list {
-  background: #121212; /* Arrière-plan sombre transparent */
+  background: #121212;
   border-radius: 10px;
   color: #ffffff;
 }
 
-/* Sections */
 body.dark-mode .background {
-  background: #121212; /* Arrière-plan sombre */
+  background: #121212;
   color: #ffffff;
 }
 
@@ -238,7 +239,6 @@ body.dark-mode .background-shadow {
   background: #2c2c2c;
 }
 
-/* Texte principal */
 body.dark-mode .forum-name,
 body.dark-mode .menu-item {
   color: #ffffff;
@@ -255,7 +255,6 @@ body.dark-mode .background6 {
   border-color: #444444;
 }
 
-/* Posts */
 body.dark-mode .post-card-button {
   background: #2c2c2c;
   color: #ffffff;
@@ -273,56 +272,55 @@ body.dark-mode #home-button {
   color: #ffffff;
   border: 1px solid #ffffff;
 }
-  
-  /* General mobile styles */
-  @media (max-width: 768px) {
-    html, body {
-      flex-direction: column;
-      padding: 0;
-      margin: 0;
-    }
-  
-    html {
-      font-size: 20px; /* Reduce base font size for smaller screens */
-    }
-  
-    .post-list {
-      width: 95%; /* Reduce width to fit better on smaller screens */
-      margin: 0 auto; /* Center the content */
-      padding: 5px; /* Reduce padding */
-    }
-  
-    .background-shadow {
-      width: 100%;
-      box-shadow: none;
-      padding: 10px; /* Reduce padding */
-    }
-  
-    .container {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 10px; /* Reduce padding */
-    }
-  
-    .background-border, .background6 {
-      padding: 8px 10px; /* Reduce padding */
-      width: 90%; /* Make buttons responsive */
-      max-width: 300px; /* Optional: Limit the maximum width */
-      margin: 0 auto; /* Center the buttons */
-    }
-    
-    .menu-item.title,
-    .menu-item.content{
-      text-align: center; /* Center-align text */
-    }
-  
-    button {
-      font-size: 14px; /* Reduce button font size */
-      padding: 8px 16px; /* Reduce button padding */
-    }
+
+/* General mobile styles */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
   }
 
-  /* Styles for the post detail page */
+  html {
+    font-size: 20px;
+  }
 
+  .post-list {
+    width: 95%;
+    margin: 0 auto;
+    padding: 5px;
+  }
 
+  .background-shadow {
+    width: 100%;
+    box-shadow: none;
+    padding: 10px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .background-border,
+  .background6 {
+    padding: 8px 10px;
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .menu-item.title,
+  .menu-item.content {
+    text-align: center;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}

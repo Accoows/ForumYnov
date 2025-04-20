@@ -52,7 +52,7 @@ func GetPostsByCategoryID(categoryID int) ([]Posts, error) {
 // Fetches all categories from the database, ordered by their ID.
 func GetAllCategories() ([]Categories, error) {
 	// Query to fetch all categories ordered by ID
-	rows, err := SQL.Query("SELECT id, name, parent_id FROM Categories ORDER BY id")
+	rows, err := SQL.Query("SELECT id, name, parent_id FROM Categories WHERE parent_id IS NOT NULL ORDER BY id")
 	if err != nil {
 		return nil, err
 	}

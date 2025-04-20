@@ -10,18 +10,15 @@
 </head>
 
 <body>
-  <div class="html">
     <div class="body">
       <div class="background">
         <div class="background-shadow">
           <div class="container">
-            <div class="container2">
-              <a href="/">
-                  <img src="/static/logoforum.png" alt="Forum Logo" class="forum-logo">
-              </a>
-            </div>
-              <button id="dark-mode-toggle">Dark Mode</button>
-              <a href="/"><button id="home-button">Home</button></a>
+            <a href="/">
+              <img src="/static/logoforum.png" alt="Forum Logo" class="forum-logo">
+            </a>
+            <button id="dark-mode-toggle">Dark Mode</button>
+            <a href="/"><button id="home-button">Home</button></a>
           </div>
         </div>
         <div class="login">Login</div>
@@ -31,16 +28,15 @@
               <input type="email" class="text" name="email" placeholder="Email" required>
             </div>
           </div>
-          <div class="input2">
+          <div class="input">
             <div class="textfield">
               <input type="password" class="text" name="password" placeholder="Password" required>
             </div>
           </div>
-          <div class="container8">
             <div class="selection">
               <div class="chip-group">
                 <label class="remember"><input type="checkbox">Remember Me</label>
-                <button class="chip">
+                <button href="/reset-password" class="chip" onclick="window.location.href='/reset-password'">
                   <div class="text2">Reset password</div>
                 </button>
               </div>
@@ -50,7 +46,6 @@
                 <div class="title2">Login</div>
               </button>
             </div>
-          </div>
         </form>
         <div class="selection">
           <div class="title">Don't have an account yet ?</div>
@@ -62,7 +57,6 @@
         </div>
       </div>
     </div>
-  </div>
   </div>
   <div id="notification-toast" class="hidden notif-toast">
     <span id="notification-message"></span>
