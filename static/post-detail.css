@@ -88,6 +88,57 @@ html,body {
     align-self: center;
     margin-top: 5px;
   }
+
+    /* Conteneur principal */
+.posts-container {
+  display: flex;
+  flex-direction: column; /* Organise les enfants en colonne */
+  align-items: center; /* Centre horizontalement tous les enfants */
+  justify-content: center; /* Centre verticalement si nécessaire */
+  gap: 20px; /* Espacement constant entre les enfants */
+  width: 100%;
+  text-align: center; /* Centre le contenu du texte */
+}
+
+/* Conteneur individuel de chaque post */
+.post-card-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Bouton post centré et même largeur */
+.post-card-button {
+  width: 600px;
+  max-width: 90%;
+  text-align: left;
+  padding: 16px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+/* Effet hover */
+.post-card-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Formatage du contenu */
+.post-card-button .title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.post-card-button .content {
+  margin: 8px 0;
+  color: #333;
+}
+
+.post-card-button .meta {
+  font-size: 12px;
+  color: #666;
+}
   
   .container15 {
     padding: 0px 12px 0px 12px;
@@ -143,7 +194,7 @@ html,body {
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
   }
   
   .menu-item.new-post {
@@ -163,56 +214,6 @@ html,body {
     font-size: 16px;
     padding: 10px 20px;
   }
-
-  /* Conteneur principal */
-.posts-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-/* Conteneur individuel de chaque post */
-.post-card-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-/* Bouton post centré et même largeur */
-.post-card-button {
-  width: 600px;
-  max-width: 90%;
-  text-align: left;
-  padding: 16px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-
-/* Effet hover */
-.post-card-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Formatage du contenu */
-.post-card-button .title {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.post-card-button .content {
-  margin: 8px 0;
-  color: #333;
-}
-
-.post-card-button .meta {
-  font-size: 12px;
-  color: #666;
-}
 
 /* Dark Mode */
 body.dark-mode {
@@ -310,7 +311,8 @@ body.dark-mode #home-button {
       max-width: 300px; /* Optional: Limit the maximum width */
       margin: 0 auto; /* Center the buttons */
     }
-  
+    
+    .menu-item.title,
     .menu-item.content{
       text-align: center; /* Center-align text */
     }
