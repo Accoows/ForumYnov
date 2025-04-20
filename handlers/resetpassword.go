@@ -12,13 +12,23 @@ import (
 // Handles GET and POST requests for the password reset page
 func ResetPasswordHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
+
+		// Récupérer email et username depuis l'URL si disponibles
+		email := r.URL.Query().Get("email")
+		username := r.URL.Query().Get("username")
+
+		data := map[string]interface{}{
+			"Email":    email,
+			"Username": username,
+		}
+
 		tmpl, err := template.ParseFiles("templates/reset_password.html")
 		if err != nil {
 			log.Println("[ResetPasswordHandler] Error parsing template:", err)
 			ErrorHandler(w, http.StatusInternalServerError)
 			return
 		}
-		tmpl.Execute(w, nil)
+		tmpl.Execute(w, data)
 		return
 	}
 

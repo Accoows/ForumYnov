@@ -192,3 +192,43 @@ func DeleteProfilePictureHandler(w http.ResponseWriter, r *http.Request) {
 	models.SetNotification(w, "Profile picture deleted successfully", "info")
 	http.Redirect(w, r, "/profile", http.StatusSeeOther)
 }
+
+func UpdateProfileInfoHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		ErrorHandler(w, http.StatusMethodNotAllowed)
+		return
+	}
+
+	userID, err := models.GetUserIDFromRequest(r)
+	if err != nil || userID == "" {
+		models.SetNotification(w, "Unauthorized", "error")
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return
+	}
+
+	err = r.ParseForm()
+	if err != nil {
+		ErrorHandler(w, http.StatusBadRequest)
+		return
+	}
+
+	newUsername := r.FormValue("username")
+	newEmail := r.FormValue("email")
+
+	if newUsername == "" || newEmail == "" {
+		models.SetNotification(w, "Fields cannot be empty", "error")
+		http.Redirect(w, r, "/profile", http.StatusSeeOther)
+		return
+	}
+
+	_, err = database.SQL.Exec("UPDATE Users SET username = ?, email = ? WHERE id = ?", newUsername, newEmail, userID)
+	if err != nil {
+		log.Println("[UpdateProfileInfoHandler] Error updating user info:", err)
+		models.SetNotification(w, "Error updating info", "error")
+		http.Redirect(w, r, "/profile", http.StatusSeeOther)
+		return
+	}
+
+	models.SetNotification(w, "Profile updated successfully", "success")
+	http.Redirect(w, r, "/profile", http.StatusSeeOther)
+}
