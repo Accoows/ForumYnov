@@ -36,8 +36,10 @@ func main() {
 	http.HandleFunc("/", handlers.IndexHandler)
 	http.HandleFunc("/login", handlers.LoginHandler)
 	http.HandleFunc("/register", handlers.RegisterHandler)
+	http.HandleFunc("/reset-password", handlers.ResetPasswordHandler)
 	http.HandleFunc("/logout", handlers.LogoutUsers)
 	http.HandleFunc("/profile", handlers.ProfilePage)
+	http.HandleFunc("/update-profile-info", handlers.UpdateProfileInfoHandler)
 	http.HandleFunc("/upload-profile-picture", handlers.UploadProfilePictureHandler)
 	http.HandleFunc("/delete-profile-picture", handlers.DeleteProfilePictureHandler)
 

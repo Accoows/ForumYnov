@@ -18,7 +18,7 @@ func FilterPostsByCategories(w http.ResponseWriter, r *http.Request) {
 
 	categoryID, err := database.GetCategoryIDByName(categoryName) // Retrieve the category ID from the database based on the category name
 	if err != nil {
-		http.Error(w, "Error retrieving the category", http.StatusInternalServerError)
+		ErrorHandler(w, http.StatusInternalServerError)
 		return
 	}
 

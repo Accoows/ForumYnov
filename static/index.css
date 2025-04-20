@@ -108,7 +108,7 @@ body {
   display: flex;
   flex-direction: row;
   gap: 8px;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
@@ -417,6 +417,7 @@ body {
   justify-content: flex-start;
   flex: 1;
   position: relative;
+  overflow: auto;
 }
 
 .avatar2 {
@@ -466,7 +467,10 @@ body {
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
+  overflow: auto;
 }
+
+
 
 .chip {
   background-color: #F3D1D1;
@@ -515,7 +519,7 @@ body {
   flex: 1;
   position: relative;
   overflow: hidden;
-  min-width: 250px;
+  min-width: 300px;
   min-height: 300px;
   width: auto;
   height: auto;
@@ -812,6 +816,10 @@ body {
   position: relative;
 }
 
+h1 {
+  text-align: center;
+}
+
 
 button {
   font-size: 16px;
@@ -823,7 +831,7 @@ body.dark-mode {
   color: #ffffff;
 }
 
-body.dark-mode .top-bar,
+
 body.dark-mode .sidebar,
 body.dark-mode .tab-group,
 body.dark-mode .list,
@@ -878,6 +886,11 @@ body.dark-mode .text2,
 body.dark-mode .info {
   color: #bbbbbb;
 }
+body.dark-mode .top-bar-inner,
+body.dark-mode .container{
+  background-color: #333333;
+  border-radius: 10px;
+}
 
 body.dark-mode .button .primary,
 body.dark-mode .primary2,
@@ -886,6 +899,13 @@ body.dark-mode .frame2,
 body.dark-mode .image-container,
 body.dark-mode .image-container2 {
   background-color: #333333;
+  color: #ffffff;
+}
+
+body.dark-mode .author,
+body.dark-mode .timestamp,
+body.dark-mode .content{
+  color: #ffffff;
 }
 
 body.dark-mode .pagination .rectangle-3343 {
@@ -902,12 +922,15 @@ body.dark-mode .user3 .avatar3 {
   background-color: #444444;
 }
 
-body.dark-mode #dark-mode-toggle {
+body.dark-mode #dark-mode-toggle,
+body.dark-mode #profile,
+body.dark-mode #login-button {
   background-color: #444444;
   color: #ffffff;
   border: 1px solid #ffffff;
 }
 
+body.dark-mode .top-bar,
 body.dark-mode .page {
   background-color: #121212;
 }
@@ -918,7 +941,7 @@ body.dark-mode .page {
   html,
   body {
     flex-direction: column;
-    padding: 0;
+    padding: 4px 0;
     margin: 0;
   }
 
@@ -980,9 +1003,11 @@ body.dark-mode .page {
     padding: 8px;
   }
 
+  .chip{
+    padding: 8px;
+  }
   .article,
   .item,
-  .chip,
   .post,
   .card {
     width: 100%;

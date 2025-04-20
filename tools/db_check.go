@@ -24,6 +24,8 @@ func main() {
 }
 
 func printTableNames(db *sql.DB) {
+	fmt.Println("\n===================================================================================")
+	fmt.Println(" ")
 	fmt.Println("\n📋 Tables présentes dans forum.db :")
 	rows, err := db.Query("SELECT name FROM sqlite_master WHERE type='table'")
 	if err != nil {

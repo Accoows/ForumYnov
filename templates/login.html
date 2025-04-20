@@ -15,11 +15,13 @@
       <div class="background">
         <div class="background-shadow">
           <div class="container">
-            <div class="forum-name">Forum Name</div>
-            <div class="button-group">
+            <div class="container2">
+              <a href="/">
+                  <img src="/static/logoforum.png" alt="Forum Logo" class="forum-logo">
+              </a>
+            </div>
               <button id="dark-mode-toggle">Dark Mode</button>
               <a href="/"><button id="home-button">Home</button></a>
-            </div>
           </div>
         </div>
         <div class="login">Login</div>
@@ -38,7 +40,7 @@
             <div class="selection">
               <div class="chip-group">
                 <label class="remember"><input type="checkbox">Remember Me</label>
-                <button class="chip">
+                <button href="/reset-password" class="chip" onclick="window.location.href='/reset-password'">
                   <div class="text2">Reset password</div>
                 </button>
               </div>

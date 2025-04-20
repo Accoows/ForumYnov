@@ -55,9 +55,16 @@ func RegisterUsers(w http.ResponseWriter, r *http.Request) {
 		Created_at: time.Now().Format("2006-01-02 15:04:05"), // format the current time to a string
 	}
 	password := r.FormValue("password")
+	confirmPassword := r.FormValue("confirm_password")
 
-	if newUser.Email == "" || newUser.Username == "" || password == "" { // check if the email, username, and password fields are empty
+	if newUser.Email == "" || newUser.Username == "" || password == "" || confirmPassword == "" { // check if the email, username, and password fields are empty
 		ErrorHandler(w, http.StatusBadRequest)
+		return
+	}
+
+	if password != confirmPassword {
+		models.SetNotification(w, "Passwords do not match", "error")
+		http.Redirect(w, r, "/register", http.StatusSeeOther)
 		return
 	}
 
