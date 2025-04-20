@@ -32,9 +32,16 @@ func ResetPasswordHandler(w http.ResponseWriter, r *http.Request) {
 		email := r.FormValue("email")
 		username := r.FormValue("username")
 		newPassword := r.FormValue("password")
+		confirmPassword := r.FormValue("confirm_password")
 		// Ensure that all required fields are filled
-		if email == "" || username == "" || newPassword == "" {
+		if email == "" || username == "" || newPassword == "" || confirmPassword == "" {
 			ErrorHandler(w, http.StatusBadRequest)
+			return
+		}
+
+		if newPassword != confirmPassword {
+			models.SetNotification(w, "Passwords do not match", "error")
+			http.Redirect(w, r, "/reset-password", http.StatusSeeOther)
 			return
 		}
 
