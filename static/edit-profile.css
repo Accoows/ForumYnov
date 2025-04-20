@@ -2,66 +2,69 @@ html {
   background: url('fond.jpg') no-repeat;
   background-size: cover;
   background-position: center;
-  border-color: #000000;
   margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 
-body {
-  height: 100%;
-}
+  body {
+   background: rgba(238, 234, 234, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    height: 100%;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+  }
 
-.container,
-.container * {
+.post-list,
+.post-list * {
   box-sizing: border-box;
 }
 
-.container {
+.post-list {
+  background: rgb(238, 234, 234, 50%);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 0px 0px 12px 0px;
   display: flex;
   flex-direction: column;
-  gap: 0px;
-  align-items: center;
+  gap: 12px;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
   height: auto;
-}
-
-.overlay-shadow-overlay-blur {
   background: rgba(238, 234, 234, 0.5);
   border-radius: 10px;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: center;
-  justify-content: flex-start;
-  flex: 1;
-  width: 600px;
   min-width: 600px;
   max-width: 1600px;
-  position: relative;
-  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
   backdrop-filter: blur(5px);
 }
 
-.container2 {
+.background {
   padding: 0px 0px 12px 0px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
   justify-content: flex-start;
+  align-self: stretch;
   flex-shrink: 0;
-  /* width: 560px;
-height: 772px; */
+  height: 100%;
   position: relative;
+  margin: 20px;
 }
-
 .background-shadow {
   background: #ffffff;
   border-radius: 10px;
@@ -71,13 +74,11 @@ height: 772px; */
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;
-  width: 560px;
-  max-width: 560px;
+  align-self: stretch;
   position: relative;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
 }
-
-.container3 {
+.container1 {
   padding: 12px 8px 12px 16px;
   display: flex;
   flex-direction: row;
@@ -87,104 +88,21 @@ height: 772px; */
   flex-shrink: 0;
   position: relative;
 }
-
-.container4 {
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  height: 24px;
-  position: relative;
-}
-
-.forum-name {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Medium", sans-serif;
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 500;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.margin {
-  padding: 0px 0px 0px 270.55px;
+.container2 {
   display: flex;
   flex-direction: column;
   gap: 0px;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-start;
   flex: 1;
-  min-width: 140.75px;
   position: relative;
 }
-
-.container5 {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  justify-content: flex-end;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.button {
-  background: #efefef;
-  border-style: solid;
-  border-color: #000000;
-  border-width: 2px;
-  padding: 3px 8px 3px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.dark-mode {
-  color: #000000;
-  text-align: center;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 12.572656631469727px;
-  font-weight: 400;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.link {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.button2 {
-  background: #efefef;
-  border-style: solid;
-  border-color: #000000;
-  border-width: 2px;
-  padding: 3px 8px 3px 8px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
+.forum-logo {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  align-self: center;
+  margin-top: 5px;
 }
 
 .home {
@@ -200,15 +118,16 @@ height: 772px; */
 }
 
 .disconnect {
-  color: #000000;
+  color: #ffffff;
   text-align: center;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 12.780468940734863px;
-  font-weight: 400;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .margin2 {
@@ -289,16 +208,6 @@ height: 772px; */
   justify-content: flex-start;
 }
 
-.frame-427318907 {
-  background: #fff2f2;
-  border-radius: 15px;
-  flex-shrink: 0;
-  width: 235px;
-  height: 204px;
-  position: relative;
-  overflow: hidden;
-}
-
 .container8 {
   padding: 0px 92px 0px 92px;
   display: flex;
@@ -366,13 +275,7 @@ height: 772px; */
   overflow: hidden;
 }
 
-.input {
-  background: #ffffff;
-  border-radius: 40px;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.2);
-  border-width: 2px;
-  padding: 22px 47px 22px 22px;
+.container10, .input {
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -384,16 +287,13 @@ height: 772px; */
   overflow: hidden;
 }
 
-.container10 {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
+.input {
+  background: #ffffff;
+  border-radius: 40px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-width: 2px;
+  padding: 22px 47px 22px 22px;
 }
 
 .user-info {
@@ -409,18 +309,6 @@ height: 772px; */
   justify-content: flex-start;
 }
 
-.margin4 {
-  padding: 0px 10px 12px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-
 .password {
   color: #757575;
   text-align: left;
@@ -434,23 +322,13 @@ height: 772px; */
   justify-content: flex-start;
 }
 
-.container11 {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-
 .container12 {
   padding: 12px 50px 12px 50px;
   display: flex;
   flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
@@ -460,29 +338,19 @@ height: 772px; */
 .button3 {
   background: #000000;
   border-radius: 8px;
-  border-width: 2px;
-  padding: 12px 71.38px 12px 71.38px;
+  padding: 10px 12px 10px 12px;
   display: flex;
   flex-direction: column;
   gap: 0px;
   align-items: center;
   justify-content: center;
+  align-self: stretch;
   flex-shrink: 0;
   position: relative;
+  cursor: pointer;
 }
 
-.update {
-  color: #ffffff;
-  text-align: left;
-  font-family: "Roboto-Medium", sans-serif;
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 500;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
+
 
 .posts-section {
   margin: 20px 0;
@@ -501,10 +369,11 @@ height: 772px; */
 }
 
 /* Liste des posts */
-.post-list {
+.post-list2 {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border-radius: 10px;
 }
 
 /* Style des articles */
@@ -587,4 +456,130 @@ justify-content: center;
 .delete-button-form {
 margin: 0;
 padding: 0;
+}
+
+button {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+body.dark-mode {
+  background-color: #121212;
+}
+
+body.dark-mode .background {
+  background-color: #222222;
+}
+
+body.dark-mode .post-list {
+  background-color: #222222;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+}
+
+body.dark-mode #dark-mode-toggle,
+body.dark-mode #home-button,
+body.dark-mode .profile-picture,
+body.dark-mode .upload,
+body.dark-mode .edit-profile,
+body.dark-mode .user-info,
+body.dark-mode .posts-section h2,
+body.dark-mode .timestamp,
+body.dark-mode .title-content,
+body.dark-mode .text-content {
+  color: #ffffff; /* Texte clair */
+}
+
+body.dark-mode .post-list2 {
+  background-color: #2c2c2c;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+}
+
+body.dark-mode .background-shadow {
+  background-color: #2c2c2c;
+  box-shadow: none;
+}
+
+body.dark-mode .button {
+  background-color: #333333;
+  border-color: #444444;
+}
+
+body.dark-mode .input {
+  background-color: #2c2c2c;
+  border: 1px solid #444444;
+}
+
+body.dark-mode .forum-logo {
+  filter: brightness(0.8);
+}
+
+body.dark-mode .overlay-shadow-overlay-blur2 {
+  background: #2c2c2c; /* Couleur de fond sombre */
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 1); /* Assombrir l'ombre */
+}
+
+body.dark-mode .link2 {
+  background: #333333; /* Fond sombre */
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 1); /* Ombre renforcée pour un effet sombre */
+}
+
+body.dark-mode button {
+  background: #333333; /* Fond sombre */
+  border: 1px solid #444444; /* Bordure adaptée au mode sombre */
+}
+
+body.dark-mode .posts-section {
+  background: #2c2c2c; /* Fond sombre */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre renforcée pour un effet sombre */
+}
+
+@media (max-width: 768px) {
+  html, body {
+    flex-direction: column;
+    padding: 10px 0;
+    margin: 0 auto;
+    width: 98%;
+    max-width: 100%;
+  }
+
+  .post-list {
+    min-width: 0;
+    width: 95%; /* ou même 100% si tu veux vraiment coller aux bords */
+    margin: 0 auto;
+  }
+
+  .background {
+      padding: 10px;
+      margin: 10px;
+      width: 95%;
+  }
+
+  .background-shadow {
+      width: 90%;
+      box-shadow: none;
+      align-self: center;
+      padding: 10px;
+  }
+
+  .container1, .container2, .container6, .container7, .container8, .container9, .container10, .container12 {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .input {
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  img {
+      max-width: 100%;
+      height: auto;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 }

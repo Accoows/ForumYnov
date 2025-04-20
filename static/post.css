@@ -1,9 +1,11 @@
-html {
+html,
+body {
   background: url('fond.jpg') no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 10px;
   border-color: #000000;
+  font-size: 16px;
 }
 
 .post-list,
@@ -12,20 +14,10 @@ html {
 }
 
 .post-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: auto;
-  position: relative;
-}
-
-.background {
   background: rgb(238, 234, 234, 50%);
   backdrop-filter: blur(10px);
-  border-radius: 10px;
-  padding: 0px 0px 12px 0px;
+  border-radius: 8px;
+  padding: 0px 0px 10px 0px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -33,13 +25,28 @@ html {
   justify-content: flex-start;
   position: relative;
   width: 90%;
+  height: 100%;
   margin-left: 5%;
   margin-right: 5%;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
 }
 
+.background {
+  padding: 0px 0px 12px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+  margin: 20px;
+}
+
 .background-shadow {
-  background: #f2e3d5;
+  background: #ffffff;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -50,7 +57,6 @@ html {
   align-self: stretch;
   position: relative;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
-  margin: 20px;
 }
 
 .container {
@@ -70,7 +76,16 @@ html {
   gap: 0px;
   align-items: flex-start;
   justify-content: flex-start;
-  flex: 1;
+  position: relative;
+}
+
+.container3 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 1;
   position: relative;
 }
 
@@ -82,21 +97,21 @@ html {
   overflow: visible;
 }
 
-.forum-name {
-  color: #000000;
-  text-align: left;
-  font-family: "Roboto-Medium", sans-serif;
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 500;
-  position: absolute;
-  left: 50%;
-  translate: -50%;
-  top: 0px;
+.forum-logo {
+  height: 70px;
   width: auto;
+  object-fit: contain;
+  align-self: center;
+  margin-top: 5px;
+}
+
+#filter-form {
   display: flex;
+  flex-direction: row;
+  gap: 15px;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  margin: 10px;
 }
 
 .post-card-wrapper {
@@ -146,28 +161,132 @@ html {
   color: #555;
 }
 
+button {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+body.dark-mode .post-list {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .background-shadow{
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark-mode .container{
+  background-color: #333333;
+  border-radius: 8px;
+}
+
+body.dark-mode .vector {
+  background-color: #333333;
+  border-color: #444444;
+}
+
+body.dark-mode .background-border {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #444444;
+}
+
+body.dark-mode .menu-item.title {
+  color: #e0e0e0;
+}
+
+body.dark-mode .menu-item.content {
+  color: #bbbbbb;
+}
+
+body.dark-mode .menu-item.meta {
+  color: #777777;
+}
+
+body.dark-mode .post-card-button:hover {
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+
+body.dark-mode #filter-category {
+  color: #ffffff;
+}
+
+body.dark-mode #category {
+  background-color: #444444;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+}
+
+body.dark-mode #dark-mode-toggle,
+body.dark-mode #filter-button {
+  background-color: #444444;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
+  html, body {
+    flex-direction: column;
+    padding: 4px 0;
+    margin: 0;
+  }
+
   html {
-    font-size: 20px;
+    font-size: 15px;
+  }
+  
+  body.dark-mode .post-list {
+    background-color: #121212;
   }
 
   .post-list {
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px;
+    width: 95%;
+    margin: 0 auto;
   }
 
-  .background {
-    width: 100%;
-    margin: 0 auto;
-    padding: 10px;
+  .background-shadow {
     box-shadow: none;
   }
 
   .container {
+    width: 100%;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    text-align: center;
     padding: 10px;
+  }
+
+  .container3 {
+    margin-bottom: 10px;
+  }
+
+  .vector {
+    width: 50px; /* Largeur plus grande pour mobile */
+    height: 45px;
+}
+
+  .vector img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ou utilisez "cover" selon l'effet souhaité */
+  }
+
+  #filter-form {
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+
+  #filter-category {
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
   }
 }

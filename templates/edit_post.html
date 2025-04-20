@@ -5,11 +5,16 @@
   <meta charset="UTF-8">
   <title>Edit Post</title>
   <link rel="stylesheet" type="text/css" href="/static/post-form.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <div class="form-wrapper">
-    <h1>Edit Post</h1>
-
+    <div id="container">
+      <h1>Edit Post</h1>
+      <div id="container2">
+        <button id="dark-mode-toggle">Dark Mode</button>
+      </div>
+    </div>
     <form action="/posts/edit?id={{.ID}}" method="POST">
       <label for="title">Title :</label>
       <input type="text" id="title" name="title" value="{{.Title}}" required>
@@ -27,5 +32,6 @@
       </div>
     </form>
   </div>
+  <script src="/scripts/script.js"></script>
 </body>
 </html>

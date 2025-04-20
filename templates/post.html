@@ -2,7 +2,6 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
     <title>ForumYnov</title>
     <link rel="stylesheet" href="/static/post.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,22 +14,24 @@
                 <div class="container">
                     <div class="container2">
                         <a href="/"><img class="vector" src="/static/homebtn.jpeg" /></a>
-                        <div class="forum-name">ForumYnov</div>
                     </div>
-                    <div class="button">
-                        <button id="dark-mode-toggle">Dark Mode</button>
+                    <div class="container3">
+                        <a href="/">
+                            <img src="/static/logoforum.png" alt="Forum Logo" class="forum-logo">
+                        </a>
                     </div>
+                    <button id="dark-mode-toggle">Dark Mode</button>
                 </div>
             </div>
             <div class="filter-section">
-                <form action="/posts/filter" method="GET">
-                    <label for="category">Filter by category:</label>
+                <form action="/posts/filter" method="GET" id="filter-form">
+                    <label for="category" id="filter-category">Filter by category :</label>
                     <select id="category" name="category">
                         <option value="Voyages">Travel</option>
                         <option value="Langue">Language</option>
                         <option value="Anime/Manga">Anime/Manga</option>
                     </select>
-                    <button type="submit">Filter</button>
+                    <button type="submit" id="filter-button">Filter</button>
                 </form>
             </div>
             {{range .Posts}}
